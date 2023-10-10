@@ -12,10 +12,12 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 import com.example.appsach.R;
+import com.example.appsach.StartProject.LoginActivity;
 
 
 import java.util.ArrayList;
 
+import SQLite.sqlite;
 import adapter.Vanh.AdapterDonhang;
 import model.Vanh.Donhang;
 
@@ -32,8 +34,8 @@ public class Quanlidon extends Activity {
         arrDonhang = new ArrayList<>();
         donHangAdapter = new AdapterDonhang(Quanlidon.this, R.layout.item_quanlidon, arrDonhang);
 
-        SQLiteDatabase db = SQLiteDatabase.openOrCreateDatabase("/data/data/com.example.profilecart/databases/cart.db", null);
-        Cursor cursor = db.rawQuery("SELECT * FROM tbl_hoadon", null);
+        sqlite s = new sqlite(Quanlidon.this,"cart.db",null,1);
+        Cursor cursor = s.getData("SELECT * FROM tbl_hoadon");
         while (cursor.moveToNext()){
             arrDonhang.add(new Donhang(cursor.getInt(1), cursor.getInt(2), 0));
         }

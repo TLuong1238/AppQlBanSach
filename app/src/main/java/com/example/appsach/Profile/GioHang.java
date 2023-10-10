@@ -5,6 +5,8 @@ import static java.lang.Math.random;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
@@ -22,6 +24,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 
+import com.example.appsach.Home.MainActivity;
 import com.example.appsach.R;
 
 
@@ -29,9 +32,11 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Random;
 
+import SQLite.BitmapUtils;
 import SQLite.sqlite;
 import adapter.Vanh.GiohangAdapter;
 import model.Vanh.ItemGiohang;
+import model.user;
 
 public class GioHang extends Activity {
     ListView lvGiohang;
@@ -39,7 +44,8 @@ public class GioHang extends Activity {
     static TextView txtTongtien;
     Button btnThanhtoan, btnTieptucmuahang, btnXoatatca;
     GiohangAdapter giohangAdapter;
-    int dem=0;
+    SharedPreferences sp;
+    SharedPreferences.Editor editor;
     public static ArrayList<ItemGiohang> lstGiohang;
 
     @Override
@@ -58,15 +64,21 @@ public class GioHang extends Activity {
         Xoatatca();
         Thanhtoan();
         Tongtien();
+        btnTieptucmuahang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(GioHang.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 //    private void AddGiohang() {
-////                          Bundle bundle = getIntent().getExtras();
-////                          User user = bundle.get();
-////                          int id_tk = user.getId_taikhoan();
-//        int id = 10;
-//        SQLiteDatabase db = SQLiteDatabase.openOrCreateDatabase("/data/data/com.example.profilecart/databases/cart.db", null);
-//        Cursor cursor = db.rawQuery("SELECT * FROM gio_hang", null);
+//        user user = new user(sp.getInt("id",0),sp.getString("name",""),sp.getString("email",""),
+//                sp.getString("pass",""),sp.getString("phone",""));
+//        int id_tk = user.getId_user();
+//        sqlite s = new sqlite(GioHang.this,"cart.db",null,1);
+//        Cursor cursor = s.getData("SELECT * FROM gio_hang WHERE id_taikhoan = '" + id_tk + "'");
 //        for (ItemGiohang item: lstGiohang) {
 //            byte[] temp = cursor.getBlob(4);
 //            lstGiohang.add(new ItemGiohang(cursor.getInt(0), cursor.getInt(1), cursor.getString(2), cursor.getLong(3), BitmapUtils.getImage(temp), cursor.getInt(5)));
@@ -98,17 +110,15 @@ public class GioHang extends Activity {
                         else {
                             Random random = new Random();
                             int ma_donhang = random.nextInt(1000 - 10) + 10;
-//                          Bundle bundle = getIntent().getExtras();
-//                          User user = bundle.get();
-//                          int id_tk = user.getId_taikhoan();
-                            int id = 10;
+                            user user = new user(sp.getInt("id",0),sp.getString("name",""),sp.getString("email",""),
+                                    sp.getString("pass",""),sp.getString("phone",""));
+                            int id_tk = user.getId_user();
                             sqlite db = new sqlite(GioHang.this, "cart.db", null, 1);
                             db.QueryData(("CREATE TABLE IF NOT EXISTS tbl_hoadon(id_hoadon INTEGER PRIMARY KEY AUTOINCREMENT, id_taikhoan INTEGER, ma_donhang INTEGER, tinhtrang INTEGER)"));
-
-                            db.QueryData("INSERT INTO tbl_hoadon VALUES(null, '" + id + "','" + ma_donhang + "', '" + 1 + "');");
+                            db.QueryData("INSERT INTO tbl_hoadon VALUES(null, '" + id_tk + "','" + ma_donhang + "', '" + 1 + "');");
                             db.QueryData(("CREATE TABLE IF NOT EXISTS tbl_chitietdonhang(id_chitietdonhang INTEGER PRIMARY KEY AUTOINCREMENT, ma_donhang INTEGER, id_taikhoan INTEGER, tensanpham TEXT, soluong INTEGER, gia INTEGER)"));
                             for (ItemGiohang item: lstGiohang) {
-                                db.QueryData("INSERT INTO tbl_chitietdonhang VALUES(null, '" + ma_donhang + "', '" + id + "', '" + item.getTen_sanpham() + "', '" + item.getSoluong() + "', '" + item.getGiasp() + "');");
+                                db.QueryData("INSERT INTO tbl_chitietdonhang VALUES(null, '" + ma_donhang + "', '" + id_tk + "', '" + item.getTen_sanpham() + "', '" + item.getSoluong() + "', '" + item.getGiasp() + "');");
                             }
                             lstGiohang.clear();
                             giohangAdapter.notifyDataSetChanged();
@@ -225,5 +235,7 @@ public class GioHang extends Activity {
         btnThanhtoan = findViewById(R.id.btnThanhtoan);
         btnTieptucmuahang = findViewById(R.id.btnTieptucmuahang);
         btnXoatatca = findViewById(R.id.btnXoatatca);
+        sp = getSharedPreferences("LoginData",MODE_PRIVATE);
+        editor = sp.edit();
     }
 }

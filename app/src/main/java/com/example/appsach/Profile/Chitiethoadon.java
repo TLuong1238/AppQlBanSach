@@ -17,6 +17,8 @@ import com.example.appsach.R;
 
 import java.util.ArrayList;
 
+import SQLite.sqlite;
+
 public class Chitiethoadon extends Activity {
     ListView lstChitietdonhang;
 
@@ -28,13 +30,12 @@ public class Chitiethoadon extends Activity {
 
         ArrayList<String> arr= new ArrayList<>();
         ArrayAdapter<String> adapter= new ArrayAdapter<>(Chitiethoadon.this, android.R.layout.simple_list_item_1, arr);
-        SQLiteDatabase db = SQLiteDatabase.openOrCreateDatabase("/data/data/com.example.profilecart/databases/cart.db", null);
+        sqlite s = new sqlite(Chitiethoadon.this,"cart.db",null,1);
 
         Intent intent = getIntent();
         String ma = intent.getStringExtra("ma_donhang");
 
-        Cursor cursor = db.rawQuery("SELECT * FROM tbl_chitietdonhang WHERE ma_donhang = '" + ma +"'", null);
-//        Cursor cursor = db.rawQuery("SELECT * FROM tbl_chitietdonhang", null);
+        Cursor cursor = s.getData("SELECT * FROM tbl_chitietdonhang WHERE ma_donhang = '" + ma +"'");
         while (cursor.moveToNext()){
             arr.add("Sản phẩm: " + cursor.getString(3) + " \nSố lượng: " + cursor.getString(4) + " \nGiá tiền: " + cursor.getString(5));
         }

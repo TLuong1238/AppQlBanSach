@@ -22,7 +22,7 @@
 
         <activity
 
-            android:name=".StartProject.Welcom"
+            android:name=".Profile.Quanlidon"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -62,6 +62,12 @@
             android:exported="true"
             android:parentActivityName=".Profile.ThongTin"
             />
+        <activity
+            android:name=".Profile.GioHang"
+            android:exported="false" />
+        <activity
+            android:name=".Profile.Chitiethoadon"
+            android:exported="false" />
 
         <meta-data
             android:name="preloaded_fonts"
