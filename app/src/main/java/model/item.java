@@ -9,7 +9,7 @@ public class item {
         this.name = name;
         this.gia = gia;
     }
-
+//fix later
     public String getGia() {
         return gia;
     }
