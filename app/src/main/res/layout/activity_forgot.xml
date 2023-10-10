@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/signup_pic"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/shelf"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Tìm tài khoản"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signup_pic"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/edtConfirmName"
+        android:layout_width="344dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/edt_backgroumd"
+        android:drawableLeft="@drawable/person"
+        android:drawablePadding="10dp"
+        android:elevation="20dp"
+        android:hint="Tên tài khoản"
+        android:inputType="text"
+        android:padding="13dp"
+        android:textColor="#131010"
+        android:textColorHint="#0C0C0C"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtConfirmMail"
+        app:layout_constraintWidth_percent=" .8"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/edtConfirmMail"
+        android:layout_width="344dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/edt_backgroumd"
+        android:drawableStart="@drawable/email"
+        android:drawablePadding="10dp"
+        android:elevation="20dp"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:padding="13dp"
+        android:textColor="#131010"
+        android:textColorHint="#0C0C0C"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView11"
+        app:layout_constraintWidth_percent=" .8"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/btnConfirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="168dp"
+        android:text="Xác nhận"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.887"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtConfirmName"
+        app:layout_constraintVertical_bias="0.205"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/btnBackToLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="168dp"
+        android:text="Đăng nhập"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtConfirmName"
+        app:layout_constraintVertical_bias="0.205"
+        tools:ignore="MissingConstraints" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

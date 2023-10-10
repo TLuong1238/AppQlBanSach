@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:weightSum="10">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarQuanlidon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="Chi tiết đơn hàng"
+        app:titleTextColor="@color/white"
+        android:background="#1A94FF">
+    </androidx.appcompat.widget.Toolbar>
+
+    <ListView
+        android:layout_weight="10"
+        android:id="@+id/lstChitietdonhang"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp" />
+</LinearLayout>

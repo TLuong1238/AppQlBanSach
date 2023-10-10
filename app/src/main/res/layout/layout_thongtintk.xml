@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    xmlns:tools="http://schemas.android.com/tools">
+    <ImageView
+        android:id="@+id/signup_pic"
+        android:layout_width="0dp"
+        android:layout_height="250dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/userback"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/circleImageView"
+        android:layout_width="151dp"
+        android:layout_height="148dp"
+        android:layout_marginStart="128dp"
+        android:src="@drawable/person"
+        app:civ_border_color="#2196F3"
+        app:civ_border_width="3dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3" />
+    <androidx.cardview.widget.CardView
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:elevation="20dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="32dp"
+        app:cardCornerRadius="20dp"
+        android:background="#FFFCFC"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/circleImageView"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints" >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+
+            android:background="#FFFCFC"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/circleImageView"
+            app:layout_constraintVertical_bias="0.0"
+            tools:ignore="MissingConstraints">
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="49dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/blue_person"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="358dp"
+                android:layout_height="24dp"
+                android:paddingStart="10dp"
+                android:text="Họ và tên:"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/imageView6"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/txtInfoName"
+                android:layout_width="358dp"
+                android:layout_height="26dp"
+                android:paddingStart="10dp"
+
+                android:textSize="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/imageView6"
+                tools:ignore="MissingConstraints" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+
+<androidx.cardview.widget.CardView
+    android:id="@+id/constraintLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:layout_marginTop="20dp"
+    android:background="#FFFCFC"
+    app:cardCornerRadius="20dp"
+    android:elevation="20dp"
+    android:orientation="horizontal"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.0"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+    tools:ignore="MissingConstraints">
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:elevation="20dp"
+        app:cardCornerRadius="20dp"
+        android:background="#FFFCFC"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="49dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/blue_mail"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="358dp"
+            android:layout_height="24dp"
+            android:paddingStart="10dp"
+            android:text="Email:"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/imageView5"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/txtInfoEmail"
+            android:layout_width="358dp"
+            android:layout_height="26dp"
+            android:paddingStart="10dp"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/imageView5"
+            tools:ignore="MissingConstraints" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
+
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="#FFFCFC"
+    android:layout_marginTop="20dp"
+    android:orientation="horizontal"
+    app:cardCornerRadius="20dp"
+    android:elevation="20dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.0"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+    tools:ignore="MissingConstraints">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#FFFCFC"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+
+
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="49dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/phone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="358dp"
+            android:layout_height="24dp"
+            android:paddingStart="10dp"
+            android:text="Số điện thoại:"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/imageView4"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/txtInfoSdt"
+            android:layout_width="358dp"
+            android:layout_height="26dp"
+            android:paddingStart="10dp"
+
+            android:textSize="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/imageView4"
+            tools:ignore="MissingConstraints" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
+
+
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="112dp"
+        android:text="Xóa tài khoản"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/btnFix"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="112dp"
+        android:text="Sửa thông tin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.389"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

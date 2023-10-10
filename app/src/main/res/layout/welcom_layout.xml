@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/new_s" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/aclonica"
+        android:gravity="bottom|center"
+        android:text="Welcom to Son's BookStore"
+        android:textColor="#EBEDEF"
+        android:textSize="27sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/aclonica"
+        android:gravity="center|top"
+        android:text="Explore Us!"
+        android:textColor="#EBEDEF"
+        android:textSize="27sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+
+    <TextView
+        android:id="@+id/txtSignup"
+        android:layout_width="wrap_content"
+        android:layout_height="61dp"
+        android:layout_marginTop="27dp"
+        android:gravity="center|left"
+        android:text="Đăng ký"
+        android:textColor="#F6F9FB"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.563"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.41" />
+
+    <ImageView
+        android:id="@+id/imgLogin"
+        android:layout_width="94dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="52dp"
+        android:src="@drawable/login"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="0.173"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/imgSignup"
+        android:layout_width="94dp"
+        android:layout_height="66dp"
+        android:src="@drawable/signup"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.176"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.437"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/txtLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="74dp"
+        android:layout_marginTop="52dp"
+        android:gravity="center|left"
+        android:text="Đăng nhập"
+        android:textColor="#F6F9FB"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.684"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+    <TextView
+        android:layout_width="301dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="380dp"
+        android:fontFamily="@font/aclonica"
+        android:gravity="center"
+        android:text="Get ready to join in major adventures all around the world"
+        android:textColor="#EBEDEF"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

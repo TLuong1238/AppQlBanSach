@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">AppSach</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name ="hint_search">Mọi sách mà bạn muốn.....</string>
+    <string name="action_home">Trang chủ</string>
+    <string name="action_category">Danh mục</string>
+    <string name="action_cart">Giỏ hàng</string>
+    <string name="action_profile">Tài khoản</string>
+    <string name="VND">VND</string>
+
+
+</resources>

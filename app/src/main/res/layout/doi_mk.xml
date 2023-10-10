@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView5"
+        android:layout_width="411dp"
+        android:layout_height="77dp"
+        android:layout_margin="15dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@color/white"
+        android:elevation="20dp"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#2196F3"
+            android:gravity="center"
+            android:text="ĐỔI MẬT KHẨU"
+            android:textColor="#FEFFFF"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+
+
+    </androidx.cardview.widget.CardView>
+
+    <EditText
+        android:id="@+id/edtNewRepass"
+        android:layout_width="344dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/edt_backgroumd"
+        android:drawableLeft="@drawable/pass"
+        android:drawablePadding="10dp"
+        android:elevation="20dp"
+        android:hint="Xác nhận mật khẩu"
+        android:inputType="textPassword"
+        android:padding="13dp"
+        android:textColor="#131010"
+        android:textColorHint="#0C0C0C"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtNewpass"
+        app:layout_constraintWidth_percent=" .8"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/edtNewpass"
+        android:layout_width="344dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/edt_backgroumd"
+        android:drawableStart="@drawable/pass"
+        android:drawablePadding="10dp"
+        android:elevation="20dp"
+        android:hint="Mật khẩu mới"
+        android:inputType="textPassword"
+        android:padding="13dp"
+        android:textColor="#131010"
+        android:textColorHint="#0C0C0C"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView5"
+        app:layout_constraintWidth_percent=" .8"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/btnXacNhaChange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:text="Xác nhận"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtNewRepass"
+        app:layout_constraintVertical_bias="0.052"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginBottom="4dp"
+        android:src="@drawable/bottom_book"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

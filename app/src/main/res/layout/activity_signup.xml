@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".StartProject.SignupActivity">
+
+    <ImageView
+        android:id="@+id/signup_pic"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/bookself"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+
+        android:id="@+id/edtName_signup"
+        android:layout_width="344dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/edt_backgroumd"
+        android:drawableLeft="@drawable/blue_person"
+        android:drawablePadding="10dp"
+        android:elevation="20dp"
+        android:hint="Tên người dùng"
+        android:padding="13dp"
+        android:textColor="#131010"
+        android:textColorHint="#0C0C0C"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signup_pic"
+        app:layout_constraintWidth_percent=" .8" />
+
+    <EditText
+        android:id="@+id/edtEmail_signup"
+        android:layout_width="344dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/edt_backgroumd"
+        android:drawableLeft="@drawable/blue_mail"
+        android:drawablePadding="10dp"
+        android:elevation="20dp"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:padding="13dp"
+        android:textColor="#131010"
+        android:textColorHint="#0C0C0C"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtName_signup"
+        app:layout_constraintWidth_percent=" .8"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/edtPass_signup"
+        android:layout_width="344dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/edt_backgroumd"
+        android:drawableLeft="@drawable/pass"
+        android:drawablePadding="10dp"
+        android:elevation="20dp"
+        android:hint="Mật khẩu"
+        android:inputType="textPassword"
+        android:padding="13dp"
+        android:textColor="#131010"
+        android:textColorHint="#0C0C0C"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtEmail_signup"
+        app:layout_constraintWidth_percent=" .8"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/edtRepass"
+        android:layout_width="344dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/edt_backgroumd"
+        android:drawableLeft="@drawable/pass"
+        android:drawablePadding="10dp"
+        android:elevation="20dp"
+        android:hint="Xác nhận mật khẩu"
+        android:inputType="textPassword"
+        android:padding="13dp"
+        android:textColor="#131010"
+        android:textColorHint="#0C0C0C"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtPass_signup"
+        app:layout_constraintWidth_percent=" .8"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/btnSignUp"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:outlineAmbientShadowColor="#2196F3"
+        android:padding="15dp"
+        android:text="Đăng ký"
+        android:textColorHighlight="#2196F3"
+        android:textColorLink="#2196F3"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtRepass"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bạn đã có tài khoản?"
+        android:textColor="#121010"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSignUp"
+        app:layout_constraintVertical_bias="0.119"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/txtLogin"
+        android:layout_width="254dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="7dp"
+        android:gravity="center"
+        android:text="Bấm vào đây để đăng nhập!"
+        android:textColor="#2196F3"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        tools:ignore="MissingConstraints" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<!--    <ImageView-->
+<!--        android:layout_width="80dp"-->
+<!--        android:layout_height="80dp"-->
+<!--        android:layout_margin="10dp"-->
+<!--        android:id="@+id/img_danhmuc"-->
+<!--        android:src="@drawable/history"-->
+<!--        android:scaleType="fitCenter"-->
+<!--        />-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:id="@+id/tv_danhmuc"
+        android:text="History"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:gravity="fill"
+        />
+</LinearLayout>
