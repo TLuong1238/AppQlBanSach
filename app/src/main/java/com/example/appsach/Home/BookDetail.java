@@ -17,9 +17,9 @@ public class BookDetail extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.book_detail);
-        txtDetail = findViewById(R.id.txtDetail);
-        imgDetail = findViewById(R.id.imgDetail);
+        setContentView(R.layout.item_book);
+        txtDetail = findViewById(R.id.txtItem);
+        imgDetail = findViewById(R.id.imgBook);
         Bundle bundle = getIntent().getExtras();
         Book book = (Book) bundle.get("objectBook");
         txtDetail.setText(book.getTitle());

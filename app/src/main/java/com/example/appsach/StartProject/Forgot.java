@@ -48,7 +48,7 @@ public class Forgot extends AppCompatActivity {
                 {
                     user u = null;
                     sqlite s = new sqlite(Forgot.this, "TestApp.db", null, 1);
-                    Cursor c = s.getData("SELECT * FROM user WHERE email ='"+edtConfirmEmail.getText().toString().trim()+"'AND name ='"+edtConfirmName.getText().toString().trim()+"'");
+                    Cursor c = s.getData("SELECT * FROM user WHERE email ='"+edtConfirmEmail.getText().toString().trim()+"'OR name ='"+edtConfirmName.getText().toString().trim()+"'");
                     while (c.moveToNext()){
                         index++;
                         u = new user(c.getInt(0),c.getString(1),c.getString(2),c.getString(3),c.getString(4));
