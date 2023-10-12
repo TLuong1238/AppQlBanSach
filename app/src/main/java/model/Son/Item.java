@@ -3,7 +3,7 @@ package model.Son;
 import android.graphics.Bitmap;
 
 public class Item {
-    private int id;
+    private int id, luotmua;
 
     public Item(String name, Bitmap image) {
         this.name = name;

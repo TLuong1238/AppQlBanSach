@@ -75,7 +75,6 @@ public class cateFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_cate, container, false);
-        setContentView(R.layout.layout_danh_muc);
         db = SQLiteDatabase.openOrCreateDatabase("/data/data/com.application.test_baitaplon/databases/temp.db", null);
         anhxa();
 
@@ -131,15 +130,6 @@ public class cateFragment extends Fragment {
             }
         });
 
-          private void searching() {
-        img_searching.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String s = ed_Search.getText().toString();
-                finalSeaching(s);
-            }
-        });
-
         ed_Search.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
@@ -155,6 +145,16 @@ public class cateFragment extends Fragment {
         });
      // Inflate the layout for this fragment
         return view;
+    }
+
+     private void searching() {
+            img_searching.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String s = ed_Search.getText().toString();
+                finalSeaching(s);
+            }
+        });
     }
 
     private void finalSeaching(String s) {
