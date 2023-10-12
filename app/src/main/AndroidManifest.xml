@@ -22,7 +22,7 @@
 
         <activity
 
-            android:name=".Profile.Quanlidon"
+            android:name=".Home.MainActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -44,8 +44,12 @@
         <activity
             android:name=".StartProject.SignupActivity"
             android:exported="false" />
+
         <activity
-            android:name=".Home.MainActivity"
+            android:name=".Category.LayoutInfoItem"
+            android:exported="true"/>
+        <activity
+            android:name=".Category.LayoutTimKiem"
             android:exported="true"/>
         <activity
             android:name=".Profile.profileFragment"

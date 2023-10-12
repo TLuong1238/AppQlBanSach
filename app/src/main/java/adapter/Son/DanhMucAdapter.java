@@ -1,6 +1,7 @@
 package adapter.Son;
 
 import android.app.Activity;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,13 +19,13 @@ import java.util.ArrayList;
 import model.Son.DanhMuc;
 
 public class DanhMucAdapter extends ArrayAdapter<DanhMuc> {
-    private Activity activity;
+    private Context activity;
 
     private ArrayList<DanhMuc> arr;
 
     private int idLayout;
 
-    public DanhMucAdapter(@NonNull Activity context, int resource, @NonNull ArrayList<DanhMuc> objects) {
+    public DanhMucAdapter(@NonNull Context context, int resource, @NonNull ArrayList<DanhMuc> objects) {
         super(context, resource, objects);
         this.activity = context;
         this.idLayout =resource;
@@ -34,7 +35,7 @@ public class DanhMucAdapter extends ArrayAdapter<DanhMuc> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        LayoutInflater inflater = activity.getLayoutInflater();
+        LayoutInflater inflater = LayoutInflater.from(activity.getApplicationContext());
         convertView = inflater.inflate(idLayout, null);
         //ImageView imgView = convertView.findViewById(R.id.img_danhmuc);
         TextView textView = convertView.findViewById(R.id.tv_danhmuc);

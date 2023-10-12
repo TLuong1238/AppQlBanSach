@@ -22,6 +22,7 @@ import com.example.appsach.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import SQLite.sqlite;
 import adapter.Son.PhotoAdapter;
 import me.relex.circleindicator.CircleIndicator;
 import model.Son.Photo;
@@ -35,8 +36,6 @@ public class LayoutInfoItem extends Activity {
 
     TextView tenSach, gia,  nhaph, nhaxb, tomtat, danhmuc;
 
-    SQLiteDatabase db;
-
     Cursor cursor;
 
     Bundle bundle;
@@ -44,12 +43,14 @@ public class LayoutInfoItem extends Activity {
     Intent intent;
     Button insertIntoCart;
 
+    private sqlite database;
+
     @SuppressLint("Range")
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_info_item);
-        db = SQLiteDatabase.openOrCreateDatabase("/data/data/com.application.test_baitaplon/databases/temp.db", null);
+        database = new sqlite(LayoutInfoItem.this,"temp.db",null,1);
         anhxa();
 
         photoAdapter = new PhotoAdapter(this, getListPhoto());
@@ -82,7 +83,8 @@ public class LayoutInfoItem extends Activity {
                     startActivity(it);
                 }
                 if(idLayout == R.layout.layout_danh_muc){
-                    Intent it = new Intent(LayoutInfoItem.this,LayoutDanhMuc.class);
+                    //Co bugs
+                    Intent it = new Intent(LayoutInfoItem.this,cateFragment.class);
                     startActivity(it);
                 }
 
@@ -92,7 +94,7 @@ public class LayoutInfoItem extends Activity {
             @Override
             public void onClick(View view) {
                 Cursor cs;
-                cs = db.rawQuery("select * from gio_hang", null);
+                cs = database.getData("select * from gio_hang");
                 boolean check = true;
 
                 while (cs.moveToNext()){
@@ -110,8 +112,9 @@ public class LayoutInfoItem extends Activity {
                     contentValues.put("gia",cursor.getString(cursor.getColumnIndex("gia")));
 
                     int prv = cs.getCount();
+                    SQLiteDatabase db = database.getWritableDatabase();
                     db.insert("gio_hang",null,contentValues);
-                    cs = db.rawQuery("select * from gio_hang", null);
+                    cs = database.getData("select * from gio_hang");
                     if(cs.getCount() > prv){
                         Toast.makeText(LayoutInfoItem.this, "Thêm vào giỏ hàng thành công", Toast.LENGTH_LONG).show();
                     }
@@ -124,11 +127,11 @@ public class LayoutInfoItem extends Activity {
 
     private void getData(){
         String key_word = bundle.getString("name");
-        cursor = db.rawQuery("select book.tieude, book.hinhanh, book.gia, book.tomtat, nha_phat_hanh.ten_nhaph, nha_xuatban.ten_nhaxb, danh_muc.ten_danhmuc from book " +
+        cursor = database.getData("select book.tieude, book.hinhanh, book.gia, book.tomtat, nha_phat_hanh.ten_nhaph, nha_xuatban.ten_nhaxb, danh_muc.ten_danhmuc from book " +
                 " join danh_muc on book.id_danhmuc = danh_muc.id_danhmuc " +
                 " join nha_phat_hanh on book.id_nhaph = nha_phat_hanh.id_nhaph " +
                 " join nha_xuatban on book.id_nhaxb = nha_xuatban.id_nhaxb " +
-                "where book.tieude = '"+key_word+"';",null);
+                "where book.tieude = '"+key_word+"';");
 
     }
     private void anhxa(){

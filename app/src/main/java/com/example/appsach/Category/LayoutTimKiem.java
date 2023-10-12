@@ -57,7 +57,7 @@ public class LayoutTimKiem extends Activity {
         imgView_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LayoutTimKiem.this, LayoutDanhMuc.class);
+                Intent intent = new Intent(LayoutTimKiem.this, cateFragment.class);
                 startActivity(intent);
             }
         });
