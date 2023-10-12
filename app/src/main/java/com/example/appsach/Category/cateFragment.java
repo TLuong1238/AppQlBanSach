@@ -153,6 +153,8 @@ public class cateFragment extends Fragment {
                 return false;
             }
         });
+     // Inflate the layout for this fragment
+        return view;
     }
 
     private void finalSeaching(String s) {
@@ -240,7 +242,5 @@ public class cateFragment extends Fragment {
         cursor = db.rawQuery("select * from book", null);
         Toast.makeText(this, cursor.getCount() + "", Toast.LENGTH_LONG).show();
     }
-        // Inflate the layout for this fragment
-        return view;
-    }
+    
 }
