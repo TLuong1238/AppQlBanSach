@@ -45,7 +45,8 @@ public class sqlite extends SQLiteOpenHelper {
         String table_danhmuc = "create table if not exists danh_muc(id_danhmuc INTEGER primary key autoincrement, ten_danhmuc text not null);";
         QueryData(table_danhmuc);
         String table_book = "create table if not exists book(id_book INTEGER primary key autoincrement, tieude text not null, gia INTEGER null default 0, id_tacgia text null," +
-                " id_danhmuc text null, tomtat text null, hinhanh BLOB null, danhsach_anh BLOB[] null, ngay_xuatban DATE null, number_of_pages INTEGER null, id_nhaxb INTEGER null, id_nhaph INTEGER null," +
+                " id_danhmuc text null, tomtat text null, hinhanh BLOB null, danhsach_anh BLOB[] null, ngay_xuatban DATE null, number_of_pages INTEGER null, id_nhaxb INTEGER null, id_nhaph INTEGER null, " +
+                "luotmua INTEGER null default 0, " +
                 "FOREIGN KEY (id_nhaxb) REFERENCES nha_xuatban (id_nhaxb)," +
                 "FOREIGN KEY (id_nhaph) REFERENCES nha_phat_hanh (id_nhaph)," +
                 "FOREIGN KEY (id_tacgia) REFERENCES tac_gia (id_tacgia)," +

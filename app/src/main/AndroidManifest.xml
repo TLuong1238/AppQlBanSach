@@ -22,7 +22,7 @@
 
         <activity
 
-            android:name=".StartProject.Welcom"
+            android:name=".Home.MainActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,9 +37,9 @@
         <activity
             android:name=".StartProject.Forgot"
             android:exported="false" />
-        <activity
-            android:name=".Home.MainActivity"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".Home.MainActivity"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".Home.BookDetail"
             android:exported="false" />

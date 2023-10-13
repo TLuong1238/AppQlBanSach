@@ -20,15 +20,6 @@ public class Item {
         this.image = image;
     }
 
-    public Item(int id, String name, String gia, String danhMuc, String nhaXuatBan, String nhaPhatHanh, Bitmap image) {
-        this.id = id;
-        this.name = name;
-        this.gia = gia;
-        this.danhMuc = danhMuc;
-        this.nhaXuatBan = nhaXuatBan;
-        this.nhaPhatHanh = nhaPhatHanh;
-        this.image = image;
-    }
     public Item(String name, String gia, int numberOfPages, Bitmap image) {
         this.name = name;
         this.gia = gia;
