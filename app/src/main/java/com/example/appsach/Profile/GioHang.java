@@ -139,7 +139,6 @@ public class GioHang extends Activity {
         });
     }
 
-
     private void Xoatatca() {
         btnXoatatca.setOnClickListener(new View.OnClickListener() {
             @Override
