@@ -22,11 +22,10 @@
 
         <activity
 
-            android:name=".Home.MainActivity"
+            android:name=".StartProject.Welcom"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -37,6 +36,9 @@
             />
         <activity
             android:name=".StartProject.Forgot"
+            android:exported="false" />
+        <activity
+            android:name=".Home.MainActivity"
             android:exported="false" />
         <activity
             android:name=".Home.BookDetail"
@@ -72,6 +74,13 @@
         <activity
             android:name=".Profile.Chitiethoadon"
             android:exported="false" />
+        <activity
+            android:name=".admin.MainAdmin"
+            android:exported="false" />
+        <activity
+            android:name=".admin.changePassAdmin"
+            android:exported="false" />
+
 
         <meta-data
             android:name="preloaded_fonts"

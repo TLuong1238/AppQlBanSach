@@ -16,23 +16,23 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.appsach.Home.MainActivity;
-import com.example.appsach.Profile.profileFragment;
 import com.example.appsach.R;
+import com.example.appsach.admin.MainAdmin;
 
 import SQLite.sqlite;
-import model.user;
 
 public class LoginActivity extends AppCompatActivity {
 
     private Button btnLogin;
     private EditText edt_email_login,edt_pass_login;
     private TextView txtToSingup,txtForgot;
-    private String name,email,pass,sdt;
+    private String name,email,pass,sdt,nameAdmin,passAdmin,emailAdmin;
     private int id;
-    int index = 0;
-    CheckBox ckRemember;
+    int index = 0,count = 0;
+    private CheckBox ckRemember;
     SharedPreferences sp;
     SharedPreferences.Editor editor;
+    private Boolean logged;
 
 
 
@@ -42,13 +42,22 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         mapping();
         //
+        edt_email_login.setText("");
+        edt_pass_login.setText("");
+        ckRemember.setChecked(false);
+        //
         sp = getSharedPreferences("LoginData",MODE_PRIVATE);
         editor = sp.edit();
         boolean login = sp.getBoolean("loggedIn",false);
-        if(login)
+        String ten = sp.getString("nameAdmin","");
+        if(login && !ten.equals("admin"))
         {
             Toast.makeText(this, "Chào mừng: "+sp.getString("name","")+" quay trở lại!", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(LoginActivity.this,MainActivity.class));
+            finish();
+        } else if (login && ten.equals("admin")){
+            Toast.makeText(this, "Chào mừng: "+sp.getString("nameAdmin","")+" quay trở lại!", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(LoginActivity.this, MainAdmin.class));
             finish();
         }
         //
@@ -70,9 +79,15 @@ public class LoginActivity extends AppCompatActivity {
 
                 }else{
                     sqlite s = new sqlite(LoginActivity.this,"TestApp.db",null,1);
-
+                    //s.QueryData("CREATE TABLE IF NOT EXISTS admin(name TEXT,email EMAIL,password TEXT)");
+//                    String a1 = "admin";
+//                    String a2 = "admin@gmail.com";
+//                    String a3 = "1";
+//                    s.QueryData("INSERT INTO admin VALUES ('"+a1+"','"+a2+"','"+a3+"')");
                     Cursor c = s.getData("SELECT * From user WHERE email ='"+edt_email_login.getText()+"' AND password ='"+edt_pass_login.getText()+"' ");
-                    while (c.moveToNext()){
+                    Cursor c2 = s.getData("SELECT * From admin WHERE email ='"+edt_email_login.getText()+"' AND password ='"+edt_pass_login.getText()+"' ");
+                    while (c.moveToNext())
+                    {
                         index++;
                         id=c.getInt(0);
                         name=c.getString(1);
@@ -80,43 +95,43 @@ public class LoginActivity extends AppCompatActivity {
                         pass=c.getString(3);
                         sdt = c.getString(4);
                     }
+                    while (c2.moveToNext())
+                    {
+                     count++;
+                     nameAdmin = c2.getString(0);
+                     passAdmin = c2.getString(2);
+                     emailAdmin= c2.getString(1);
+                    }
 
-                    if(index>0) {
-                        if(ckRemember.isChecked())
-                        {
-                            editor.putString("name",name);
-                            editor.putInt("id",id);
-                            editor.putString("email",email);
-                            editor.putString("pass",pass);
-                            editor.putString("phone",sdt);
-                            editor.putBoolean("loggedIn",true);
-                            editor.apply();
+                    if(count>0 )
+                    {
+                        logged = ckRemember.isChecked();
+                        //
+                        editor.putBoolean("loggedIn",logged);
+                        editor.putString("nameAdmin",nameAdmin);
+                        editor.putString("passAdmin",passAdmin);
+                        editor.putString("emailAdmin",emailAdmin);
+                        editor.apply();
 
-                            Toast.makeText(LoginActivity.this, "Đăng nhập tai khoan: "+name+" thành công!", Toast.LENGTH_SHORT).show();
-                            Intent i = new Intent(LoginActivity.this, MainActivity.class);
-//                            Bundle bd = new Bundle();
-//                            user user = new user(id,name,email,pass,sdt);
-//                            bd.putSerializable("object_user",user);
-//                            i.putExtras(bd);
-                            startActivity(i);
-                        }else
-                        {
-                            editor.putInt("id",id);
-                            editor.putString("name",name);
-                            editor.putString("email",email);
-                            editor.putString("pass",pass);
-                            editor.putString("phone",sdt);
-                            editor.apply();
+                        Toast.makeText(LoginActivity.this, "Đăng nhập tai khoan: "+nameAdmin+" thành công!", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(LoginActivity.this, MainAdmin.class);
+                        startActivity(i);
 
-                            Toast.makeText(LoginActivity.this, "Đăng nhập tai khoan: "+name+" thành công", Toast.LENGTH_SHORT).show();
-                            Intent i = new Intent(LoginActivity.this, MainActivity.class);
-//                            Bundle bd = new Bundle();
-//                            user user = new user(id,name,email,pass,sdt);
-//                            bd.putSerializable("object_user",user);
-//                            i.putExtras(bd);
-                            startActivity(i);
-                        }
+                    }else if(index>0) {
+                        logged = ckRemember.isChecked();
+                        //
 
+                        editor.putString("name",name);
+                        editor.putInt("id",id);
+                        editor.putString("email",email);
+                        editor.putString("pass",pass);
+                        editor.putString("phone",sdt);
+                        editor.putBoolean("loggedIn",logged);
+                        editor.apply();
+
+                        Toast.makeText(LoginActivity.this, "Đăng nhập tai khoan: "+name+" thành công!", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                        startActivity(i);
 
                     }else{
                         Toast.makeText(LoginActivity.this, "Sai tên đăng nhập hoặc mật khẩu!", Toast.LENGTH_SHORT).show();

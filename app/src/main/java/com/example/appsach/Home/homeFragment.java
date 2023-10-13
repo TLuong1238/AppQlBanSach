@@ -42,24 +42,14 @@ import model.category;
  */
 public class homeFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
     private RecyclerView recycleHome;
-
-
 
     Toolbar toolhome;
     private MenuItem menuItem;
     private SearchView searchView;
     ViewFlipper flipperHome;
-
-
 
     //
     List<category> listCategories;
@@ -71,39 +61,22 @@ public class homeFragment extends Fragment {
     ArrayList<Book> searchList;
     private categoryAdapter categoryAdapter;
     private bookAdapter bookAdapter;
-
     //
-    ImageView img1,img2,img3,img4;
+
     public homeFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment homeFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static homeFragment newInstance(String param1, String param2) {
         homeFragment fragment = new homeFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
+
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @SuppressLint({"NotifyDataSetChanged", "MissingInflatedId"})
@@ -111,14 +84,11 @@ public class homeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
         View view =  inflater.inflate(R.layout.fragment_home, container, false);
+        //
         recycleHome = view.findViewById(R.id.recycleHome);
         toolhome = view.findViewById(R.id.toolHome);
         flipperHome = view.findViewById(R.id.flipperHome);
-
-
-
 
         AppCompatActivity appCompatActivity = (AppCompatActivity) getActivity();
         assert appCompatActivity != null;
@@ -261,17 +231,12 @@ public class homeFragment extends Fragment {
                             searchList.add(listBooks.get(i));
                         }
                     }
-
                     categoryAdapter = new categoryAdapter(getContext(),getListCate(searchList));
                     recycleHome.setAdapter(categoryAdapter);
-
-
                 }else
                 {
-
                     categoryAdapter = new categoryAdapter(getContext(),getListCate());
                     recycleHome.setAdapter(categoryAdapter);
-
                 }
                 return false;
             }
@@ -287,19 +252,14 @@ public class homeFragment extends Fragment {
                             searchList.add(listBooks.get(i));
                         }
                     }
-
                     categoryAdapter = new categoryAdapter(getContext(),getListCate(searchList));
                     recycleHome.setAdapter(categoryAdapter);
 
                 }else
                 {
-
-
                     categoryAdapter = new categoryAdapter(getContext(),getListCate());
                     recycleHome.setAdapter(categoryAdapter);
-
                 }
-
                 return false;
             }
         });

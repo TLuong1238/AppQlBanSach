@@ -103,8 +103,10 @@ public class cateFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.layout_danh_muc, container, false);
         database = new sqlite(getContext(), "temp.db", null, 1);
+        //Tạo bảng
         database.createTable();
         database.updateDB();
+        //
         arrDanhMuc = new ArrayList<>();
         ed_Search = view.findViewById(R.id.ed_timKiem1);
         listView_DanhMuc = view.findViewById(R.id.lv_danh_muc);
@@ -123,7 +125,6 @@ public class cateFragment extends Fragment {
         getListData();
         recyclerView_item.requestFocus();
         recyclerView_item.setLayoutManager(gridLayoutManager);
-
         adapter_item.setData(arr);
         recyclerView_item.setAdapter(adapter_item);
 
@@ -135,8 +136,8 @@ public class cateFragment extends Fragment {
             @Override
             public void onItemClick(View view, int position) {
                 TextView ten = view.findViewById(R.id.tv_name);
-                Intent intent = new Intent(getContext(), LayoutInfoItem.class);
                 String name = ten.getText().toString();
+                Intent intent = new Intent(getContext(), LayoutInfoItem.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("name", name);
                 bundle.putInt("idlayout", R.layout.layout_danh_muc);
@@ -151,7 +152,6 @@ public class cateFragment extends Fragment {
 
         ////setOnItemClickListener for ListView
         listView_DanhMuc.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 TextView danhMuc = view.findViewById(R.id.tv_danhmuc);
@@ -231,11 +231,8 @@ public class cateFragment extends Fragment {
     }
 
     private void insertSubData() {
-
         ContentValues values = new ContentValues();
         SQLiteDatabase db = database.getWritableDatabase();
-
-
         cursor = database.getData("select * from book");
         Toast.makeText(getContext(), cursor.getCount() + "", Toast.LENGTH_LONG).show();
     }

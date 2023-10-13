@@ -19,9 +19,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import model.user;
 
 public class MainActivity extends AppCompatActivity {
-    BottomNavigationView navHome;
+    private BottomNavigationView navHome;
     ActivityMainBinding binding;
-    user newUser;
+    private user newUser;
     SharedPreferences sp;
     SharedPreferences.Editor editor;
     @Override
@@ -37,17 +37,12 @@ public class MainActivity extends AppCompatActivity {
                 sp.getString("pass",""),sp.getString("phone",""));
 
 
-
-
-
     }
     private void mapping() {
-
         navHome = findViewById(R.id.navHome);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
 //        Bundle bundle = getIntent().getExtras();
 //        newUser = (model.user) bundle.get("object_user");
-
     }
     private void ActionNav() {
         binding.navHome.setOnItemSelectedListener(item ->

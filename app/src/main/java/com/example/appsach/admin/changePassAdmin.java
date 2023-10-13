@@ -1,4 +1,4 @@
-package com.example.appsach.Profile;
+package com.example.appsach.admin;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,15 +10,14 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.appsach.Profile.ChangePass;
 import com.example.appsach.R;
-import com.example.appsach.StartProject.Forgot;
 import com.example.appsach.StartProject.LoginActivity;
-import com.example.appsach.admin.modelAdmin;
 
 import SQLite.sqlite;
 import model.user;
 
-public class ChangePass extends AppCompatActivity {
+public class changePassAdmin extends AppCompatActivity {
     EditText edtNewPass, edtConfirmPass;
     Button btnXacNhanChange;
 
@@ -30,15 +29,13 @@ public class ChangePass extends AppCompatActivity {
         setContentView(R.layout.doi_mk);
         mapping();
         Bundle b = getIntent().getExtras();
-        user getUser = (user) b.get("objectUser");
-
-
+        modelAdmin admin = (modelAdmin) b.get("objectAdmin");
         btnXacNhanChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(edtNewPass.getText().equals("") || edtConfirmPass.getText().equals(""))
                 {
-                    Toast.makeText(ChangePass.this, "Yêu cầu điền đầy đủ thông tin!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(changePassAdmin.this, "Yêu cầu điền đầy đủ thông tin!", Toast.LENGTH_SHORT).show();
                     edtNewPass.setText("");
                     edtConfirmPass.setText("");
                     edtNewPass.requestFocus();
@@ -47,21 +44,21 @@ public class ChangePass extends AppCompatActivity {
                     String pass = edtNewPass.getText().toString();
                     String firm = edtConfirmPass.getText().toString();
                     if (!pass.equals(firm)) {
-                        Toast.makeText(ChangePass.this, "Mật khẩu không trùng khớp!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(changePassAdmin.this, "Mật khẩu không trùng khớp!", Toast.LENGTH_SHORT).show();
                         edtNewPass.setText("");
                         edtConfirmPass.setText("");
                         edtNewPass.requestFocus();
                     } else {
-                        sqlite s = new sqlite(ChangePass.this, "TestApp.db", null, 1);
-                        s.QueryData("UPDATE user SET password = '" + edtNewPass.getText() + "' WHERE email ='" + getUser.getEmail_user().toString().trim() + "'AND name ='" + getUser.getName_user().toString().trim() + "'");
-                        Toast.makeText(ChangePass.this, "Đổi mật khẩu thành công", Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent(ChangePass.this, LoginActivity.class);
+                        sqlite s = new sqlite(changePassAdmin.this, "TestApp.db", null, 1);
+                        s.QueryData("UPDATE admin SET password = '" + edtNewPass.getText() + "' WHERE email ='" + admin.getEmailAdmin().toString().trim() + "'AND name ='" + admin.getNameAdmin().toString().trim() + "'");
+                        Toast.makeText(changePassAdmin.this, "Đổi mật khẩu thành công", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(changePassAdmin.this, LoginActivity.class);
                         startActivity(i);
                     }
                 }
             }
         });
-        }
+    }
 
 
 

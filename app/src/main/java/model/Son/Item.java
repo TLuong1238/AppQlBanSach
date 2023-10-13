@@ -4,6 +4,16 @@ import android.graphics.Bitmap;
 
 public class Item {
     private int id, luotmua;
+    private String name;
+    private String gia;
+    private String tomTat;
+    private String tacGia;
+    private String danhMuc;
+    private String nhaXuatBan;
+    private String nhaPhatHanh;
+    private int numberOfPages;
+    private Bitmap image;
+
 
     public Item(String name, Bitmap image) {
         this.name = name;
@@ -19,9 +29,12 @@ public class Item {
         this.nhaPhatHanh = nhaPhatHanh;
         this.image = image;
     }
-
-    private String name;
-    private String gia;
+    public Item(String name, String gia, int numberOfPages, Bitmap image) {
+        this.name = name;
+        this.gia = gia;
+        this.numberOfPages = numberOfPages;
+        this.image = image;
+    }
 
     public Item(String name, String gia, String tomTat, String tacGia, String danhMuc, String nhaXuatBan, String nhaPhatHanh, int numberOfPages, Bitmap image) {
         this.name = name;
@@ -33,6 +46,16 @@ public class Item {
         this.nhaPhatHanh = nhaPhatHanh;
         this.numberOfPages = numberOfPages;
         this.image = image;
+    }
+    public Item(String name, String gia, Bitmap image) {
+        this.name = name;
+        this.gia = gia;
+        this.image = image;
+    }
+
+    public Item(String name, String gia, String img) {
+        this.name = name;
+        this.gia = gia;
     }
 
     public String getTomTat() {
@@ -75,14 +98,6 @@ public class Item {
         this.nhaPhatHanh = nhaPhatHanh;
     }
 
-    private String tomTat;
-    private String tacGia;
-    private String danhMuc;
-    private String nhaXuatBan;
-    private String nhaPhatHanh;
-
-    private int numberOfPages;
-
     public int getNumberOfPages() {
         return numberOfPages;
     }
@@ -98,27 +113,6 @@ public class Item {
     public void setImage(Bitmap image) {
         this.image = image;
     }
-
-    public Item(String name, String gia, int numberOfPages, Bitmap image) {
-        this.name = name;
-        this.gia = gia;
-        this.numberOfPages = numberOfPages;
-        this.image = image;
-    }
-
-    private Bitmap image;
-
-    public Item(String name, String gia, Bitmap image) {
-        this.name = name;
-        this.gia = gia;
-        this.image = image;
-    }
-
-    public Item(String name, String gia, String img) {
-        this.name = name;
-        this.gia = gia;
-    }
-
 
     public String getGia() {
         return gia;
@@ -136,4 +130,5 @@ public class Item {
     public void setName(String name) {
         this.name = name;
     }
+
 }

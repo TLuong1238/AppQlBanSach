@@ -4,10 +4,15 @@ public class item {
     private int resoucreImage;
     private String name, gia;
 
+
     public item(int resoucreImage, String name, String gia) {
         this.resoucreImage = resoucreImage;
         this.name = name;
         this.gia = gia;
+    }
+    public item(int resoucreImage, String name) {
+        this.resoucreImage = resoucreImage;
+        this.name = name;
     }
 //fix later
     public String getGia() {
@@ -18,10 +23,7 @@ public class item {
         this.gia = gia;
     }
 
-    public item(int resoucreImage, String name) {
-        this.resoucreImage = resoucreImage;
-        this.name = name;
-    }
+
 
     public int getResoucreImage() {
         return resoucreImage;
