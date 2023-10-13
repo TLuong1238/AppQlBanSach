@@ -50,7 +50,7 @@ public class LayoutInfoItem extends Activity {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_info_item);
-        database = new sqlite(LayoutInfoItem.this,"temp.db",null,1);
+        database = new sqlite(LayoutInfoItem.this,"test1.db",null,1);
         anhxa();
 
         photoAdapter = new PhotoAdapter(this, getListPhoto());
