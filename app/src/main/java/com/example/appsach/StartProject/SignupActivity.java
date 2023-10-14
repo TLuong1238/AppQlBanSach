@@ -52,7 +52,7 @@ public class SignupActivity extends AppCompatActivity {
 
 
                 }else{
-                    sqlite s = new sqlite(SignupActivity.this, "TestApp.db", null, 1);
+                    sqlite s = new sqlite(SignupActivity.this, R.string.databaseName+"", null, 1);
                     s.QueryData("CREATE TABLE IF NOT EXISTS user( id INTEGER  PRIMARY KEY AUTOINCREMENT,name TEXT,email EMAIL,password TEXT,phone Text null)");
                     Cursor c = s.getData("SELECT * FROM user WHERE email ='"+edt_email_signup.getText()+"'OR name ='"+edt_name_signup.getText()+"'");
                     while (c.moveToNext()){

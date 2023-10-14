@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_margin="5dp"
     android:background="@color/white">
 
     <androidx.cardview.widget.CardView
@@ -36,10 +37,10 @@
 
 
     <EditText
-        android:id="@+id/edtNewName"
+        android:id="@+id/edtCusName"
         android:layout_width="344dp"
         android:layout_height="52dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/edt_backgroumd"
         android:drawableStart="@drawable/blue_person"
         android:drawablePadding="10dp"
@@ -50,7 +51,6 @@
         android:textColor="#131010"
         android:textColorHint="#0C0C0C"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView5"
@@ -58,10 +58,10 @@
         tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/edtNewEmail"
+        android:id="@+id/edtCusMail"
         android:layout_width="344dp"
         android:layout_height="52dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="28dp"
         android:background="@drawable/edt_backgroumd"
         android:drawableLeft="@drawable/blue_mail"
         android:drawablePadding="10dp"
@@ -72,17 +72,16 @@
         android:textColor="#131010"
         android:textColorHint="#0C0C0C"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtNewName"
+        app:layout_constraintTop_toBottomOf="@+id/edtCusName"
         app:layout_constraintWidth_percent=" .8"
         tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/edtNewPhone"
+        android:id="@+id/edtCusPhone"
         android:layout_width="344dp"
         android:layout_height="52dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="28dp"
         android:background="@drawable/edt_backgroumd"
         android:drawableLeft="@drawable/phone"
         android:drawablePadding="10dp"
@@ -92,80 +91,31 @@
         android:textColor="#131010"
         android:textColorHint="#0C0C0C"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtNewEmail"
+        app:layout_constraintTop_toBottomOf="@+id/edtCusMail"
         app:layout_constraintWidth_percent=" .8"
         tools:ignore="MissingConstraints" />
 
-    <Button
-        android:id="@+id/btnChangeInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="17dp"
-        android:layout_marginEnd="28dp"
-        android:text="Xác nhận"
+    <EditText
+        android:id="@+id/edtCusPass"
+        android:layout_width="344dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/edt_backgroumd"
+        android:drawableLeft="@drawable/pass"
+        android:drawablePadding="10dp"
+        android:elevation="20dp"
+        android:inputType="textPhonetic"
+        android:padding="13dp"
+        android:textColor="#131010"
+        android:textColorHint="#0C0C0C"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtNewPhone"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtCusPhone"
+        app:layout_constraintWidth_percent=" .8"
+        android:layout_marginBottom="5dp"
         tools:ignore="MissingConstraints" />
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_marginBottom="4dp"
-        android:background="@color/white"
-        android:src="@drawable/bottom_book"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-
-        android:layout_width="244dp"
-        android:layout_height="19dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/edt_backgroumd"
-        android:elevation="10dp"
-        android:text="Họ và tên:"
-        android:textColor="@color/black"
-        android:textSize="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.197"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView5" />
-
-    <TextView
-
-        android:layout_width="244dp"
-        android:layout_height="19dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/edt_backgroumd"
-        android:elevation="10dp"
-        android:text="Email:"
-        android:textColor="@color/black"
-        android:textSize="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.197"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtNewName" />
-
-    <TextView
-        android:layout_width="244dp"
-        android:layout_height="19dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/edt_backgroumd"
-        android:elevation="10dp"
-        android:text="Số điện thoai:"
-        android:textColor="@color/black"
-        android:textSize="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.197"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtNewEmail" />
 </androidx.constraintlayout.widget.ConstraintLayout>

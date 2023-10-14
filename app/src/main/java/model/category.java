@@ -1,14 +1,17 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import model.Son.Item;
 
 public class category {
     private String nameCate;
-    private List<Book> book;
+    private ArrayList<Item> item;
 
-    public category(String nameCate, List<Book> book) {
+    public category(String nameCate, ArrayList<Item> book) {
         this.nameCate = nameCate;
-        this.book = book;
+        this.item = book;
     }
 
     public String getNameCate() {
@@ -19,11 +22,11 @@ public class category {
         this.nameCate = nameCate;
     }
 
-    public List<Book> getBook() {
-        return book;
+    public ArrayList<Item> getItem() {
+        return item;
     }
 
-    public void setBook(List<Book> book) {
-        this.book = book;
+    public void setBook(ArrayList<Item> book) {
+        this.item = book;
     }
 }

@@ -56,7 +56,7 @@ public class ChangeInfo extends AppCompatActivity {
                     edtNewPhone.requestFocus();
                     Toast.makeText(ChangeInfo.this, "Số điện thoại không hợp lệ!", Toast.LENGTH_SHORT).show();
                 } else {
-                    sqlite s = new sqlite(ChangeInfo.this, "TestApp.db", null, 1);
+                    sqlite s = new sqlite(ChangeInfo.this, R.string.databaseName+"", null, 1);
                     s.QueryData("UPDATE user SET name = '" + edtNewName.getText() + "', email = '"+edtNewEmail.getText()+"',phone = '"+edtNewPhone.getText()+"' " +
                             "WHERE id ='" + user.getId_user() + "'");
                     Cursor c = s.getData("SELECT * From user WHERE id ='" + user.getId_user() +"' ");

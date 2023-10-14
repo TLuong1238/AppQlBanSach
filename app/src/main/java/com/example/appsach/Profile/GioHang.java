@@ -77,7 +77,7 @@ public class GioHang extends Activity {
 //        user user = new user(sp.getInt("id",0),sp.getString("name",""),sp.getString("email",""),
 //                sp.getString("pass",""),sp.getString("phone",""));
 //        int id_tk = user.getId_user();
-//        sqlite s = new sqlite(GioHang.this,"cart.db",null,1);
+//        sqlite s = new sqlite(GioHang.this,R.string.databaseName+"",null,1);
 //        Cursor cursor = s.getData("SELECT * FROM gio_hang WHERE id_taikhoan = '" + id_tk + "'");
 //        for (ItemGiohang item: lstGiohang) {
 //            byte[] temp = cursor.getBlob(4);
@@ -113,7 +113,7 @@ public class GioHang extends Activity {
                             user user = new user(sp.getInt("id",0),sp.getString("name",""),sp.getString("email",""),
                                     sp.getString("pass",""),sp.getString("phone",""));
                             int id_tk = user.getId_user();
-                            sqlite db = new sqlite(GioHang.this, "cart.db", null, 1);
+                            sqlite db = new sqlite(GioHang.this, R.string.databaseName+"", null, 1);
                             db.QueryData(("CREATE TABLE IF NOT EXISTS tbl_hoadon(id_hoadon INTEGER PRIMARY KEY AUTOINCREMENT, id_taikhoan INTEGER, ma_donhang INTEGER, tinhtrang INTEGER)"));
                             db.QueryData("INSERT INTO tbl_hoadon VALUES(null, '" + id_tk + "','" + ma_donhang + "', '" + 1 + "');");
                             db.QueryData(("CREATE TABLE IF NOT EXISTS tbl_chitietdonhang(id_chitietdonhang INTEGER PRIMARY KEY AUTOINCREMENT, ma_donhang INTEGER, id_taikhoan INTEGER, tensanpham TEXT, soluong INTEGER, gia INTEGER)"));

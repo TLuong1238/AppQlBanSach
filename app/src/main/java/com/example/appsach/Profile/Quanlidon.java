@@ -44,7 +44,7 @@ public class Quanlidon extends Activity {
         arrDonhang = new ArrayList<>();
         donHangAdapter = new AdapterDonhang(Quanlidon.this, R.layout.item_quanlidon, arrDonhang);
 
-        sqlite s = new sqlite(Quanlidon.this,"cart.db",null,1);
+        sqlite s = new sqlite(Quanlidon.this,R.string.databaseName+"",null,1);
         Cursor cursor = s.getData("SELECT * FROM tbl_hoadon WHERE id_taikhoan = '"+ id_tk +"' ");
         while (cursor.moveToNext()){
             arrDonhang.add(new Donhang(cursor.getInt(1), cursor.getInt(2), 0));

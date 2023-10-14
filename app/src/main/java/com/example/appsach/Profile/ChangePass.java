@@ -52,7 +52,7 @@ public class ChangePass extends AppCompatActivity {
                         edtConfirmPass.setText("");
                         edtNewPass.requestFocus();
                     } else {
-                        sqlite s = new sqlite(ChangePass.this, "TestApp.db", null, 1);
+                        sqlite s = new sqlite(ChangePass.this, R.string.databaseName+"", null, 1);
                         s.QueryData("UPDATE user SET password = '" + edtNewPass.getText() + "' WHERE email ='" + getUser.getEmail_user().toString().trim() + "'AND name ='" + getUser.getName_user().toString().trim() + "'");
                         Toast.makeText(ChangePass.this, "Đổi mật khẩu thành công", Toast.LENGTH_SHORT).show();
                         Intent i = new Intent(ChangePass.this, LoginActivity.class);

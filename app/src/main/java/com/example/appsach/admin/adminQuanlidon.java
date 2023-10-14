@@ -45,7 +45,7 @@ public class adminQuanlidon extends Activity {
         arrDonhang = new ArrayList<>();
         donHangAdapter = new AdapterAdminDonhang(adminQuanlidon.this, R.layout.admin_item_donhang, arrDonhang);
 
-        sqlite s = new sqlite(adminQuanlidon.this,"cart.db",null,1);
+        sqlite s = new sqlite(adminQuanlidon.this,R.string.databaseName+"",null,1);
         Cursor cursor = s.getData("SELECT * FROM tbl_hoadon WHERE tinhtrang = 1");
 
         while (cursor.moveToNext()){

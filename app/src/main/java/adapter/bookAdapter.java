@@ -14,26 +14,28 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.appsach.Home.BookDetail;
+import com.example.appsach.Category.LayoutInfoItem;
+
 import com.example.appsach.R;
 
 import java.util.List;
 import java.util.zip.Inflater;
 
 import model.Book;
+import model.Son.Item;
 
 public class bookAdapter extends RecyclerView.Adapter<bookAdapter.bookViewHolder> {
 
-    private List<Book> listBook;
+    private List<Item> listBook;
     Context context;
 
-    public bookAdapter(List<Book> listBook, Context context) {
+    public bookAdapter(List<Item> listBook, Context context) {
         this.listBook = listBook;
         this.context = context;
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    public void setData(List<Book> b)
+    public void setData(List<Item> b)
     {
         this.listBook = b;
         notifyDataSetChanged();
@@ -47,13 +49,13 @@ public class bookAdapter extends RecyclerView.Adapter<bookAdapter.bookViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull bookViewHolder holder, int position) {
-            Book book = listBook.get(position);
+            Item book = listBook.get(position);
             if(book == null)
             {
                 return;
             }
-            holder.imgBook.setImageResource(book.getSourceId());
-            holder.title.setText(book.getTitle());
+            holder.imgBook.setImageBitmap(book.getImage());
+            holder.title.setText(book.getName());
 
             holder.layout_item.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -64,13 +66,13 @@ public class bookAdapter extends RecyclerView.Adapter<bookAdapter.bookViewHolder
 
     }
 
-    private void onSelectedRecycleItem(Book book)
+    private void onSelectedRecycleItem(Item item)
     {
-        Intent i = new Intent(context, BookDetail.class);
+        Intent i = new Intent(context, LayoutInfoItem.class);
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         Bundle bundle = new Bundle();
-        bundle.putSerializable("objectBook",book);
-        i.putExtras(bundle);
+        bundle.putString("name",item.getName());
+        i.putExtra("name_item",bundle);
         context.startActivity(i);
 
     }

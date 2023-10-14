@@ -30,7 +30,7 @@ public class Chitiethoadon extends Activity {
 
         ArrayList<String> arr= new ArrayList<>();
         ArrayAdapter<String> adapter= new ArrayAdapter<>(Chitiethoadon.this, android.R.layout.simple_list_item_1, arr);
-        sqlite s = new sqlite(Chitiethoadon.this,"cart.db",null,1);
+        sqlite s = new sqlite(Chitiethoadon.this,R.string.databaseName+"",null,1);
 
         Intent intent = getIntent();
         String ma = intent.getStringExtra("ma_donhang");

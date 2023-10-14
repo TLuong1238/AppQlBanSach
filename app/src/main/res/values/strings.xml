@@ -8,6 +8,7 @@
     <string name="action_cart">Giỏ hàng</string>
     <string name="action_profile">Tài khoản</string>
     <string name="VND">VND</string>
+    <string name="databaseName">test.db</string>
 
 
 </resources>

@@ -36,7 +36,7 @@ public class adminDoanhthu extends Activity {
         arrDonhang = new ArrayList<>();
         donHangAdapter = new AdapterAdminDoanhthu(adminDoanhthu.this, R.layout.admin_item_doanhthu, arrDonhang);
 
-        sqlite s = new sqlite(adminDoanhthu.this,"cart.db",null,1);
+        sqlite s = new sqlite(adminDoanhthu.this,R.string.databaseName+"",null,1);
         Cursor cursor = s.getData("SELECT * FROM tbl_hoadon WHERE tinhtrang = 0");
         Cursor getDoanhthu = s.getData("SELECT tbl_chitietdonhang.gia FROM tbl_hoadon JOIN tbl_chitietdonhang ON tbl_hoadon.ma_donhang = tbl_chitietdonhang.ma_donhang WHERE tbl_hoadon.tinhtrang = 0;");
 

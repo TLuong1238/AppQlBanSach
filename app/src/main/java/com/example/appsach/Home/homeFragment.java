@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -25,14 +26,20 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.ViewFlipper;
 
+import com.example.appsach.Category.LayoutInfoItem;
+import com.example.appsach.Profile.GioHang;
 import com.example.appsach.R;
+import com.example.appsach.StartProject.LoginActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import SQLite.BitmapUtils;
+import SQLite.sqlite;
 import adapter.bookAdapter;
 import adapter.categoryAdapter;
 import model.Book;
+import model.Son.Item;
 import model.category;
 
 /**
@@ -41,24 +48,18 @@ import model.category;
  * create an instance of this fragment.
  */
 public class homeFragment extends Fragment {
-
-    private String mParam1;
-    private String mParam2;
     private RecyclerView recycleHome;
 
     Toolbar toolhome;
-    private MenuItem menuItem;
+    private MenuItem menuItemSearch,menuItemCart;
     private SearchView searchView;
     ViewFlipper flipperHome;
 
     //
     List<category> listCategories;
-    List<Book> listBooks = new ArrayList<>();
-    List<Book> listBooks2 = new ArrayList<>();
-    List<Book> listBooks3 = new ArrayList<>();
-    List<Book> listBooks4 = new ArrayList<>();
-    List<Book> listBooks5 = new ArrayList<>();
-    ArrayList<Book> searchList;
+    //
+    ArrayList<Item> listItem = new ArrayList<>();
+    ArrayList<Item> searchList;
     private categoryAdapter categoryAdapter;
     private bookAdapter bookAdapter;
     //
@@ -90,9 +91,12 @@ public class homeFragment extends Fragment {
         toolhome = view.findViewById(R.id.toolHome);
         flipperHome = view.findViewById(R.id.flipperHome);
 
+
         AppCompatActivity appCompatActivity = (AppCompatActivity) getActivity();
         assert appCompatActivity != null;
         appCompatActivity.setSupportActionBar(toolhome);
+        setHasOptionsMenu(true);
+
         //
          Animation slide_in = AnimationUtils.loadAnimation(appCompatActivity.getApplicationContext(),R.anim.slide_out_right);
          Animation slide_out = AnimationUtils.loadAnimation(appCompatActivity.getApplicationContext(),R.anim.slide_in_right);
@@ -100,22 +104,21 @@ public class homeFragment extends Fragment {
          flipperHome.setAutoStart(true);
          flipperHome.setInAnimation(slide_in);
          flipperHome.setOutAnimation(slide_out);
-
-
         //
-        getListBook();
-        bookAdapter = new bookAdapter(listBooks,getContext());
-        for (Book b: listBooks) {
+        getLisIttem();
+        bookAdapter = new bookAdapter(listItem,getContext());
+
+        for (Item b: listItem) {
             ImageView i = new ImageView(getContext());
-            i.setImageResource(b.getSourceId());
+            i.setImageBitmap(b.getImage());
             i.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent i = new Intent(getContext(), BookDetail.class);
+                    Intent i = new Intent(getContext(), LayoutInfoItem.class);
                     i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("objectBook",b);
-                    i.putExtras(bundle);
+                    bundle.putString("name",b.getName());
+                    i.putExtra("name_item",bundle);
                     startActivity(i);
                 }
             });
@@ -129,81 +132,56 @@ public class homeFragment extends Fragment {
 
         categoryAdapter = new categoryAdapter(getContext(),getListCate());
         recycleHome.setAdapter(categoryAdapter);
-
         categoryAdapter.notifyDataSetChanged();
 
         return view;
     }
 
-    private List<Book> getListBook(){
-        listBooks2.add(new Book(R.drawable.song_of_ice_and_fire,"Chuyến đi của thanh xuân"));
-        listBooks2.add(new Book(R.drawable.song_of_ice_and_fire,"Chuyến đi của thanh xuân"));
-        listBooks2.add(new Book(R.drawable.song_of_ice_and_fire,"Chuyến đi của thanh xuân"));
-        listBooks2.add(new Book(R.drawable.song_of_ice_and_fire,"Chuyến đi của thanh xuân"));
-        listBooks2.add(new Book(R.drawable.song_of_ice_and_fire,"Chuyến đi của thanh xuân"));
-        listBooks2.add(new Book(R.drawable.song_of_ice_and_fire,"Chuyến đi của thanh xuân"));
-        listBooks2.add(new Book(R.drawable.song_of_ice_and_fire,"Chuyến đi của thanh xuân"));
-        listBooks2.add(new Book(R.drawable.song_of_ice_and_fire,"Chuyến đi của thanh xuân"));
-
-        listBooks3.add(new Book(R.drawable.song_of_ice_and_fire,"Chuyến đi của thanh xuân"));
-        listBooks3.add(new Book(R.drawable.song_of_ice_and_fire,"Chuyến đi của thanh xuân"));
-        listBooks3.add(new Book(R.drawable.song_of_ice_and_fire,"Chuyến đi của thanh xuân"));
-        listBooks3.add(new Book(R.drawable.song_of_ice_and_fire,"Chuyến đi của thanh xuân"));
-        listBooks3.add(new Book(R.drawable.song_of_ice_and_fire,"Chuyến đi của thanh xuân"));
-        listBooks3.add(new Book(R.drawable.song_of_ice_and_fire,"Chuyến đi của thanh xuân"));
-        listBooks3.add(new Book(R.drawable.song_of_ice_and_fire,"Chuyến đi của thanh xuân"));
-
-        listBooks4.add(new Book(R.drawable.song_of_ice_and_fire,"All things you know about me are wrong"));
-        listBooks4.add(new Book(R.drawable.song_of_ice_and_fire,"All things you know about me are wrong"));
-        listBooks4.add(new Book(R.drawable.song_of_ice_and_fire,"All things you know about me are wrong"));
-        listBooks4.add(new Book(R.drawable.song_of_ice_and_fire,"All things you know about me are wrong"));
-        listBooks4.add(new Book(R.drawable.song_of_ice_and_fire,"All things you know about me are wrong"));
-        listBooks4.add(new Book(R.drawable.song_of_ice_and_fire,"All things you know about me are wrong"));
-        listBooks4.add(new Book(R.drawable.song_of_ice_and_fire,"All things you know about me are wrong"));
-        listBooks4.add(new Book(R.drawable.song_of_ice_and_fire,"All things you know about me are wrong"));
-
-        listBooks5.add(new Book(R.drawable.khong_gia_dinh,"Những loài hoa có gai"));
-        listBooks5.add(new Book(R.drawable.khong_gia_dinh,"Những loài hoa có gai"));
-        listBooks5.add(new Book(R.drawable.khong_gia_dinh,"Những loài hoa có gai"));
-        listBooks5.add(new Book(R.drawable.khong_gia_dinh,"Những loài hoa có gai"));
-        listBooks5.add(new Book(R.drawable.khong_gia_dinh,"Những loài hoa có gai"));
-        listBooks5.add(new Book(R.drawable.khong_gia_dinh,"Những loài hoa có gai"));
-        listBooks5.add(new Book(R.drawable.khong_gia_dinh,"Những loài hoa có gai"));
-        listBooks5.add(new Book(R.drawable.khong_gia_dinh,"Những loài hoa có gai"));
+    @SuppressLint("Range")
+    private List<Item> getLisIttem(){
 
 
-        listBooks.add(new Book(R.drawable.khong_gia_dinh,"Những loài hoa có gai"));
-        listBooks.add(new Book(R.drawable.song_of_ice_and_fire,"Song of ice and fire"));
-        listBooks.add(new Book(R.drawable.godfather,"The god father"));
-        listBooks.add(new Book(R.drawable.khong_gia_dinh,"Khong gia dinh"));
-        listBooks.add(new Book(R.drawable.nha_gia_kim,"Nha gia kim"));
+        sqlite s = new sqlite(getContext(),R.string.databaseName+"",null,1);
+        Cursor c= s.getData("SELECT * FROM book LIMIT 10");
 
-        listBooks.add(new Book(R.drawable.song_of_ice_and_fire,"Song of ice and fire"));
-        listBooks.add(new Book(R.drawable.godfather,"The god father"));
-        listBooks.add(new Book(R.drawable.khong_gia_dinh,"Khong gia dinh"));
-        listBooks.add(new Book(R.drawable.nha_gia_kim,"Nha gia kim"));
-        return listBooks;
+        while (c.moveToNext())
+        {
+            byte[] bytes = c.getBlob(c.getColumnIndex("hinhanh"));
+            Item i = new Item(c.getString(c.getColumnIndex("tieude")), BitmapUtils.getImage(bytes));
+            listItem.add(i);
+        }
+
+
+
+//
+        return listItem;
     }
+    @SuppressLint("Range")
     private List<category> getListCate() {
         listCategories= new ArrayList<>();
 
-        listCategories.add(new category("Sách được ưa thích",listBooks));
-        listCategories.add(new category("Được tìm đọc nhiều nhất",listBooks2));
-        listCategories.add(new category("Được mua nhiều nhất",listBooks3));
-        listCategories.add(new category("Sách mới",listBooks4));
-        listCategories.add(new category("Sách đề cử",listBooks5));
+        sqlite s = new sqlite(getContext(),R.string.databaseName+"",null,1);
+        Cursor c= s.getData("SELECT * FROM danh_muc LIMIT 5");
 
+        while (c.moveToNext())
+        {
+            String name = c.getString(c.getColumnIndex("ten_danhmuc"));
+            listCategories.add(new category(name,listItem));
+        }
         return listCategories;
     }
-    private List<category> getListCate(List<Book> b) {
+    @SuppressLint("Range")
+    private List<category> getListCate(ArrayList<Item> b) {
         listCategories= new ArrayList<>();
         listCategories.add(new category("Sách cần tìm:",b));
-        listCategories.add(new category("Sách được ưa thích",listBooks));
-        listCategories.add(new category("Được tìm đọc nhiều nhất",listBooks2));
-        listCategories.add(new category("Được mua nhiều nhất",listBooks3));
-        listCategories.add(new category("Sách mới",listBooks4));
-        listCategories.add(new category("Sách đề cử",listBooks5));
+        sqlite s = new sqlite(getContext(),R.string.databaseName+"",null,1);
+        Cursor c= s.getData("SELECT * FROM danh_muc LIMIT 5");
 
+        while (c.moveToNext())
+        {
+             String name = c.getString(c.getColumnIndex("ten_danhmuc"));
+            listCategories.add(new category(name,listItem));
+        }
         return listCategories;
     }
 
@@ -211,11 +189,11 @@ public class homeFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         inflater.inflate(R.menu.search_menu,menu);
-        menuItem = menu.findItem(R.id.action_search);
-        searchView =(SearchView) menuItem.getActionView();
+        menuItemSearch = menu.findItem(R.id.action_search);
+        searchView =(SearchView) menuItemSearch.getActionView();
+        assert searchView != null;
         searchView.setIconified(true);
         searchView.setQueryHint("Type to Search");
-
         SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
 
@@ -225,10 +203,10 @@ public class homeFragment extends Fragment {
                 searchList = new ArrayList<>();
                 if(query.length()>0)
                 {
-                    for (int i = 0; i < listBooks.size(); i++) {
-                        if(listBooks.get(i).getTitle().toUpperCase().contains(query.toUpperCase()))
+                    for (int i = 0; i < listItem.size(); i++) {
+                        if(listItem.get(i).getName().toUpperCase().contains(query.toUpperCase()))
                         {
-                            searchList.add(listBooks.get(i));
+                            searchList.add(listItem.get(i));
                         }
                     }
                     categoryAdapter = new categoryAdapter(getContext(),getListCate(searchList));
@@ -246,10 +224,10 @@ public class homeFragment extends Fragment {
                 searchList = new ArrayList<>();
                 if(newText.length()>0)
                 {
-                    for (int i = 0; i < listBooks.size(); i++) {
-                        if(listBooks.get(i).getTitle().toUpperCase().contains(newText.toUpperCase()))
+                    for (int i = 0; i < listItem.size(); i++) {
+                        if(listItem.get(i).getName().toUpperCase().contains(newText.toUpperCase()))
                         {
-                            searchList.add(listBooks.get(i));
+                            searchList.add(listItem.get(i));
                         }
                     }
                     categoryAdapter = new categoryAdapter(getContext(),getListCate(searchList));
@@ -263,6 +241,19 @@ public class homeFragment extends Fragment {
                 return false;
             }
         });
+
+
+
         super.onCreateOptionsMenu(menu, inflater);
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        if(item.getItemId()==R.id.cart)
+        {
+            startActivity(new Intent(getContext(), GioHang.class));
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

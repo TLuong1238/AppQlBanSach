@@ -35,8 +35,6 @@ public class MainActivity extends AppCompatActivity {
         ActionNav();
         newUser = new user(sp.getInt("id",0),sp.getString("name",""),sp.getString("email",""),
                 sp.getString("pass",""),sp.getString("phone",""));
-
-
     }
     private void mapping() {
         navHome = findViewById(R.id.navHome);

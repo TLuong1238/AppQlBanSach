@@ -22,7 +22,7 @@
 
         <activity
 
-            android:name=".Home.MainActivity"
+            android:name=".StartProject.Welcom"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,16 +37,15 @@
         <activity
             android:name=".StartProject.Forgot"
             android:exported="false" />
-<!--        <activity-->
-<!--            android:name=".Home.MainActivity"-->
-<!--            android:exported="false" />-->
+        <activity
+            android:name=".Home.MainActivity"
+            android:exported="false" />
         <activity
             android:name=".Home.BookDetail"
             android:exported="false" />
         <activity
             android:name=".StartProject.SignupActivity"
             android:exported="false" />
-
         <activity
             android:name=".Category.LayoutInfoItem"
             android:exported="true"/>
@@ -79,6 +78,16 @@
             android:exported="false" />
         <activity
             android:name=".admin.changePassAdmin"
+            android:exported="false" />
+        <activity
+            android:name=".admin.adminDoanhthu"
+            android:exported="false" />
+        <activity
+            android:name=".admin.adminQuanlidon"
+            android:exported="false" />
+        <activity
+            android:parentActivityName=".admin.MainAdmin"
+            android:name=".admin.adminQlUser"
             android:exported="false" />
 
 

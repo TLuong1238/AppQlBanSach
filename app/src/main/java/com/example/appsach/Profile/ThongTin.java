@@ -37,7 +37,7 @@ public class ThongTin extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         GetUser = (user) bundle.get("object_user");
         //
-        sqlite s = new sqlite(ThongTin.this,"TestApp.db",null,1);
+        sqlite s = new sqlite(ThongTin.this,R.string.databaseName+"",null,1);
 
         Cursor c = s.getData("SELECT * From user WHERE email ='"+GetUser.getEmail_user()+"' AND password ='"+GetUser.getPassword()+"'");
         while (c.moveToNext()){

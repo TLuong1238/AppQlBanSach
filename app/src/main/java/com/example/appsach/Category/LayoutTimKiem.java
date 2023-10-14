@@ -39,7 +39,7 @@ public class LayoutTimKiem extends Activity {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_tim_kiem);
-        sqLiteHelper = new sqlite(this,"test1.db",null,1);
+        sqLiteHelper = new sqlite(this,R.string.databaseName+"",null,1);
         sqLiteHelper.updateDB();
         anhxa();
 //        sqLiteHelper.createTable();

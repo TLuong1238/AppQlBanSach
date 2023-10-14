@@ -78,8 +78,8 @@ public class LoginActivity extends AppCompatActivity {
                     builder.show();
 
                 }else{
-                    sqlite s = new sqlite(LoginActivity.this,"TestApp.db",null,1);
-                    //s.QueryData("CREATE TABLE IF NOT EXISTS admin(name TEXT,email EMAIL,password TEXT)");
+                    sqlite s = new sqlite(LoginActivity.this,R.string.databaseName+"",null,1);
+                    s.QueryData("CREATE TABLE IF NOT EXISTS admin(name TEXT,email EMAIL,password TEXT)");
 //                    String a1 = "admin";
 //                    String a2 = "admin@gmail.com";
 //                    String a3 = "1";

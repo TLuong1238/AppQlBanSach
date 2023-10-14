@@ -18,6 +18,7 @@ import com.example.appsach.R;
 
 import java.util.List;
 
+import adapter.Son.ItemAdapter;
 import model.category;
 
 public class categoryAdapter extends RecyclerView.Adapter<categoryAdapter.categoryViewHolder> {
@@ -55,7 +56,7 @@ public class categoryAdapter extends RecyclerView.Adapter<categoryAdapter.catego
         //Set layout ngang cho recycle view
         LinearLayoutManager layoutManager = new LinearLayoutManager(context,RecyclerView.HORIZONTAL,false);
         holder.recyclerBook.setLayoutManager(layoutManager);
-        bookAdapter b = new bookAdapter(c.getBook(), context.getApplicationContext());
+        bookAdapter b = new bookAdapter(c.getItem(), context.getApplicationContext());
         holder.recyclerBook.setAdapter(b);
     }
 
@@ -69,10 +70,10 @@ public class categoryAdapter extends RecyclerView.Adapter<categoryAdapter.catego
     }
 
 
-    public class categoryViewHolder extends RecyclerView.ViewHolder
+    public static class categoryViewHolder extends RecyclerView.ViewHolder
     {
 
-        private TextView categoryName;
+        private final TextView categoryName;
         RecyclerView recyclerBook;
         public categoryViewHolder(@NonNull View itemView) {
             super(itemView);

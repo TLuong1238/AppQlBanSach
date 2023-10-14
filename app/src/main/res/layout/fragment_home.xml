@@ -9,6 +9,7 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolHome"
+        app:menu="@menu/search_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#2196F3"
@@ -18,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/book"
-        app:title="Tiệm sách T1 VÔ ĐỊCH"
+        app:title="Tiệm sách"
         app:titleTextColor="#EDE5E5" />
 
     <ViewFlipper
@@ -40,7 +41,6 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="36dp"
-
         android:layout_marginTop="1dp"
         android:background="#2196F3"
         android:text="Danh sách sản phẩm"

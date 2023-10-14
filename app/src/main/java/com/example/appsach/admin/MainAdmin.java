@@ -12,14 +12,19 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import com.example.appsach.Profile.ChangePass;
+import com.example.appsach.Profile.Quanlidon;
 import com.example.appsach.R;
 import com.example.appsach.StartProject.LoginActivity;
+
+import model.user;
 
 public class MainAdmin extends AppCompatActivity {
     private Button btnLogout,btnChangePass;
     private String pass,name, email;
+    private CardView QlUser,QlOrder,QlCate,QlTop,QlProduct,QlMoney;
     modelAdmin admin;
     SharedPreferences sp;
     SharedPreferences.Editor editor;
@@ -96,6 +101,26 @@ public class MainAdmin extends AppCompatActivity {
                 alert.show();
             }
         });
+        //
+        QlOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainAdmin.this, adminQuanlidon.class));
+                finish();
+            }
+        });
+        QlMoney.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainAdmin.this,adminDoanhthu.class));
+            }
+        });
+        QlUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainAdmin.this, adminQlUser.class));
+            }
+        });
 
 
     }
@@ -104,7 +129,15 @@ public class MainAdmin extends AppCompatActivity {
     {
         btnLogout = findViewById(R.id.btnLogoutAdmin);
         btnChangePass =findViewById(R.id.btnChangePassAdmin);
+        QlUser = findViewById(R.id.QlUser);
+        QlCate= findViewById(R.id.QlCate);
+        QlProduct = findViewById(R.id.QlProduct);
+        QlMoney = findViewById(R.id.QlMoney);
+        QlTop = findViewById(R.id.QlTop);
+        QlOrder = findViewById(R.id.QlOrder);
     }
+
+
 
 
 }

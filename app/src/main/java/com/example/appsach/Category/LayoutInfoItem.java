@@ -16,7 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.viewpager.widget.ViewPager;
 
 
-
+import com.example.appsach.Home.MainActivity;
 import com.example.appsach.R;
 
 import java.util.ArrayList;
@@ -50,7 +50,7 @@ public class LayoutInfoItem extends Activity {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_info_item);
-        database = new sqlite(LayoutInfoItem.this,"test1.db",null,1);
+        database = new sqlite(LayoutInfoItem.this,R.string.databaseName+"",null,1);
         anhxa();
 
         photoAdapter = new PhotoAdapter(this, getListPhoto());
@@ -83,9 +83,10 @@ public class LayoutInfoItem extends Activity {
                     startActivity(it);
                 }
                 if(idLayout == R.layout.layout_danh_muc){
-                    //Co bugs
-                    Intent it = new Intent(LayoutInfoItem.this,cateFragment.class);
+                    //Co bug
+                    Intent it = new Intent(LayoutInfoItem.this, MainActivity.class);
                     startActivity(it);
+
                 }
 
             }

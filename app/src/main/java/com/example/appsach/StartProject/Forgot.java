@@ -47,7 +47,7 @@ public class Forgot extends AppCompatActivity {
                 } else
                 {
                     user u = null;
-                    sqlite s = new sqlite(Forgot.this, "TestApp.db", null, 1);
+                    sqlite s = new sqlite(Forgot.this, R.string.databaseName+"", null, 1);
                     Cursor c = s.getData("SELECT * FROM user WHERE email ='"+edtConfirmEmail.getText().toString().trim()+"'OR name ='"+edtConfirmName.getText().toString().trim()+"'");
                     while (c.moveToNext()){
                         index++;
