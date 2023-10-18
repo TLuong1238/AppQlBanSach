@@ -11,34 +11,38 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-
 import com.example.appsach.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
-import model.Son.DanhMuc;
+import model.Son.SubDataItem;
 
-public class DanhMucAdapter extends ArrayAdapter<DanhMuc> {
-    private Context activity;
 
-    private ArrayList<DanhMuc> arr;
+public class AdminArrayAdapter extends ArrayAdapter<SubDataItem> {
+    private Activity activity;
+
+    private ArrayList<SubDataItem> arr;
 
     private int idLayout;
 
-    public DanhMucAdapter(@NonNull Context context, int resource, @NonNull ArrayList<DanhMuc> objects) {
+
+    public AdminArrayAdapter(@NonNull Activity context, int resource, @NonNull ArrayList<SubDataItem> objects) {
         super(context, resource, objects);
         this.activity = context;
-        this.idLayout =resource;
+        this.idLayout = resource;
         this.arr = objects;
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        LayoutInflater inflater = LayoutInflater.from(activity.getApplicationContext());
+        LayoutInflater inflater = activity.getLayoutInflater();
         convertView = inflater.inflate(idLayout, null);
-        TextView textView = convertView.findViewById(R.id.tv_danhmuc);
-        textView.setText(arr.get(position).getName());
+        TextView tv1 = convertView.findViewById(R.id.id_item);
+        TextView tv2 = convertView.findViewById(R.id.name_item);
+        tv1.setText(Integer.toString(arr.get(position).getId()));
+        tv2.setText(arr.get(position).getName());
         return convertView;
     }
 }
