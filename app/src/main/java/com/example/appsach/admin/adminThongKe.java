@@ -1,6 +1,6 @@
 package com.example.appsach.admin;
 
-import static java.util.stream.Collectors.mapping;
+
 
 import android.annotation.SuppressLint;
 import android.content.Intent;

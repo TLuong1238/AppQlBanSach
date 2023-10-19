@@ -87,8 +87,16 @@
             android:name=".admin.adminThongKe"
             android:exported="false" />
         <activity
-
             android:name=".admin.adminQlUser"
+            android:exported="false" />
+        <activity
+            android:name=".admin.DanhMucAdmin"
+            android:exported="false" />
+        <activity
+            android:name=".admin.AdminBookList"
+            android:exported="false" />
+        <activity
+            android:name=".admin.AdminXulyBook"
             android:exported="false" />
 
 

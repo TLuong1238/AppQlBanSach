@@ -24,28 +24,24 @@ public class Welcom extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Welcom.this, LoginActivity.class));
-                finish();
             }
         });
         txtLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Welcom.this, LoginActivity.class));
-                finish();
             }
         });
         imgSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Welcom.this, SignupActivity.class));
-                finish();
             }
         });
         txtSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Welcom.this, SignupActivity.class));
-                finish();
             }
         });
     }
