@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Thông tin chi tiết"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Sửa thông tin"
+            android:id="@+id/btn_1"
+            />
+
+        <Button
+            android:id="@+id/btn_2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:text="Lưu thay đổi" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:background="@color/white">
+
+                    <TextView
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="10dp"
+                        android:paddingTop="10dp"
+                        android:paddingEnd="5dp"
+                        android:paddingBottom="10dp"
+                        android:text="Tiêu đề"
+                        android:textSize="17sp"
+
+                        />
+
+                    <EditText
+                        android:id="@+id/adB_edTitle"
+                        android:layout_width="257dp"
+                        android:layout_height="match_parent"
+                        android:paddingStart="5dp"
+                        android:paddingTop="10dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="10dp"
+                        android:text=""
+                        android:textSize="17sp"
+
+                        />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:background="@color/background">
+
+                    <TextView
+                        android:layout_width="148dp"
+                        android:layout_height="match_parent"
+                        android:paddingStart="10dp"
+                        android:paddingTop="10dp"
+                        android:paddingEnd="5dp"
+                        android:paddingBottom="10dp"
+                        android:text="Danh mục"
+                        android:textSize="17sp"
+
+                        />
+
+                    <Spinner
+                        android:spinnerMode="dialog"
+                        android:id="@+id/adB_spCategory"
+                        android:layout_width="257dp"
+                        android:layout_height="match_parent"
+                        android:paddingStart="5dp"
+                        android:paddingTop="10dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="10dp"
+                        android:text=""
+                        android:textSize="17sp" />
+                </TableRow>
+
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:background="@color/white">
+
+                    <TextView
+                        android:layout_width="148dp"
+                        android:layout_height="match_parent"
+                        android:paddingStart="10dp"
+                        android:paddingTop="10dp"
+                        android:paddingEnd="5dp"
+                        android:paddingBottom="10dp"
+                        android:text="Tác giả"
+                        android:textSize="17sp"
+
+                        />
+
+                    <Spinner
+                        android:spinnerMode="dialog"
+                        android:id="@+id/adB_spAuthor"
+                        android:layout_width="257dp"
+                        android:layout_height="match_parent"
+                        android:paddingStart="5dp"
+                        android:paddingTop="10dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="10dp"
+                        android:text=""
+                        android:textSize="17sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/background">
+
+                    <TextView
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="10dp"
+                        android:paddingTop="10dp"
+                        android:paddingEnd="5dp"
+                        android:paddingBottom="10dp"
+                        android:text="Công ty phát hành"
+                        android:textSize="17sp"
+
+                        />
+
+                    <Spinner
+                        android:spinnerMode="dialog"
+                        android:id="@+id/adB_spNhaph"
+                        android:layout_width="257dp"
+                        android:layout_height="match_parent"
+                        android:paddingStart="5dp"
+                        android:paddingTop="10dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="10dp"
+                        android:text=""
+                        android:textSize="17sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white">
+
+                    <TextView
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="10dp"
+                        android:paddingTop="10dp"
+                        android:paddingEnd="5dp"
+                        android:paddingBottom="10dp"
+                        android:text="Số trang"
+                        android:textSize="17sp"
+
+                        />
+
+                    <EditText
+                        android:id="@+id/adB_edNumber"
+                        android:layout_width="257dp"
+                        android:layout_height="match_parent"
+                        android:paddingStart="5dp"
+                        android:paddingTop="10dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="10dp"
+                        android:text=""
+                        android:textSize="17sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/background">
+
+                    <TextView
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="10dp"
+                        android:paddingTop="10dp"
+                        android:paddingEnd="5dp"
+                        android:paddingBottom="10dp"
+                        android:text="Giá tiền"
+                        android:textSize="17sp"
+
+                        />
+
+                    <EditText
+                        android:id="@+id/adB_edPrice"
+                        android:layout_width="257dp"
+                        android:layout_height="match_parent"
+                        android:paddingStart="5dp"
+                        android:paddingTop="10dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="10dp"
+                        android:text=""
+                        android:textSize="17sp" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:background="@color/white">
+
+                    <TextView
+                        android:layout_width="148dp"
+                        android:layout_height="match_parent"
+                        android:paddingStart="10dp"
+                        android:paddingTop="10dp"
+                        android:paddingEnd="5dp"
+                        android:paddingBottom="10dp"
+                        android:text="Nhà xuất bản"
+                        android:textSize="17sp"
+
+                        />
+
+                    <Spinner
+                        android:spinnerMode="dialog"
+                        android:id="@+id/adB_spNhaXB"
+                        android:layout_width="257dp"
+                        android:layout_height="match_parent"
+                        android:paddingStart="5dp"
+                        android:paddingTop="10dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="10dp"
+                        android:text=""
+                        android:textSize="17sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/background">
+
+                    <TextView
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="10dp"
+                        android:paddingTop="10dp"
+                        android:paddingEnd="5dp"
+                        android:paddingBottom="10dp"
+                        android:text="Lượt mua"
+                        android:textSize="17sp"
+
+                        />
+
+                    <EditText
+                        android:id="@+id/adB_edLuotMua"
+                        android:layout_width="255dp"
+                        android:layout_height="match_parent"
+                        android:paddingStart="5dp"
+                        android:paddingTop="10dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="10dp"
+                        android:text=""
+                        android:textSize="17sp" />
+                </TableRow>
+            </TableLayout>
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white">
+
+                    <TextView
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="10dp"
+                        android:paddingTop="10dp"
+                        android:paddingEnd="5dp"
+                        android:paddingBottom="10dp"
+                        android:text="Ngày xuất bản"
+                        android:textSize="17sp"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/adB_tvNgayXB"
+                        android:layout_width="164dp"
+                        android:layout_height="match_parent"
+                        android:paddingStart="5dp"
+                        android:paddingTop="10dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="10dp"
+                        android:text=""
+                        android:textSize="17sp" />
+
+                    <Button
+                        android:id="@+id/adB_btnDatePicker"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="..." />
+                </TableRow>
+            </TableLayout>
+
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="10dp"
+                    android:paddingTop="10dp"
+                    android:paddingEnd="5dp"
+                    android:paddingBottom="10dp"
+                    android:text="Hình ảnh"
+                    android:textSize="17sp" />
+
+                <ImageView
+                    android:id="@+id/adB_Image"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ccnct" />
+
+                <Button
+                    android:id="@+id/adB_ImageChooser"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="Chọn ảnh"
+
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="10dp"
+                    android:paddingTop="10dp"
+                    android:paddingEnd="5dp"
+                    android:paddingBottom="10dp"
+                    android:text="Tóm tất"
+                    android:textSize="17sp" />
+
+                <EditText
+                    android:id="@+id/adB_edTomtat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="5dp"
+                    android:paddingTop="10dp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="10dp"
+                    android:text=""
+                    android:textSize="17sp" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+    >
+
+
+</LinearLayout>

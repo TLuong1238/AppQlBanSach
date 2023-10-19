@@ -1,29 +1,24 @@
-package com.example.appsach.Category;
+package com.example.appsach.admin;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.annotation.Nullable;
 
 import com.example.appsach.R;
 
@@ -32,204 +27,127 @@ import java.util.Random;
 
 import SQLite.BitmapUtils;
 import SQLite.sqlite;
-import adapter.Son.DanhMucAdapter;
-import adapter.Son.ItemAdapter;
-import adapter.Son.RecyclerItemClickListener;
-import model.Son.DanhMuc;
-import model.Son.Item;
+import adapter.Son.AdminArrayAdapter;
+import model.Son.SubDataItem;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link cateFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+public class AdminBookList extends Activity {
+    ImageView backAdmin, searchingBook;
 
-public class cateFragment extends Fragment {
+    EditText inputSearching;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    ListView bookList;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    Button addingBook;
 
+    sqlite database;
 
-    private RecyclerView recyclerView_item;
-    private ListView listView_DanhMuc;
-    private ItemAdapter adapter_item;
-    private ArrayList<DanhMuc> arrDanhMuc;
-    EditText ed_Search;
-    Cursor cursor;
-    ArrayList<Item> arr;
-    ImageView img_searching;
-    private DanhMucAdapter danhMucAdapter;
-
-    private sqlite database;
-
-    public cateFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment cateFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static cateFragment newInstance(String param1, String param2) {
-        cateFragment fragment = new cateFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    private AdminArrayAdapter arrayAdapter;
+    private ArrayList<SubDataItem> arrayList;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.layout_danh_muc, container, false);
-        database = new sqlite(getContext(),"test3.db" , null, 1);
-        //Tạo bảng
+        setContentView(R.layout.admin_book_list);
+        database = new sqlite(this, "test3.db",null,1);
         database.createTable();
-        database.updateDB();
-        //
-        arrDanhMuc = new ArrayList<>();
-        ed_Search = view.findViewById(R.id.ed_timKiem1);
-        listView_DanhMuc = view.findViewById(R.id.lv_danh_muc);
-        recyclerView_item = view.findViewById(R.id.recyclerV_Item);
-        img_searching = view.findViewById(R.id.img_searching1);
+        //insertSubData();
+        anhxa();
+        arrayList = new ArrayList<>();
 
-        //danh muc
-        danhMucAdapter = new DanhMucAdapter(getContext(), R.layout.layout_custom_danhmuc, arrDanhMuc);
-        getDataToListViewDanhMuc();
-        listView_DanhMuc.setAdapter(danhMucAdapter);
+        arrayAdapter = new AdminArrayAdapter(this, R.layout.admin_array_custom,arrayList);
+        update();
+        bookList.setAdapter(arrayAdapter);
 
-        //recycleView
-        adapter_item = new ItemAdapter(getContext());
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
-       // insertSubData();
-        getListData();
-        recyclerView_item.requestFocus();
-        recyclerView_item.setLayoutManager(gridLayoutManager);
-        adapter_item.setData(arr);
-        recyclerView_item.setAdapter(adapter_item);
 
-        //ed_search
-        searching();
 
-        //setOnItemClickListener for RecycleView
-        recyclerView_item.addOnItemTouchListener(new RecyclerItemClickListener(getContext(), recyclerView_item, new RecyclerItemClickListener.OnItemClickListener() {
+        //btn adding book
+        addingBook.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(View view, int position) {
-                TextView ten = view.findViewById(R.id.tv_name);
-                String name = ten.getText().toString();
-                Intent intent = new Intent(getContext(), LayoutInfoItem.class);
+            public void onClick(View view) {
+                Intent intent = new Intent(AdminBookList.this,AdminXulyBook.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("name", name);
-                bundle.putInt("idlayout", R.layout.layout_danh_muc);
-                intent.putExtra("name_item", bundle);
+                bundle.putString("request", "adding" );
+                intent.putExtra("pack", bundle);
                 startActivity(intent);
-            }
-
-            @Override
-            public void onLongItemClick(View view, int position) {
-            }
-        }));
-
-        ////setOnItemClickListener for ListView
-        listView_DanhMuc.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                TextView danhMuc = view.findViewById(R.id.tv_danhmuc);
-                String search = danhMuc.getText().toString();
-                arr.clear();
-                updateRecycleViewUpToDanhMuc(search);
-                adapter_item.setData(arr);
-                Toast.makeText(getContext(), search, Toast.LENGTH_LONG).show();
             }
         });
 
-        ed_Search.setOnKeyListener(new View.OnKeyListener() {
+        //xu ly sua thong tin sach
+
+        bookList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public boolean onKey(View view, int i, KeyEvent keyEvent) {
-                if (keyEvent.getAction() != KeyEvent.ACTION_DOWN)
-                    return false;
-                if (i == KeyEvent.KEYCODE_ENTER) {
-                    String key_word = ed_Search.getText().toString();
-                    finalSeaching(key_word);
-                    return true;
-                }
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(AdminBookList.this,AdminXulyBook.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("request", "changeInfo" );
+                bundle.putInt("id", arrayList.get(i).getId());
+                intent.putExtra("pack", bundle);
+                startActivity(intent);
+            }
+        });
+
+        //xu ly xoa sach
+        bookList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                final AlertDialog.Builder alertDialog = new AlertDialog.Builder(AdminBookList.this);
+                alertDialog.setTitle("Xóa trường dữ liệu");
+                alertDialog.setMessage("Bạn có chắc là muốn xóa " + arrayList.get(i).getName() + " ?");
+                alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                });
+                alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int a) {
+                        database.QueryData("DELETE FROM `book` WHERE `id_book` = '"+arrayList.get(i).getId()+"' ");
+                    }
+                });
+                alertDialog.show();
+                update();
                 return false;
             }
         });
-        // Inflate the layout for this fragment
-        return view;
-    }
 
-    private void searching() {
-        img_searching.setOnClickListener(new View.OnClickListener() {
+        //xu ly tim kiem
+        searchingBook.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("Range")
             @Override
             public void onClick(View view) {
-                String s = ed_Search.getText().toString();
-                finalSeaching(s);
+                arrayList.clear();
+                String key = inputSearching.getText().toString();
+                Cursor c = database.getData("Select * from book where tieude like '%"  + key + "%'");
+                while (c.moveToNext()){
+                    arrayList.add(new SubDataItem(c.getInt(c.getColumnIndex("id_book")),c.getString(c.getColumnIndex("tieude"))));
+                }
+                arrayAdapter.notifyDataSetChanged();
+                c.close();
             }
         });
+
+
     }
-
-    private void finalSeaching(String s) {
-        Intent intent = new Intent(getContext(), LayoutTimKiem.class);
-        Bundle bundle = new Bundle();
-        bundle.putString("key_word", s);
-        intent.putExtra("key", bundle);
-        ed_Search.setText("");
-        startActivity(intent);
-    }
-
-
     @SuppressLint("Range")
-    private void getDataToListViewDanhMuc() {
-        cursor = database.getData("select * from danh_muc");
-        while (cursor.moveToNext()) {
-            arrDanhMuc.add(new DanhMuc(Integer.parseInt(cursor.getString(cursor.getColumnIndex("id_danhmuc"))), cursor.getString(cursor.getColumnIndex("ten_danhmuc"))));
+    private void update(){
+        arrayList.clear();
+        Cursor c = database.getData("SELECT * FROM book");
+        while (c.moveToNext()){
+            arrayList.add(new SubDataItem(c.getInt(c.getColumnIndex("id_book")),c.getString(c.getColumnIndex("tieude"))));
         }
-        danhMucAdapter.notifyDataSetChanged();
+        arrayAdapter.notifyDataSetChanged();
+        c.close();
     }
 
-    @SuppressLint("Range")
-    private void updateRecycleViewUpToDanhMuc(String s) {
-        arr = new ArrayList<Item>();
-        cursor = database.getData("select * from book " +
-                "join danh_muc on danh_muc.id_danhmuc = book.id_danhmuc " +
-                "where danh_muc.ten_danhmuc = '" + s + "';");
-        while (cursor.moveToNext()) {
-            byte[] temp = cursor.getBlob(6);
-            arr.add(new Item(cursor.getString(1), BitmapUtils.getImage(temp)));
-        }
+    private void anhxa(){
+        backAdmin = findViewById(R.id.backDMAdmin);
+        searchingBook = findViewById(R.id.img_adSearch);
+        inputSearching = findViewById(R.id.ed_adSearchBook);
+        bookList = findViewById(R.id.danhsach_book);
+        addingBook = findViewById(R.id.add_book);
     }
 
-    private void getListData() {
-        arr = new ArrayList<Item>();
-        cursor = database.getData("select * from book");
-        while (cursor.moveToNext()) {
-            byte[] temp = cursor.getBlob(6);
-            arr.add(new Item(cursor.getString(1), cursor.getString(2), Integer.parseInt(cursor.getString(9)), BitmapUtils.getImage(temp)));
-        }
-    }
     @SuppressLint("Range")
     private void insertSubData() {
         ContentValues values = new ContentValues();
@@ -450,17 +368,16 @@ public class cateFragment extends Fragment {
         values.put("id_nhaxb",3);
         values.put("id_nhaph",1);
         db.insert("book",null,values);
-        cursor = database.getData("select * from book");
+        Cursor cursor = database.getData("select * from book");
 
-       while (cursor.moveToNext()){
-           Random random = new Random();
-           int randomNumber = random.nextInt(101);
-           String sql = "UPDATE book SET luotmua = "+randomNumber+" WHERE id_book = "+cursor.getInt(cursor.getColumnIndex("id_book"))+";";
-           database.QueryData(sql);
+        while (cursor.moveToNext()){
+            Random random = new Random();
+            int randomNumber = random.nextInt(101);
+            String sql = "UPDATE book SET luotmua = "+randomNumber+" WHERE id_book = "+cursor.getInt(cursor.getColumnIndex("id_book"))+";";
+            database.QueryData(sql);
 //           Toast.makeText(getContext(), cursor.getInt(cursor.getColumnIndex("id_book")) + ": " +
 //                   cursor.getInt(cursor.getColumnIndex("luotmua")), Toast.LENGTH_LONG).show();
-       }
+        }
 
     }
-
 }

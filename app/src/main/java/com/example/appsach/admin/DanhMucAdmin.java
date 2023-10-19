@@ -6,7 +6,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -51,6 +50,7 @@ public class DanhMucAdmin extends Activity {
 
         anhxa();
         //default la tacgia
+        danhSach.setText("Danh sách tác giả");
         table = "tac_gia";
         id = "id_tacgia";
         name = "ten_tacgia";
