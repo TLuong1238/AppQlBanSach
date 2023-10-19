@@ -64,6 +64,24 @@ public class MainAdmin extends AppCompatActivity {
                 dialog.show();
             }
         });
+
+        QlCate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainAdmin.this, DanhMucAdmin.class));
+                finish();
+
+            }
+        });
+
+        QlProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainAdmin.this, AdminBookList.class));
+                finish();
+            }
+        });
+
         //
         btnChangePass.setOnClickListener(new View.OnClickListener() {
             @Override

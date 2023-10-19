@@ -46,7 +46,7 @@ public class DanhMucAdmin extends Activity {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.danhmuc_admin);
-        database = new sqlite(this, "test1.db", null, 1);
+        database = new sqlite(this, R.string.databaseName+"", null, 1);
 
         anhxa();
         //default la tacgia

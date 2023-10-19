@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +23,7 @@ import com.example.appsach.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import SQLite.BitmapUtils;
 import SQLite.sqlite;
 import adapter.Son.PhotoAdapter;
 import me.relex.circleindicator.CircleIndicator;
@@ -34,6 +36,7 @@ public class LayoutInfoItem extends Activity {
 
     TextView Info_img_back;
 
+    ImageView image;
     TextView tenSach, gia,  nhaph, nhaxb, tomtat, danhmuc;
 
     Cursor cursor;
@@ -61,6 +64,8 @@ public class LayoutInfoItem extends Activity {
         bundle = intent.getBundleExtra("name_item");
         getData();
         cursor.moveToFirst();
+        byte[] img = cursor.getBlob(cursor.getColumnIndex("hinhanh"));
+        image.setImageBitmap(BitmapUtils.getImage(img));
         tenSach.setText(cursor.getString(cursor.getColumnIndex("tieude")));
         gia.setText(cursor.getString(cursor.getColumnIndex("gia")));
         nhaph.setText(cursor.getString(cursor.getColumnIndex("ten_nhaph")));
@@ -128,7 +133,7 @@ public class LayoutInfoItem extends Activity {
 
     private void getData(){
         String key_word = bundle.getString("name");
-        cursor = database.getData("select book.tieude, book.hinhanh, book.gia, book.tomtat, nha_phat_hanh.ten_nhaph, nha_xuatban.ten_nhaxb, danh_muc.ten_danhmuc from book " +
+        cursor = database.getData("select book.hinhanh, book.tieude, book.hinhanh, book.gia, book.tomtat, nha_phat_hanh.ten_nhaph, nha_xuatban.ten_nhaxb, danh_muc.ten_danhmuc from book " +
                 " join danh_muc on book.id_danhmuc = danh_muc.id_danhmuc " +
                 " join nha_phat_hanh on book.id_nhaph = nha_phat_hanh.id_nhaph " +
                 " join nha_xuatban on book.id_nhaxb = nha_xuatban.id_nhaxb " +
@@ -136,8 +141,7 @@ public class LayoutInfoItem extends Activity {
 
     }
     private void anhxa(){
-        viewPager = findViewById(R.id.viewpager_photo);
-        circleIndicator = findViewById(R.id.circleIndicator_pager);
+        image = findViewById(R.id.image_item);
         tenSach = findViewById(R.id.tv_titleOfBook);
         gia = findViewById(R.id.tv_priceBook);
         nhaph = findViewById(R.id.tv_nhaph);

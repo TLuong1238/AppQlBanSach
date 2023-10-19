@@ -53,11 +53,11 @@ public class GioHang extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_giohang);
         Anhxa();
-//        AddGiohang();
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.user_male);
-        lstGiohang.add(new ItemGiohang(1, 10, "iphone", 10000, bitmap, 1));
-        lstGiohang.add(new ItemGiohang(1, 10,"samsung", 20000, bitmap, 1));
-        lstGiohang.add(new ItemGiohang(1, 10,"oppo", 15000, bitmap, 1));
+        AddGiohang();
+//        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.user_male);
+//        lstGiohang.add(new ItemGiohang(1, 10, "iphone", 10000, bitmap, 1));
+//        lstGiohang.add(new ItemGiohang(1, 10,"samsung", 20000, bitmap, 1));
+//        lstGiohang.add(new ItemGiohang(1, 10,"oppo", 15000, bitmap, 1));
         giohangAdapter = new GiohangAdapter(GioHang.this, lstGiohang);
         lvGiohang.setAdapter(giohangAdapter);
         XoaItem();
@@ -73,19 +73,19 @@ public class GioHang extends Activity {
         });
     }
 
-//    private void AddGiohang() {
-//        user user = new user(sp.getInt("id",0),sp.getString("name",""),sp.getString("email",""),
-//                sp.getString("pass",""),sp.getString("phone",""));
-//        int id_tk = user.getId_user();
-//        sqlite s = new sqlite(GioHang.this,R.string.databaseName+"",null,1);
-//        Cursor cursor = s.getData("SELECT * FROM gio_hang WHERE id_taikhoan = '" + id_tk + "'");
-//        for (ItemGiohang item: lstGiohang) {
-//            byte[] temp = cursor.getBlob(4);
-//            lstGiohang.add(new ItemGiohang(cursor.getInt(0), cursor.getInt(1), cursor.getString(2), cursor.getLong(3), BitmapUtils.getImage(temp), cursor.getInt(5)));
-//        }
-//        giohangAdapter = new GiohangAdapter(GioHang.this, lstGiohang);
-//        lvGiohang.setAdapter(giohangAdapter);
-//    }
+    private void AddGiohang() {
+        user user = new user(sp.getInt("id",0),sp.getString("name",""),sp.getString("email",""),
+                sp.getString("pass",""),sp.getString("phone",""));
+        int id_tk = user.getId_user();
+        sqlite s = new sqlite(GioHang.this,R.string.databaseName+"",null,1);
+        Cursor cursor = s.getData("SELECT * FROM gio_hang WHERE id_taikhoan = '" + id_tk + "'");
+        for (ItemGiohang item: lstGiohang) {
+            byte[] temp = cursor.getBlob(4);
+            lstGiohang.add(new ItemGiohang(cursor.getInt(0), cursor.getInt(1), cursor.getString(2), cursor.getLong(3), BitmapUtils.getImage(temp), cursor.getInt(5)));
+        }
+        giohangAdapter = new GiohangAdapter(GioHang.this, lstGiohang);
+        lvGiohang.setAdapter(giohangAdapter);
+    }
 
     private void Thanhtoan() {
         btnThanhtoan.setOnClickListener(new View.OnClickListener() {

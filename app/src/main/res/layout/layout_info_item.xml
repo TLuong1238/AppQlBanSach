@@ -62,18 +62,14 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             >
-            <androidx.viewpager.widget.ViewPager
+
+            <ImageView
+                android:id="@+id/image_item"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:id="@+id/viewpager_photo"
-                />
-            <me.relex.circleindicator.CircleIndicator
-                android:id="@+id/circleIndicator_pager"
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_gravity="center_horizontal"
-                android:background="@color/blue"
+                android:layout_height="280dp"
+                android:scaleType="fitCenter"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/ccnct"
                 />
             <LinearLayout
                 android:orientation="vertical"

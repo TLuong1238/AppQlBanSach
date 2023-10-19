@@ -59,8 +59,6 @@ public class AdminXulyBook extends Activity {
     Bundle bundle;
     int SELECT_PICTURE = 200;
     private int mYear, mMonth, mDay, check, id;
-
-    String selected, spinner_item;
     SubDataItem danhMuc, tacGia, nhaXb, nhaPh;
 
     @Override
@@ -75,7 +73,7 @@ public class AdminXulyBook extends Activity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin_execute_book);
-        database = new sqlite(this, "test3.db", null, 1);
+        database = new sqlite(this, R.string.databaseName+"", null, 1);
         anhxa();
         subListDm = new ArrayList<>();
         subListNhaph = new ArrayList<>();

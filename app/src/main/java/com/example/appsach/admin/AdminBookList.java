@@ -48,7 +48,7 @@ public class AdminBookList extends Activity {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin_book_list);
-        database = new sqlite(this, "test3.db",null,1);
+        database = new sqlite(this, R.string.databaseName+"",null,1);
         database.createTable();
         //insertSubData();
         anhxa();
