@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -14,9 +15,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.viewpager.widget.ViewPager;
-
-
 import com.example.appsach.Home.MainActivity;
 import com.example.appsach.R;
 
@@ -25,14 +23,10 @@ import java.util.List;
 
 import SQLite.BitmapUtils;
 import SQLite.sqlite;
-import adapter.Son.PhotoAdapter;
-import me.relex.circleindicator.CircleIndicator;
 import model.Son.Photo;
+import model.user;
 
 public class LayoutInfoItem extends Activity {
-    private ViewPager viewPager;
-    private CircleIndicator circleIndicator;
-    private PhotoAdapter photoAdapter;
 
     TextView Info_img_back;
 
@@ -42,6 +36,9 @@ public class LayoutInfoItem extends Activity {
     Cursor cursor;
 
     Bundle bundle;
+
+    SharedPreferences sp;
+    SharedPreferences.Editor editor;
 
     Intent intent;
     Button insertIntoCart;
@@ -56,10 +53,7 @@ public class LayoutInfoItem extends Activity {
         database = new sqlite(LayoutInfoItem.this,R.string.databaseName+"",null,1);
         anhxa();
 
-        photoAdapter = new PhotoAdapter(this, getListPhoto());
-        viewPager.setAdapter(photoAdapter);
-        circleIndicator.setViewPager(viewPager);
-        photoAdapter.registerDataSetObserver(circleIndicator.getDataSetObserver());
+
         intent = getIntent();
         bundle = intent.getBundleExtra("name_item");
         getData();
@@ -112,7 +106,14 @@ public class LayoutInfoItem extends Activity {
                     Toast.makeText(LayoutInfoItem.this, "Sản phẩm đã có trong giỏ hàng", Toast.LENGTH_LONG).show();
                 }
                 else {
+                    user user = new user(sp.getInt("id",0),sp.getString("name",""),sp.getString("email",""),
+                            sp.getString("pass",""),sp.getString("phone",""));
+                    int id_tk = user.getId_user();
+
+                    database.QueryData("Delete * from gio_hang");
+
                     ContentValues contentValues = new ContentValues();
+                    contentValues.put("id_taikhoan",id_tk);
                     contentValues.put("tensach",cursor.getString(cursor.getColumnIndex("tieude")));
                     contentValues.put("hinhanh",cursor.getBlob(cursor.getColumnIndex("hinhanh")));
                     contentValues.put("gia",cursor.getString(cursor.getColumnIndex("gia")));
@@ -121,8 +122,8 @@ public class LayoutInfoItem extends Activity {
                     SQLiteDatabase db = database.getWritableDatabase();
                     db.insert("gio_hang",null,contentValues);
                     cs = database.getData("select * from gio_hang");
-                    if(cs.getCount() > prv){
-                        Toast.makeText(LayoutInfoItem.this, "Thêm vào giỏ hàng thành công", Toast.LENGTH_LONG).show();
+                    if(prv == cs.getCount()-1){
+                        Toast.makeText(LayoutInfoItem.this, "Thêm vào giỏ hàng thành công" + cs.getCount(), Toast.LENGTH_LONG).show();
                     }
                 }
                 cs.close();
@@ -151,14 +152,6 @@ public class LayoutInfoItem extends Activity {
         Info_img_back = findViewById(R.id.Info_img_back);
         insertIntoCart = findViewById(R.id.btn_insertIntoCart);
 
-    }
-    private List<Photo> getListPhoto(){
-        List<Photo> arr = new ArrayList<>();
-        arr.add(new Photo(R.drawable.photo1));
-        arr.add(new Photo(R.drawable.photo2));
-        arr.add(new Photo(R.drawable.photo3));
-        arr.add(new Photo(R.drawable.photo4));
-        return arr;
     }
 
 

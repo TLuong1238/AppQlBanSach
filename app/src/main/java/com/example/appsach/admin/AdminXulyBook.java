@@ -295,7 +295,7 @@ public class AdminXulyBook extends Activity {
                 SQLiteDatabase db = database.getWritableDatabase();
                 ContentValues contentValues = new ContentValues();
                 contentValues.put("hinhanh",img);
-                db.update("images", contentValues, "id = ?", new String[]{Integer.toString(id)});
+                db.update("book", contentValues, "id = ?", new String[]{Integer.toString(id)});
                 db.close();
                 Intent i = new Intent(AdminXulyBook.this, DanhMucAdmin.class);
                 startActivity(i);

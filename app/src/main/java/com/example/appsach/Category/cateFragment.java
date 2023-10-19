@@ -121,7 +121,11 @@ public class cateFragment extends Fragment {
         //recycleView
         adapter_item = new ItemAdapter(getContext());
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
-        insertSubData();
+
+
+        //insertSubData();
+
+
         getListData();
         recyclerView_item.requestFocus();
         recyclerView_item.setLayoutManager(gridLayoutManager);

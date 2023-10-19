@@ -142,6 +142,8 @@ public class homeFragment extends Fragment {
     private List<Item> getLisIttem(){
         listItem =new ArrayList<>();
         sqlite s = new sqlite(getContext(),R.string.databaseName+"",null,1);
+        s.createTable();
+        s.updateDB();
         Cursor c= s.getData("SELECT * FROM book LIMIT 10");
         while (c.moveToNext())
         {

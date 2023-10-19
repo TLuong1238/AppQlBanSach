@@ -79,6 +79,7 @@ public class GioHang extends Activity {
         int id_tk = user.getId_user();
         sqlite s = new sqlite(GioHang.this,R.string.databaseName+"",null,1);
         Cursor cursor = s.getData("SELECT * FROM gio_hang WHERE id_taikhoan = '" + id_tk + "'");
+
         for (ItemGiohang item: lstGiohang) {
             byte[] temp = cursor.getBlob(4);
             lstGiohang.add(new ItemGiohang(cursor.getInt(0), cursor.getInt(1), cursor.getString(2), cursor.getLong(3), BitmapUtils.getImage(temp), cursor.getInt(5)));
