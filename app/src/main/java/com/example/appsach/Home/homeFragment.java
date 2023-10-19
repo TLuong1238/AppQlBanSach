@@ -58,7 +58,8 @@ public class homeFragment extends Fragment {
     //
     List<category> listCategories;
     //
-    ArrayList<Item> listItem = new ArrayList<>();
+    ArrayList<Item> listItem;
+    ArrayList<Item> allItem;
     ArrayList<Item> searchList;
     private categoryAdapter categoryAdapter;
     private bookAdapter bookAdapter;
@@ -91,7 +92,6 @@ public class homeFragment extends Fragment {
         toolhome = view.findViewById(R.id.toolHome);
         flipperHome = view.findViewById(R.id.flipperHome);
 
-
         AppCompatActivity appCompatActivity = (AppCompatActivity) getActivity();
         assert appCompatActivity != null;
         appCompatActivity.setSupportActionBar(toolhome);
@@ -105,6 +105,7 @@ public class homeFragment extends Fragment {
          flipperHome.setInAnimation(slide_in);
          flipperHome.setOutAnimation(slide_out);
         //
+        getAllItem();
         getLisIttem();
         bookAdapter = new bookAdapter(listItem,getContext());
 
@@ -114,12 +115,12 @@ public class homeFragment extends Fragment {
             i.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent i = new Intent(getContext(), LayoutInfoItem.class);
-                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    Intent intent = new Intent(getContext(), LayoutInfoItem.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     Bundle bundle = new Bundle();
                     bundle.putString("name",b.getName());
-                    i.putExtra("name_item",bundle);
-                    startActivity(i);
+                    intent.putExtra("name_item",bundle);
+                    startActivity(intent);
                 }
             });
             flipperHome.addView(i);
@@ -139,20 +140,29 @@ public class homeFragment extends Fragment {
 
     @SuppressLint("Range")
     private List<Item> getLisIttem(){
-
-
+        listItem =new ArrayList<>();
         sqlite s = new sqlite(getContext(),R.string.databaseName+"",null,1);
         Cursor c= s.getData("SELECT * FROM book LIMIT 10");
-
         while (c.moveToNext())
         {
             byte[] bytes = c.getBlob(c.getColumnIndex("hinhanh"));
             Item i = new Item(c.getString(c.getColumnIndex("tieude")), BitmapUtils.getImage(bytes));
             listItem.add(i);
         }
-
-
-
+//
+        return listItem;
+    }
+    @SuppressLint("Range")
+    private List<Item> getAllItem(){
+        allItem =new ArrayList<>();
+        sqlite s = new sqlite(getContext(),R.string.databaseName+"",null,1);
+        Cursor c= s.getData("SELECT * FROM book");
+        while (c.moveToNext())
+        {
+            byte[] bytes = c.getBlob(c.getColumnIndex("hinhanh"));
+            Item i = new Item(c.getString(c.getColumnIndex("tieude")), BitmapUtils.getImage(bytes));
+            allItem.add(i);
+        }
 //
         return listItem;
     }
@@ -203,10 +213,10 @@ public class homeFragment extends Fragment {
                 searchList = new ArrayList<>();
                 if(query.length()>0)
                 {
-                    for (int i = 0; i < listItem.size(); i++) {
-                        if(listItem.get(i).getName().toUpperCase().contains(query.toUpperCase()))
+                    for (int i = 0; i < allItem.size(); i++) {
+                        if(allItem.get(i).getName().toUpperCase().contains(query.toUpperCase()))
                         {
-                            searchList.add(listItem.get(i));
+                            searchList.add(allItem.get(i));
                         }
                     }
                     categoryAdapter = new categoryAdapter(getContext(),getListCate(searchList));
@@ -224,10 +234,10 @@ public class homeFragment extends Fragment {
                 searchList = new ArrayList<>();
                 if(newText.length()>0)
                 {
-                    for (int i = 0; i < listItem.size(); i++) {
-                        if(listItem.get(i).getName().toUpperCase().contains(newText.toUpperCase()))
+                    for (int i = 0; i < allItem.size(); i++) {
+                        if(allItem.get(i).getName().toUpperCase().contains(newText.toUpperCase()))
                         {
-                            searchList.add(listItem.get(i));
+                            searchList.add(allItem.get(i));
                         }
                     }
                     categoryAdapter = new categoryAdapter(getContext(),getListCate(searchList));

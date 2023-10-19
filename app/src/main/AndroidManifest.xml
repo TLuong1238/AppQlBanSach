@@ -41,9 +41,6 @@
             android:name=".Home.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".Home.BookDetail"
-            android:exported="false" />
-        <activity
             android:name=".StartProject.SignupActivity"
             android:exported="false" />
         <activity
@@ -87,6 +84,10 @@
             android:exported="false" />
         <activity
             android:parentActivityName=".admin.MainAdmin"
+            android:name=".admin.adminThongKe"
+            android:exported="false" />
+        <activity
+
             android:name=".admin.adminQlUser"
             android:exported="false" />
 

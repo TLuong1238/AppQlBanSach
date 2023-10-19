@@ -113,12 +113,21 @@ public class MainAdmin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainAdmin.this,adminDoanhthu.class));
+                finish();
             }
         });
         QlUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainAdmin.this, adminQlUser.class));
+                finish();
+            }
+        });
+        QlTop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainAdmin.this,adminThongKe.class));
+                finish();
             }
         });
 

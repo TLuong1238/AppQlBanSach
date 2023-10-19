@@ -140,7 +140,6 @@
         tools:ignore="MissingConstraints" />
 
     <ImageView
-
         android:src="@drawable/setting"
         android:id="@+id/imgFix"
         android:layout_width="53dp"

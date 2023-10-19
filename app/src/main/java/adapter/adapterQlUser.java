@@ -31,7 +31,7 @@ import SQLite.sqlite;
 import model.user;
 
 public class adapterQlUser extends ArrayAdapter<user> {
-    adminQlUser adminQlUser;
+
     private Context context;
     private ArrayList<user> listQlUser;
     private int id;

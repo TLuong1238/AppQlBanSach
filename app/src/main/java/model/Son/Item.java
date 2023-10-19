@@ -3,7 +3,7 @@ package model.Son;
 import android.graphics.Bitmap;
 
 public class Item {
-    private double doanhThu;
+    private int doanhThu;
     private int id, luotmua;
     private String name;
     private String gia;
@@ -15,7 +15,7 @@ public class Item {
     private int numberOfPages;
     private Bitmap image;
 
-    public Item(double doanhThu, int id) {
+    public Item(int doanhThu, int id) {
         this.doanhThu = doanhThu;
         this.id = id;
     }
@@ -31,6 +31,14 @@ public class Item {
         this.gia = gia;
         this.numberOfPages = numberOfPages;
         this.image = image;
+    }
+
+    public Item(int luotmua, String name, String gia, Bitmap image, int doanhthu) {
+        this.luotmua = luotmua;
+        this.name = name;
+        this.gia = gia;
+        this.image = image;
+        this.doanhThu = doanhthu;
     }
 
     public Item(String name, String gia, String tomTat, String tacGia, String danhMuc, String nhaXuatBan, String nhaPhatHanh, int numberOfPages, Bitmap image) {
@@ -148,7 +156,7 @@ public class Item {
         return doanhThu;
     }
 
-    public void setDoanhThu(double doanhThu) {
+    public void setDoanhThu(int doanhThu) {
         this.doanhThu = doanhThu;
     }
 }
