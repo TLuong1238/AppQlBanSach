@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import SQLite.sqlite;
 
 public class Chitiethoadon extends Activity {
-    ListView lstChitietdonhang;
+    private ListView lstChitietdonhang;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

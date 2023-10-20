@@ -90,13 +90,13 @@
             android:name=".admin.adminQlUser"
             android:exported="false" />
         <activity
-            android:name=".admin.DanhMucAdmin"
+            android:name=".admin.adminXulyBook"
             android:exported="false" />
         <activity
-            android:name=".admin.AdminBookList"
+            android:name=".admin.adminBookList"
             android:exported="false" />
         <activity
-            android:name=".admin.AdminXulyBook"
+            android:name=".admin.adminDanhMuc"
             android:exported="false" />
 
 

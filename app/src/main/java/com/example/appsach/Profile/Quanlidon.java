@@ -24,11 +24,11 @@ import model.Vanh.Donhang;
 import model.user;
 
 public class Quanlidon extends Activity {
-    ListView lstDonhang;
-    AdapterDonhang donHangAdapter;
-    ArrayList<Donhang> arrDonhang;
-    SharedPreferences sp;
-    SharedPreferences.Editor editor;
+    private ListView lstDonhang;
+    private AdapterDonhang donHangAdapter;
+    private ArrayList<Donhang> arrDonhang;
+    private SharedPreferences sp;
+    private SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

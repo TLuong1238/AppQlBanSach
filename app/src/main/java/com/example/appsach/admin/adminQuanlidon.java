@@ -32,9 +32,9 @@ import model.Vanh.Donhang;
 import model.user;
 
 public class adminQuanlidon extends Activity {
-    ListView lstDonhang;
-    AdapterAdminDonhang donHangAdapter;
-    ArrayList<Donhang> arrDonhang;
+    private ListView lstDonhang;
+    private AdapterAdminDonhang donHangAdapter;
+    private ArrayList<Donhang> arrDonhang;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

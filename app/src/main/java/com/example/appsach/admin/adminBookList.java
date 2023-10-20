@@ -30,16 +30,16 @@ import SQLite.sqlite;
 import adapter.Son.AdminArrayAdapter;
 import model.Son.SubDataItem;
 
-public class AdminBookList extends Activity {
-    ImageView backAdmin, searchingBook;
+public class adminBookList extends Activity {
+    private ImageView backAdmin, searchingBook;
 
-    EditText inputSearching;
+    private EditText inputSearching;
 
-    ListView bookList;
+    private ListView bookList;
 
-    Button addingBook;
+    private Button addingBook;
 
-    sqlite database;
+    private sqlite database;
 
     private AdminArrayAdapter arrayAdapter;
     private ArrayList<SubDataItem> arrayList;
@@ -58,13 +58,20 @@ public class AdminBookList extends Activity {
         update();
         bookList.setAdapter(arrayAdapter);
 
-
+        //backAdmin
+        backAdmin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(adminBookList.this,MainAdmin.class));
+                finish();
+            }
+        });
 
         //btn adding book
         addingBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AdminBookList.this,AdminXulyBook.class);
+                Intent intent = new Intent(adminBookList.this, adminXulyBook.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("request", "adding" );
                 intent.putExtra("pack", bundle);
@@ -77,7 +84,7 @@ public class AdminBookList extends Activity {
         bookList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(AdminBookList.this,AdminXulyBook.class);
+                Intent intent = new Intent(adminBookList.this, adminXulyBook.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("request", "changeInfo" );
                 bundle.putInt("id", arrayList.get(i).getId());
@@ -90,7 +97,7 @@ public class AdminBookList extends Activity {
         bookList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                final AlertDialog.Builder alertDialog = new AlertDialog.Builder(AdminBookList.this);
+                final AlertDialog.Builder alertDialog = new AlertDialog.Builder(adminBookList.this);
                 alertDialog.setTitle("Xóa trường dữ liệu");
                 alertDialog.setMessage("Bạn có chắc là muốn xóa " + arrayList.get(i).getName() + " ?");
                 alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {

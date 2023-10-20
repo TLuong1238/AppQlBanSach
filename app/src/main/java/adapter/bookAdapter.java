@@ -27,7 +27,7 @@ import model.Son.Item;
 public class bookAdapter extends RecyclerView.Adapter<bookAdapter.bookViewHolder> {
 
     private List<Item> listBook;
-    Context context;
+    private Context context;
 
     public bookAdapter(List<Item> listBook, Context context) {
         this.listBook = listBook;

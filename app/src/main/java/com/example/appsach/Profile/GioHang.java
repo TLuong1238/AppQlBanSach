@@ -2,6 +2,7 @@ package com.example.appsach.Profile;
 
 import static java.lang.Math.random;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -54,6 +55,14 @@ public class GioHang extends Activity {
         setContentView(R.layout.layout_giohang);
         Anhxa();
         AddGiohang();
+        //
+        sqlite s2 = new sqlite(GioHang.this,R.string.databaseName+"",null,1);
+        Cursor c = s2.getData("select * from gio_hang");
+        Toast.makeText(this, c.getCount()+"", Toast.LENGTH_LONG).show();
+        s2.close();
+        c.close();
+
+
 //        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.user_male);
 //        lstGiohang.add(new ItemGiohang(1, 10, "iphone", 10000, bitmap, 1));
 //        lstGiohang.add(new ItemGiohang(1, 10,"samsung", 20000, bitmap, 1));
@@ -72,7 +81,7 @@ public class GioHang extends Activity {
             }
         });
     }
-
+    @SuppressLint("Range")
     private void AddGiohang() {
         user user = new user(sp.getInt("id",0),sp.getString("name",""),sp.getString("email",""),
                 sp.getString("pass",""),sp.getString("phone",""));
@@ -80,12 +89,16 @@ public class GioHang extends Activity {
         sqlite s = new sqlite(GioHang.this,R.string.databaseName+"",null,1);
         Cursor cursor = s.getData("SELECT * FROM gio_hang WHERE id_taikhoan = '" + id_tk + "'");
 
-        for (ItemGiohang item: lstGiohang) {
-            byte[] temp = cursor.getBlob(4);
-            lstGiohang.add(new ItemGiohang(cursor.getInt(0), cursor.getInt(1), cursor.getString(2), cursor.getLong(3), BitmapUtils.getImage(temp), cursor.getInt(5)));
+        while (cursor.moveToNext()){
+            byte[] temp = cursor.getBlob(cursor.getColumnIndex("hinhanh"));
+            lstGiohang.add(new ItemGiohang(cursor.getInt(cursor.getColumnIndex("id_sach")),
+                    cursor.getInt(cursor.getColumnIndex("id_taikhoan")),
+                    cursor.getString(cursor.getColumnIndex("tensach")), cursor.getLong(cursor.getColumnIndex("gia")),
+                    BitmapUtils.getImage(temp), cursor.getInt(cursor.getColumnIndex("soluong"))));
         }
         giohangAdapter = new GiohangAdapter(GioHang.this, lstGiohang);
         lvGiohang.setAdapter(giohangAdapter);
+        giohangAdapter.notifyDataSetChanged();
     }
 
     private void Thanhtoan() {

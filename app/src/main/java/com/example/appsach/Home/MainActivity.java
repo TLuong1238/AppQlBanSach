@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.ViewFlipper;
@@ -24,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     private user newUser;
     SharedPreferences sp;
     SharedPreferences.Editor editor;
+
+//    Boolean check = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +38,13 @@ public class MainActivity extends AppCompatActivity {
         ActionNav();
         newUser = new user(sp.getInt("id",0),sp.getString("name",""),sp.getString("email",""),
                 sp.getString("pass",""),sp.getString("phone",""));
+
+//        Intent i = getIntent();
+//        Bundle b = i.getBundleExtra("key");
+//        check = b.getBoolean("check");
+//        if(check == false){
+//            replaceFragment(new cateFragment());
+//        }
     }
     private void mapping() {
         navHome = findViewById(R.id.navHome);

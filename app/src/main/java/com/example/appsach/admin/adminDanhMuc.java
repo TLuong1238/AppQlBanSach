@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,19 +27,21 @@ import SQLite.sqlite;
 import adapter.Son.AdminArrayAdapter;
 import model.Son.SubDataItem;
 
-public class DanhMucAdmin extends Activity {
-    Button btn_tacGia, btn_nhaXB, btn_nhaPH, btn_danhMuc, adding;
+public class adminDanhMuc extends Activity {
+    private Button btn_tacGia, btn_nhaXB, btn_nhaPH, btn_danhMuc, adding;
 
-    TextView danhSach;
+    private TextView danhSach;
 
-    ListView danhSach_subData;
+    private ImageView imgBack;
 
-    AdminArrayAdapter adminArrayAdapter;
+    private ListView danhSach_subData;
 
-    ArrayList<SubDataItem> arrayList;
+    private AdminArrayAdapter adminArrayAdapter;
 
-    sqlite database;
-    String table, id, name;
+    private ArrayList<SubDataItem> arrayList;
+
+    private sqlite database;
+    private String table, id, name;
 
     private int check;
 
@@ -46,7 +50,7 @@ public class DanhMucAdmin extends Activity {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.danhmuc_admin);
-        database = new sqlite(this, R.string.databaseName+"", null, 1);
+        database = new sqlite(this, R.string.databaseName + "", null, 1);
 
         anhxa();
         //default la tacgia
@@ -62,6 +66,15 @@ public class DanhMucAdmin extends Activity {
         adminArrayAdapter = new AdminArrayAdapter(this, R.layout.admin_array_custom, arrayList);
         danhSach_subData.setAdapter(adminArrayAdapter);
         adminArrayAdapter.notifyDataSetChanged();
+
+        //backAdmin
+        imgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(adminDanhMuc.this,MainAdmin.class));
+                finish();
+            }
+        });
 
         //button
         btn_tacGia.setOnClickListener(new View.OnClickListener() {
@@ -114,7 +127,7 @@ public class DanhMucAdmin extends Activity {
         adding.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final AlertDialog builder = new AlertDialog.Builder(DanhMucAdmin.this).create();
+                final AlertDialog builder = new AlertDialog.Builder(adminDanhMuc.this).create();
                 LayoutInflater inflater = getLayoutInflater();
                 View dialogView = inflater.inflate(R.layout.custom_execute_button, null);
                 builder.setView(dialogView);
@@ -143,10 +156,10 @@ public class DanhMucAdmin extends Activity {
                         if (check == c.getCount() - 1) {
                             ed_id.setText("");
                             ed_name.setText("");
-                            Toast.makeText(DanhMucAdmin.this, "Bạn đã thêm thành công", Toast.LENGTH_LONG).show();
+                            Toast.makeText(adminDanhMuc.this, "Bạn đã thêm thành công", Toast.LENGTH_LONG).show();
                             updateListUpToTable(table);
                         } else {
-                            Toast.makeText(DanhMucAdmin.this, "Câu lệnh truy vấn đang sai", Toast.LENGTH_LONG).show();
+                            Toast.makeText(adminDanhMuc.this, "Câu lệnh truy vấn đang sai", Toast.LENGTH_LONG).show();
                         }
                     }
                 });
@@ -158,7 +171,7 @@ public class DanhMucAdmin extends Activity {
         danhSach_subData.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                final AlertDialog builder = new AlertDialog.Builder(DanhMucAdmin.this).create();
+                final AlertDialog builder = new AlertDialog.Builder(adminDanhMuc.this).create();
                 LayoutInflater inflater = getLayoutInflater();
                 View dialogView = inflater.inflate(R.layout.custom_execute_button, null);
                 builder.setView(dialogView);
@@ -183,21 +196,21 @@ public class DanhMucAdmin extends Activity {
                 btn_exeSub.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        String sqlUpdate = "UPDATE `"+table+"` SET `"+name+"`='"+ed_name.getText().toString()+"'" +
-                                " WHERE `"+id+"`='"+ed_id.getText().toString()+"';";
+                        String sqlUpdate = "UPDATE `" + table + "` SET `" + name + "`='" + ed_name.getText().toString() + "'" +
+                                " WHERE `" + id + "`='" + ed_id.getText().toString() + "';";
                         database.QueryData(sqlUpdate);
                         updateListUpToTable(table);
                         builder.dismiss();
                     }
                 });
-            builder.show();
+                builder.show();
             }
         });
 
         danhSach_subData.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                final AlertDialog.Builder alertDialog = new AlertDialog.Builder(DanhMucAdmin.this);
+                final AlertDialog.Builder alertDialog = new AlertDialog.Builder(adminDanhMuc.this);
                 alertDialog.setTitle("Xóa trường dữ liệu");
                 alertDialog.setMessage("Bạn có chắc là muốn xóa " + arrayList.get(i).getName() + " ?");
                 alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -209,7 +222,7 @@ public class DanhMucAdmin extends Activity {
                 alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int a) {
-                        database.QueryData("DELETE FROM `"+table+"` WHERE `"+id+"` = '"+arrayList.get(i).getId()+"' ");
+                        database.QueryData("DELETE FROM `" + table + "` WHERE `" + id + "` = '" + arrayList.get(i).getId() + "' ");
                         updateListUpToTable(table);
                     }
                 });
@@ -219,6 +232,7 @@ public class DanhMucAdmin extends Activity {
         });
 
     }
+
     @SuppressLint("Range")
     private void updateListUpToTable(String name_table) {
         arrayList.clear();
@@ -231,6 +245,7 @@ public class DanhMucAdmin extends Activity {
     }
 
     private void anhxa() {
+        imgBack = findViewById(R.id.backDMAdmin);
         btn_tacGia = findViewById(R.id.tacGia);
         btn_danhMuc = findViewById(R.id.danhMuc);
         btn_nhaPH = findViewById(R.id.nha_PH);

@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -18,6 +19,7 @@ import androidx.annotation.Nullable;
 import com.example.appsach.Home.MainActivity;
 import com.example.appsach.R;
 
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +40,7 @@ public class LayoutInfoItem extends Activity {
     Bundle bundle;
 
     SharedPreferences sp;
-    SharedPreferences.Editor editor;
+
 
     Intent intent;
     Button insertIntoCart;
@@ -52,6 +54,7 @@ public class LayoutInfoItem extends Activity {
         setContentView(R.layout.layout_info_item);
         database = new sqlite(LayoutInfoItem.this,R.string.databaseName+"",null,1);
         anhxa();
+        sp = getSharedPreferences("LoginData",MODE_PRIVATE);
 
 
         intent = getIntent();
@@ -71,6 +74,7 @@ public class LayoutInfoItem extends Activity {
         Info_img_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 int idLayout;
                 idLayout = bundle.getInt("idlayout");
                 if(idLayout == R.layout.layout_tim_kiem){
@@ -82,8 +86,12 @@ public class LayoutInfoItem extends Activity {
                     startActivity(it);
                 }
                 if(idLayout == R.layout.layout_danh_muc){
+                    Boolean check = false;
                     //Co bug
                     Intent it = new Intent(LayoutInfoItem.this, MainActivity.class);
+                    Bundle bundle1 = new Bundle();
+                    bundle1.putBoolean("check",check);
+                    it.putExtra("key",bundle1);
                     startActivity(it);
 
                 }
@@ -109,8 +117,6 @@ public class LayoutInfoItem extends Activity {
                     user user = new user(sp.getInt("id",0),sp.getString("name",""),sp.getString("email",""),
                             sp.getString("pass",""),sp.getString("phone",""));
                     int id_tk = user.getId_user();
-
-                    database.QueryData("Delete * from gio_hang");
 
                     ContentValues contentValues = new ContentValues();
                     contentValues.put("id_taikhoan",id_tk);

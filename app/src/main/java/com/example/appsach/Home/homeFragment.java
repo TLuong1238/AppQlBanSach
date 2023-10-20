@@ -50,17 +50,17 @@ import model.category;
 public class homeFragment extends Fragment {
     private RecyclerView recycleHome;
 
-    Toolbar toolhome;
+    private Toolbar toolhome;
     private MenuItem menuItemSearch,menuItemCart;
     private SearchView searchView;
-    ViewFlipper flipperHome;
+    private ViewFlipper flipperHome;
 
     //
-    List<category> listCategories;
+    private List<category> listCategories;
     //
-    ArrayList<Item> listItem;
-    ArrayList<Item> allItem;
-    ArrayList<Item> searchList;
+    private ArrayList<Item> listItem;
+    private ArrayList<Item> allItem;
+    private ArrayList<Item> searchList;
     private categoryAdapter categoryAdapter;
     private bookAdapter bookAdapter;
     //

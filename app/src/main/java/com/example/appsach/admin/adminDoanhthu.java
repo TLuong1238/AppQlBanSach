@@ -20,11 +20,11 @@ import adapter.Vanh.AdapterAdminDonhang;
 import model.Vanh.Donhang;
 
 public class adminDoanhthu extends Activity {
-    ListView lstDoanhthu;
-    AdapterAdminDoanhthu donHangAdapter;
-    ArrayList<Donhang> arrDonhang;
-    TextView txtDoanhthu;
-    int doanhthu = 0;
+    private ListView lstDoanhthu;
+    private AdapterAdminDoanhthu donHangAdapter;
+    private ArrayList<Donhang> arrDonhang;
+    private TextView txtDoanhthu;
+    private int doanhthu = 0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

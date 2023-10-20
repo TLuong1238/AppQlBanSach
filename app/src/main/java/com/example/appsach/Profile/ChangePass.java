@@ -19,8 +19,8 @@ import SQLite.sqlite;
 import model.user;
 
 public class ChangePass extends AppCompatActivity {
-    EditText edtNewPass, edtConfirmPass;
-    Button btnXacNhanChange;
+    private EditText edtNewPass, edtConfirmPass;
+    private Button btnXacNhanChange;
 
 
 

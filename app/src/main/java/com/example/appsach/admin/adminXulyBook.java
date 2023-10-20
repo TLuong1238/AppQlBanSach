@@ -9,7 +9,6 @@ import android.database.Cursor;
 import android.database.CursorWindow;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -28,7 +27,6 @@ import androidx.annotation.Nullable;
 import com.example.appsach.R;
 
 import java.lang.reflect.Field;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -37,29 +35,29 @@ import SQLite.sqlite;
 import adapter.Son.AdaterSpinner;
 import model.Son.SubDataItem;
 
-public class AdminXulyBook extends Activity {
+public class adminXulyBook extends Activity {
 
-    Button btn1, btn2, chonAnh, chonNgay;
+    private Button btn1, btn2, chonAnh, chonNgay;
 
-    EditText tieude, soTrang, gia, luotmua, tomtat;
+    private EditText tieude, soTrang, gia, luotmua, tomtat;
 
-    TextView date;
+    private TextView date;
 
-    Spinner spDanhmuc, spTacgia, spNhaXB, spNhaPh;
+    private Spinner spDanhmuc, spTacgia, spNhaXB, spNhaPh;
 
-    ImageView hinhanh;
+    private ImageView hinhanh;
 
-    AdaterSpinner adaterDanhmuc, adapterAuthor, adapterNhaPh, adapterNhaXB;
+    private AdaterSpinner adaterDanhmuc, adapterAuthor, adapterNhaPh, adapterNhaXB;
 
-    ArrayList<SubDataItem> subListDm, subListTg, subListNhaph, subListNhaXb;
+    private ArrayList<SubDataItem> subListDm, subListTg, subListNhaph, subListNhaXb;
 
-    sqlite database;
+    private sqlite database;
 
-    Intent intent;
-    Bundle bundle;
-    int SELECT_PICTURE = 200;
+    private Intent intent;
+    private Bundle bundle;
+    private int SELECT_PICTURE = 200;
     private int mYear, mMonth, mDay, check, id;
-    SubDataItem danhMuc, tacGia, nhaXb, nhaPh;
+    private SubDataItem danhMuc, tacGia, nhaXb, nhaPh;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -141,7 +139,7 @@ public class AdminXulyBook extends Activity {
                 mYear = c.get(Calendar.YEAR);
                 mMonth = c.get(Calendar.MONTH);
                 mDay = c.get(Calendar.DAY_OF_MONTH);
-                DatePickerDialog datePickerDialog = new DatePickerDialog(AdminXulyBook.this, new DatePickerDialog.OnDateSetListener() {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(adminXulyBook.this, new DatePickerDialog.OnDateSetListener() {
 
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -177,7 +175,7 @@ public class AdminXulyBook extends Activity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(AdminXulyBook.this, AdminBookList.class);
+                Intent i = new Intent(adminXulyBook.this, adminBookList.class);
                 startActivity(i);
             }
         });
@@ -209,7 +207,7 @@ public class AdminXulyBook extends Activity {
 
                 c = database.getData("select * from book");
                 if (check == c.getCount() - 1) {
-                    Toast.makeText(AdminXulyBook.this, "Đã thêm thành công", Toast.LENGTH_LONG).show();
+                    Toast.makeText(adminXulyBook.this, "Đã thêm thành công", Toast.LENGTH_LONG).show();
                 }
                 tieude.setText("");
                 soTrang.setText("");
@@ -218,6 +216,7 @@ public class AdminXulyBook extends Activity {
                 tomtat.setText("");
                 tieude.requestFocus();
                 c.close();
+                db.close();
             }
         });
     }
@@ -297,8 +296,8 @@ public class AdminXulyBook extends Activity {
                 contentValues.put("hinhanh",img);
                 db.update("book", contentValues, "id = ?", new String[]{Integer.toString(id)});
                 db.close();
-                Intent i = new Intent(AdminXulyBook.this, DanhMucAdmin.class);
-                startActivity(i);
+                startActivity(new Intent(adminXulyBook.this,adminBookList.class));
+                finish();
             }
         });
     }
@@ -322,7 +321,7 @@ public class AdminXulyBook extends Activity {
     }
 
     private void createSpinner(Spinner spinner, AdaterSpinner adapter, ArrayList<SubDataItem> arr, String table) {
-        adapter = new AdaterSpinner(AdminXulyBook.this, R.layout.custom_spinner, arr);
+        adapter = new AdaterSpinner(adminXulyBook.this, R.layout.custom_spinner, arr);
         spinner.setAdapter(adapter);
         if (table.equals("danh_muc")) {
             getDataForArrSpinner(arr, table, "ten_danhmuc", "id_danhmuc");

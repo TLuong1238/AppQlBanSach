@@ -31,8 +31,8 @@ public class LayoutTimKiem extends Activity {
 
     private DisplayItemAdapter adapter;
 
-    sqlite sqLiteHelper ;
-    Cursor cursor;
+    private sqlite sqLiteHelper ;
+    private Cursor cursor;
 
 
     @Override

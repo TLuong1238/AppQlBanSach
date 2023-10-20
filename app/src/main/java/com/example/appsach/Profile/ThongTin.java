@@ -23,9 +23,9 @@ import model.user;
 
 public class ThongTin extends AppCompatActivity {
     private TextView txtInfoName,txtInfoEmail,txtInfoSdt;
-    Button btnFix,btnDelete;
-    user GetUser,u;
-    int count = 0;
+    private Button btnFix,btnDelete;
+    private user GetUser,u;
+    private int count = 0;
 
 
     @Override

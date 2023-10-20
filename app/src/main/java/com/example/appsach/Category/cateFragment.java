@@ -104,8 +104,7 @@ public class cateFragment extends Fragment {
         View view = inflater.inflate(R.layout.layout_danh_muc, container, false);
         database = new sqlite(getContext(), R.string.databaseName + "", null, 1);
         //Tạo bảng
-        database.createTable();
-        database.updateDB();
+
         //
         arrDanhMuc = new ArrayList<>();
         ed_Search = view.findViewById(R.id.ed_timKiem1);
@@ -163,7 +162,6 @@ public class cateFragment extends Fragment {
                 arr.clear();
                 updateRecycleViewUpToDanhMuc(search);
                 adapter_item.setData(arr);
-                Toast.makeText(getContext(), search, Toast.LENGTH_LONG).show();
             }
         });
 

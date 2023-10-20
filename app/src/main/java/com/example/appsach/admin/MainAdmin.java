@@ -14,20 +14,16 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
-import com.example.appsach.Profile.ChangePass;
-import com.example.appsach.Profile.Quanlidon;
 import com.example.appsach.R;
 import com.example.appsach.StartProject.LoginActivity;
-
-import model.user;
 
 public class MainAdmin extends AppCompatActivity {
     private Button btnLogout,btnChangePass;
     private String pass,name, email;
     private CardView QlUser,QlOrder,QlCate,QlTop,QlProduct,QlMoney;
-    modelAdmin admin;
-    SharedPreferences sp;
-    SharedPreferences.Editor editor;
+    private modelAdmin admin;
+    private SharedPreferences sp;
+    private SharedPreferences.Editor editor;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,7 +64,7 @@ public class MainAdmin extends AppCompatActivity {
         QlCate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainAdmin.this, DanhMucAdmin.class));
+                startActivity(new Intent(MainAdmin.this, adminDanhMuc.class));
                 finish();
 
             }
@@ -77,7 +73,7 @@ public class MainAdmin extends AppCompatActivity {
         QlProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainAdmin.this, AdminBookList.class));
+                startActivity(new Intent(MainAdmin.this, adminBookList.class));
                 finish();
             }
         });

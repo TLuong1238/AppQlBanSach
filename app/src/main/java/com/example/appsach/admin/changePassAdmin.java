@@ -18,8 +18,8 @@ import SQLite.sqlite;
 import model.user;
 
 public class changePassAdmin extends AppCompatActivity {
-    EditText edtNewPass, edtConfirmPass;
-    Button btnXacNhanChange;
+    private EditText edtNewPass, edtConfirmPass;
+    private Button btnXacNhanChange;
 
 
 
