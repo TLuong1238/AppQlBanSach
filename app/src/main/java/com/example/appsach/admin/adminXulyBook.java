@@ -256,8 +256,8 @@ public class adminXulyBook extends Activity {
         spTacgia.setEnabled(false);
         byte[] img = c.getBlob(c.getColumnIndex("hinhanh"));
         hinhanh.setImageBitmap(BitmapUtils.getImage(img));
-        chonNgay.setFocusable(false);
-        chonAnh.setFocusable(false);
+        chonNgay.setEnabled(false);
+        chonAnh.setEnabled(false);
         date.setText(c.getString(c.getColumnIndex("ngay_xuatban")));
         c.close();
         c1.close();
@@ -277,8 +277,8 @@ public class adminXulyBook extends Activity {
                 spDanhmuc.setEnabled(true);
                 spNhaPh.setEnabled(true);
                 spTacgia.setEnabled(true);
-                chonNgay.setFocusable(true);
-                chonAnh.setFocusable(true);
+                chonNgay.setEnabled(true);
+                chonAnh.setEnabled(true);
             }
         });
         btn2.setOnClickListener(new View.OnClickListener() {
@@ -294,7 +294,7 @@ public class adminXulyBook extends Activity {
                 SQLiteDatabase db = database.getWritableDatabase();
                 ContentValues contentValues = new ContentValues();
                 contentValues.put("hinhanh",img);
-                db.update("book", contentValues, "id = ?", new String[]{Integer.toString(id)});
+                db.update("book", contentValues, "id_book = " + id,null);
                 db.close();
                 startActivity(new Intent(adminXulyBook.this,adminBookList.class));
                 finish();

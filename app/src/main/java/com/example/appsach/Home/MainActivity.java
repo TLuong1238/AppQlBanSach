@@ -26,42 +26,40 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences sp;
     SharedPreferences.Editor editor;
 
-//    Boolean check = true;
+    Boolean check = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mapping();
-        sp = getSharedPreferences("LoginData",MODE_PRIVATE);
+        sp = getSharedPreferences("LoginData", MODE_PRIVATE);
         editor = sp.edit();
         setContentView(binding.getRoot());
         replaceFragment(new homeFragment());
         ActionNav();
-        newUser = new user(sp.getInt("id",0),sp.getString("name",""),sp.getString("email",""),
-                sp.getString("pass",""),sp.getString("phone",""));
+        newUser = new user(sp.getInt("id", 0), sp.getString("name", ""), sp.getString("email", ""),
+                sp.getString("pass", ""), sp.getString("phone", ""));
 
-//        Intent i = getIntent();
-//        Bundle b = i.getBundleExtra("key");
-//        check = b.getBoolean("check");
-//        if(check == false){
-//            replaceFragment(new cateFragment());
-//        }
+
     }
+
     private void mapping() {
         navHome = findViewById(R.id.navHome);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
 //        Bundle bundle = getIntent().getExtras();
 //        newUser = (model.user) bundle.get("object_user");
     }
+
     private void ActionNav() {
         binding.navHome.setOnItemSelectedListener(item ->
         {
-            if(item.getItemId() == R.id.itemHome){
+            if (item.getItemId() == R.id.itemHome) {
                 replaceFragment(new homeFragment());
             }
-            if(item.getItemId() == R.id.itemCate){
+            if (item.getItemId() == R.id.itemCate) {
                 replaceFragment(new cateFragment());
             }
-            if(item.getItemId() == R.id.itemProfile){
+            if (item.getItemId() == R.id.itemProfile) {
                 replaceFragment(new profileFragment());
             }
             return true;
@@ -71,7 +69,8 @@ public class MainActivity extends AppCompatActivity {
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.constraint_layout,fragment);
+        fragmentTransaction.replace(R.id.constraint_layout, fragment);
+
         fragmentTransaction.commit();
     }
 

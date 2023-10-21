@@ -1,25 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
     <TextView
+        android:autoSizeTextType="uniform"
+        android:layout_alignParentStart="true"
+        android:id="@+id/id_item"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:padding="10dp"
         android:text="id"
-        android:id="@+id/id_item"
-        android:padding="10dp"
-        android:textSize="17sp"
-        android:layout_marginEnd="10dp"
-        />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="name"
-        android:id="@+id/name_item"
-        android:padding="10dp"
-        android:textSize="20sp"
-        android:layout_marginEnd="10dp"
-        />
+        android:textSize="15sp" />
 
-</LinearLayout>
+    <TextView
+        android:autoSizeMaxTextSize="200dp"
+        android:autoSizeTextType="uniform"
+        android:id="@+id/name_item"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/id_item"
+        android:padding="10dp"
+        android:text="name"
+        android:textSize="15sp" />
+
+    <ImageView
+        android:autoSizeTextType="uniform"
+        android:id="@+id/btn_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="19dp"
+        android:layout_toEndOf="@+id/name_item"
+        android:src="@drawable/baseline_delete_24"
+        android:padding="10dp" />
+
+</RelativeLayout>
