@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         ActionNav();
         newUser = new user(sp.getInt("id", 0), sp.getString("name", ""), sp.getString("email", ""),
                 sp.getString("pass", ""), sp.getString("phone", ""));
-//        insertSubData();
+        insertSubData();
         sqlite db = new sqlite(MainActivity.this,R.string.databaseName+"",null,1);
 //        db.QueryData("DROP TABLE tbl_chitietdonhang");
 //        db.QueryData(("CREATE TABLE IF NOT EXISTS tbl_chitietdonhang(id_chitietdonhang INTEGER PRIMARY KEY AUTOINCREMENT, ma_donhang INTEGER, id_taikhoan INTEGER, id_sanpham INTEGER, tensanpham TEXT, soluong INTEGER, gia INTEGER)"));

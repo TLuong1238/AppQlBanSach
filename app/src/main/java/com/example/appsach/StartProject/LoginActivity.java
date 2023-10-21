@@ -79,10 +79,10 @@ public class LoginActivity extends AppCompatActivity {
                     s.QueryData("CREATE TABLE IF NOT EXISTS admin(name TEXT,email EMAIL,password TEXT)");
                     s.QueryData("CREATE TABLE IF NOT EXISTS user( id INTEGER  PRIMARY KEY AUTOINCREMENT,name TEXT,email EMAIL,password TEXT,phone Text null)");
 
-//                    String a1 = "admin";
-//                    String a2 = "admin@gmail.com";
-//                    String a3 = "1";
-//                    s.QueryData("INSERT INTO admin VALUES ('"+a1+"','"+a2+"','"+a3+"')");
+                    String a1 = "admin";
+                    String a2 = "admin@gmail.com";
+                    String a3 = "1";
+                    s.QueryData("INSERT INTO admin VALUES ('"+a1+"','"+a2+"','"+a3+"')");
                     Cursor c = s.getData("SELECT * From user WHERE email ='"+edt_email_login.getText()+"' AND password ='"+edt_pass_login.getText()+"' ");
                     Cursor c2 = s.getData("SELECT * From admin WHERE email ='"+edt_email_login.getText()+"' AND password ='"+edt_pass_login.getText()+"' ");
                     while (c.moveToNext())
