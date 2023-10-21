@@ -70,12 +70,12 @@ public class AdapterAdminDonhang extends ArrayAdapter {
                 Toast.makeText(getContext(),"Xác nhận đơn hàng thành công", Toast.LENGTH_LONG).show();
                 Cursor cursor = s.getData("SELECT tbl_chitietdonhang.soluong, tbl_chitietdonhang.id_sanpham FROM tbl_chitietdonhang, tbl_hoadon WHERE tbl_chitietdonhang.ma_donhang = tbl_hoadon.ma_donhang");
                 while (cursor.moveToNext()){
-                    Cursor c = s.getData("SELECT soluong FROM book WHERE id_sach = '"+ cursor.getInt(1)+"' ");
+                    Cursor c = s.getData("SELECT luotmua FROM book WHERE id_book = '"+ cursor.getInt(1)+"' ");
                     while (c.moveToNext()){
                         sl  = c.getInt(0);
 
                         sl += cursor.getInt(0);
-                        s.QueryData("UPDATE book SET soluong = '" + sl + "' WHERE id_book = '"+ cursor.getInt(1)+ "' ");
+                        s.QueryData("UPDATE book SET luotmua = '" + sl + "' WHERE id_book = '"+ cursor.getInt(1)+ "' ");
                     }
                 }
             }
