@@ -28,10 +28,14 @@ import SQLite.sqlite;
 import model.user;
 
 public class MainActivity extends AppCompatActivity {
+
     private BottomNavigationView navHome;
     ActivityMainBinding binding;
     private user newUser;
     SharedPreferences sp;
+    private SharedPreferences sp2;
+    private SharedPreferences.Editor editor;
+    private boolean b;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,22 +51,28 @@ public class MainActivity extends AppCompatActivity {
         sp = getSharedPreferences("LoginData", MODE_PRIVATE);
         setContentView(binding.getRoot());
 
-        boolean b = sp.getBoolean("back",false);
+        sp2 = getSharedPreferences("BACK", MODE_PRIVATE);
+        setContentView(binding.getRoot());
+        editor = sp2.edit();
+        b = sp2.getBoolean("back",false);
         if(b)
         {
             replaceFragment(new cateFragment());
+            binding.navHome.setSelectedItemId(R.id.itemCate);
+            editor.clear();
+            editor.apply();
         }else replaceFragment(new homeFragment());
 
 
         ActionNav();
         newUser = new user(sp.getInt("id", 0), sp.getString("name", ""), sp.getString("email", ""),
                 sp.getString("pass", ""), sp.getString("phone", ""));
-        boolean i = false;
-        if(!i){
-            insertSubData();
-            i = true;
-        }
+        insertSubData();
+        sqlite db = new sqlite(MainActivity.this,R.string.databaseName+"",null,1);
+//        db.QueryData("DROP TABLE tbl_chitietdonhang");
+//        db.QueryData(("CREATE TABLE IF NOT EXISTS tbl_chitietdonhang(id_chitietdonhang INTEGER PRIMARY KEY AUTOINCREMENT, ma_donhang INTEGER, id_taikhoan INTEGER, id_sanpham INTEGER, tensanpham TEXT, soluong INTEGER, gia INTEGER)"));
 
+        db.close();
     }
 
     private void mapping() {
