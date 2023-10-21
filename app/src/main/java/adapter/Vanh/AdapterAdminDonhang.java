@@ -3,6 +3,7 @@ package adapter.Vanh;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,7 @@ public class AdapterAdminDonhang extends ArrayAdapter {
     private Activity adminQuanlidon;
     private ArrayList<Donhang> arrDonhang;
     private int idLayout;
+    private int sl;
     Context context = AdapterAdminDonhang.this.getContext();
 
     public AdapterAdminDonhang(@NonNull Context context, int resource, @NonNull ArrayList<Donhang> objects) {
@@ -66,6 +68,16 @@ public class AdapterAdminDonhang extends ArrayAdapter {
                 arrDonhang.remove(position);
                 notifyDataSetChanged();
                 Toast.makeText(getContext(),"Xác nhận đơn hàng thành công", Toast.LENGTH_LONG).show();
+                Cursor cursor = s.getData("SELECT tbl_chitietdonhang.soluong, tbl_chitietdonhang.id_sanpham FROM tbl_chitietdonhang, tbl_hoadon WHERE tbl_chitietdonhang.ma_donhang = tbl_hoadon.ma_donhang");
+                while (cursor.moveToNext()){
+                    Cursor c = s.getData("SELECT soluong FROM book WHERE id_sach = '"+ cursor.getInt(1)+"' ");
+                    while (c.moveToNext()){
+                        sl  = c.getInt(0);
+
+                        sl += cursor.getInt(0);
+                        s.QueryData("UPDATE book SET soluong = '" + sl + "' WHERE id_book = '"+ cursor.getInt(1)+ "' ");
+                    }
+                }
             }
         });
 

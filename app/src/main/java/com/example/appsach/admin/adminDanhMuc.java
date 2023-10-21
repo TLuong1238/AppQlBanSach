@@ -1,5 +1,4 @@
 package com.example.appsach.admin;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -15,13 +14,9 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.Nullable;
-
 import com.example.appsach.R;
-
 import java.util.ArrayList;
-
 import SQLite.sqlite;
 import adapter.Son.AdminArrayAdapter;
 import model.Son.SubDataItem;

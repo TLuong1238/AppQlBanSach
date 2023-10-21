@@ -8,18 +8,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import androidx.annotation.Nullable;
-
 import com.example.appsach.R;
-
-
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-
 import SQLite.sqlite;
 import adapter.Vanh.AdapterAdminDoanhthu;
-import adapter.Vanh.AdapterAdminDonhang;
 import model.Vanh.Donhang;
 
 public class adminDoanhthu extends Activity {

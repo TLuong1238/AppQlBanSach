@@ -144,7 +144,7 @@ public class homeFragment extends Fragment {
         sqlite sql = new sqlite(getContext(),R.string.databaseName+"",null,1);
         sql.createTable();
         sql.updateDB();
-        Cursor c= sql.getData("SELECT * FROM book " + "JOIN danh_muc ON danh_muc.id_danhmuc = book.id_danhmuc " + "WHERE danh_muc.ten_danhmuc = '" + s + "' LIMIT 10");
+        Cursor c= sql.getData("SELECT * FROM book JOIN danh_muc ON danh_muc.id_danhmuc = book.id_danhmuc WHERE danh_muc.ten_danhmuc = '" + s + "' LIMIT 10");
         while (c.moveToNext())
         {
             byte[] bytes = c.getBlob(c.getColumnIndex("hinhanh"));

@@ -113,9 +113,9 @@ public class GioHang extends Activity {
                             sqlite db = new sqlite(GioHang.this, R.string.databaseName+"", null, 1);
                             db.QueryData(("CREATE TABLE IF NOT EXISTS tbl_hoadon(id_hoadon INTEGER PRIMARY KEY AUTOINCREMENT, id_taikhoan INTEGER, ma_donhang INTEGER, tinhtrang INTEGER)"));
                             db.QueryData("INSERT INTO tbl_hoadon VALUES(null, '" + id_tk + "','" + ma_donhang + "', '" + 1 + "');");
-                            db.QueryData(("CREATE TABLE IF NOT EXISTS tbl_chitietdonhang(id_chitietdonhang INTEGER PRIMARY KEY AUTOINCREMENT, ma_donhang INTEGER, id_taikhoan INTEGER, tensanpham TEXT, soluong INTEGER, gia INTEGER)"));
+                            db.QueryData(("CREATE TABLE IF NOT EXISTS tbl_chitietdonhang(id_chitietdonhang INTEGER PRIMARY KEY AUTOINCREMENT, ma_donhang INTEGER, id_taikhoan INTEGER, id_sanpham INTEGER, tensanpham TEXT, soluong INTEGER, gia INTEGER)"));
                             for (ItemGiohang item: lstGiohang) {
-                                db.QueryData("INSERT INTO tbl_chitietdonhang VALUES(null, '" + ma_donhang + "', '" + id_tk + "', '" + item.getTen_sanpham() + "', '" + item.getSoluong() + "', '" + item.getGiasp() + "');");
+                                db.QueryData("INSERT INTO tbl_chitietdonhang VALUES(null, '" + ma_donhang + "', '" + id_tk + "', '" + item.getId_sanpham() + "', '" + item.getTen_sanpham() + "', '" + item.getSoluong() + "', '" + item.getGiasp() + "');");
                                 db.QueryData("DELETE FROM gio_hang");
                             }
                             lstGiohang.clear();

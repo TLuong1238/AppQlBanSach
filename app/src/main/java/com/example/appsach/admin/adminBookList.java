@@ -15,14 +15,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
-
 import androidx.annotation.Nullable;
-
 import com.example.appsach.R;
-
 import java.util.ArrayList;
 import java.util.Random;
-
 import SQLite.BitmapUtils;
 import SQLite.sqlite;
 import adapter.Son.AdminArrayAdapter;
