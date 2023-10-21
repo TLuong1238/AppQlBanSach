@@ -34,7 +34,7 @@ public class Chitiethoadon extends Activity {
 
         Cursor cursor = s.getData("SELECT * FROM tbl_chitietdonhang WHERE ma_donhang = '" + ma +"'");
         while (cursor.moveToNext()){
-            arr.add("Sản phẩm: " + cursor.getString(3) + " \nSố lượng: " + cursor.getString(4) + " \nGiá tiền: " + cursor.getString(5));
+            arr.add("Sản phẩm: " + cursor.getString(4) + " \nSố lượng: " + cursor.getString(5) + " \nGiá tiền: " + cursor.getString(6));
         }
         lstChitietdonhang.setAdapter(adapter);
         adapter.notifyDataSetChanged();

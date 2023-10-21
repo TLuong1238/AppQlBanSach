@@ -11,12 +11,14 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.ViewFlipper;
 
+import com.example.appsach.Profile.GioHang;
 import com.example.appsach.R;
 import com.example.appsach.Category.cateFragment;
 import com.example.appsach.databinding.ActivityMainBinding;
 import com.example.appsach.Profile.profileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import SQLite.sqlite;
 import model.user;
 
 public class MainActivity extends AppCompatActivity {
@@ -39,8 +41,7 @@ public class MainActivity extends AppCompatActivity {
         ActionNav();
         newUser = new user(sp.getInt("id", 0), sp.getString("name", ""), sp.getString("email", ""),
                 sp.getString("pass", ""), sp.getString("phone", ""));
-
-
+        sqlite db = new sqlite(MainActivity.this, R.string.databaseName+"", null, 1);
     }
 
     private void mapping() {
