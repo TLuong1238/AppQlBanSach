@@ -122,7 +122,7 @@ public class cateFragment extends Fragment {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
 
 
-        //insertSubData();
+//        insertSubData();
 
 
         getListData();

@@ -28,7 +28,6 @@ public class Quanlidon extends Activity {
     private AdapterDonhang donHangAdapter;
     private ArrayList<Donhang> arrDonhang;
     private SharedPreferences sp;
-    private SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,7 +35,6 @@ public class Quanlidon extends Activity {
         setContentView(R.layout.layout_quanlidon);
         lstDonhang = findViewById(R.id.lstDonhang);
         sp = getSharedPreferences("LoginData",MODE_PRIVATE);
-        editor = sp.edit();
         user user = new user(sp.getInt("id",0),sp.getString("name",""),sp.getString("email",""),
                 sp.getString("pass",""),sp.getString("phone",""));
         int id_tk = user.getId_user();
@@ -47,7 +45,7 @@ public class Quanlidon extends Activity {
         sqlite s = new sqlite(Quanlidon.this,R.string.databaseName+"",null,1);
         Cursor cursor = s.getData("SELECT * FROM tbl_hoadon WHERE id_taikhoan = '"+ id_tk +"' ");
         while (cursor.moveToNext()){
-            arrDonhang.add(new Donhang(cursor.getInt(1), cursor.getInt(2), 0));
+            arrDonhang.add(new Donhang(cursor.getInt(1), cursor.getInt(2), cursor.getInt(3)));
         }
         lstDonhang.setAdapter(donHangAdapter);
         donHangAdapter.notifyDataSetChanged();

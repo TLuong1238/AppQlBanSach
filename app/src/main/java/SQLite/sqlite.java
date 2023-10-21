@@ -31,7 +31,7 @@ public class sqlite extends SQLiteOpenHelper {
         return data.rawQuery(sql,null);
     }
     public void updateDB(){
-        String table_gioHang = "create table if not exists gio_hang(id_sach INTEGER PRIMARY KEY, id_taikhoan INTEGER null,  TEXT, hinhanh BLOB null, soluong INTEGER default 1, gia INTEGER);";
+        String table_gioHang = "create table if not exists gio_hang(id_sach INTEGER PRIMARY KEY, id_taikhoan INTEGER null, tensach TEXT NOT NULL,  TEXT, hinhanh BLOB null, soluong INTEGER default 1, gia INTEGER);";
         QueryData(table_gioHang);
     }
 

@@ -65,7 +65,7 @@ public class AdapterAdminDonhang extends ArrayAdapter {
         btnXuly.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sqlite s = new sqlite(getContext(),"cart.db",null,1);
+                sqlite s = new sqlite(getContext(),R.string.databaseName+"",null,1);
                 s.QueryData("UPDATE tbl_hoadon SET tinhtrang = 0 WHERE ma_donhang = '"+ ma +"' ");
                 arrDonhang.remove(position);
                 notifyDataSetChanged();
