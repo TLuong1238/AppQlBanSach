@@ -70,7 +70,7 @@ public class GiohangAdapter extends BaseAdapter {
         ItemGiohang giohang = (ItemGiohang) getItem(i);
         viewHolder.txtTensp.setText(giohang.getTen_sanpham());
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
-        viewHolder.txtGiasp.setText(decimalFormat.format(giohang.getGiasp()) + " vnd ");
+        viewHolder.txtGiasp.setText(decimalFormat.format(giohang.getGiasp()) + " VND");
         viewHolder.imgSanpham.setImageBitmap(giohang.getHinhanh());
         viewHolder.btnValue.setText(giohang.getSoluong() + "");
         int soluong = Integer.parseInt(viewHolder.btnValue.getText().toString());
@@ -105,7 +105,7 @@ public class GiohangAdapter extends BaseAdapter {
 
 
                 DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
-                finalViewHolder.txtGiasp.setText(decimalFormat.format(total) + " vnd ");
+                finalViewHolder.txtGiasp.setText(decimalFormat.format(total) + " VND");
                 com.example.appsach.Profile.GioHang.Tongtien();
                 if(soluongmoinhat>9){
                     finalViewHolder.btnCong.setVisibility(View.INVISIBLE);
@@ -136,7 +136,7 @@ public class GiohangAdapter extends BaseAdapter {
                 s.QueryData("UPDATE gio_hang SET soluong = '"+ soluongmoinhat +"' WHERE id_sach = '"+ maSP +"'");
 
                 DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
-                finalViewHolder.txtGiasp.setText(decimalFormat.format(total) + " vnd ");
+                finalViewHolder.txtGiasp.setText(decimalFormat.format(total) + " VND");
                 com.example.appsach.Profile.GioHang.Tongtien();
                 if(soluongmoinhat<2){
                     finalViewHolder.btnTru.setVisibility(View.INVISIBLE);

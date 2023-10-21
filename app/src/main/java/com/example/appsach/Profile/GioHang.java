@@ -225,7 +225,7 @@ public class GioHang extends Activity {
             tongtien += lstGiohang.get(i).getGiasp();
         }
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
-        txtTongtien.setText(decimalFormat.format(tongtien)+ " vnd");
+        txtTongtien.setText(decimalFormat.format(tongtien)+ " VND");
     }
 
     private void Anhxa() {
