@@ -48,10 +48,10 @@ public class MainActivity extends AppCompatActivity {
         ActionNav();
         newUser = new user(sp.getInt("id", 0), sp.getString("name", ""), sp.getString("email", ""),
                 sp.getString("pass", ""), sp.getString("phone", ""));
-        int i = 0;
-        if(i == 0){
+        boolean i = false;
+        if(!i){
             insertSubData();
-            i = 1;
+            i = true;
         }
 
     }
