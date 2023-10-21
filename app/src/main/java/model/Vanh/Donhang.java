@@ -26,4 +26,11 @@ public class Donhang {
         this.ma_donhang = ma_donhang;
     }
 
+    public int getTrangthai() {
+        return trangthai;
+    }
+
+    public void setTrangthai(int trangthai) {
+        this.trangthai = trangthai;
+    }
 }

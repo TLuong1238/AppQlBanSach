@@ -68,6 +68,9 @@
             android:name=".Profile.GioHang"
             android:exported="false" />
         <activity
+            android:name=".Profile.Quanlidon"
+            android:exported="false" />
+        <activity
             android:name=".Profile.Chitiethoadon"
             android:exported="false" />
         <activity

@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,12 +36,14 @@ public class adminQuanlidon extends Activity {
     private ListView lstDonhang;
     private AdapterAdminDonhang donHangAdapter;
     private ArrayList<Donhang> arrDonhang;
+    private ImageView btnRollback;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin_quanlidon);
         lstDonhang = findViewById(R.id.lstDonhang);
+        btnRollback = findViewById(R.id.btnRollback);
 
         arrDonhang = new ArrayList<>();
         donHangAdapter = new AdapterAdminDonhang(adminQuanlidon.this, R.layout.admin_item_donhang, arrDonhang);
@@ -53,6 +56,14 @@ public class adminQuanlidon extends Activity {
         }
         lstDonhang.setAdapter(donHangAdapter);
         donHangAdapter.notifyDataSetChanged();
+
+        btnRollback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(adminQuanlidon.this, MainAdmin.class);
+                startActivity(intent);
+            }
+        });
     }
 
 }

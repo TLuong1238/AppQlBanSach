@@ -28,11 +28,6 @@ import com.example.appsach.StartProject.LoginActivity;
 
 import model.user;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link profileFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class profileFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -41,10 +36,9 @@ public class profileFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+
     private TextView txtUserName,txtUserEmail;
-    private ImageView imgCart,imgBox,imgBoxed;
+    private ImageView imgCart,imgBoxed;
 
     private CardView cardInfo,cardChange;
     private Button btnLogout;
@@ -58,32 +52,9 @@ public class profileFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment profileFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static profileFragment newInstance(String param1, String param2) {
-
-        profileFragment fragment = new profileFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
     @SuppressLint("MissingInflatedId")
     @Override
@@ -103,12 +74,32 @@ public class profileFragment extends Fragment {
         cardInfo = view.findViewById(R.id.cardInfo);
         cardChange = view.findViewById(R.id.cardChange);
         btnLogout = view.findViewById(R.id.btnLogout);
+        imgCart = view.findViewById(R.id.imgCart);
+        imgBoxed = view.findViewById(R.id.imgBoxed);
+
         //
         txtUserName.setText(newUser.getName_user());
         txtUserEmail.setText(newUser.getEmail_user());
         //
         //
         //
+
+        imgCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(), GioHang.class);
+                startActivity(i);
+            }
+        });
+
+        imgBoxed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(), Quanlidon.class);
+                startActivity(i);
+            }
+        });
+
         cardInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

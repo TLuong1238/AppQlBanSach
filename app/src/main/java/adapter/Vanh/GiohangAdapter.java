@@ -1,6 +1,7 @@
 package adapter.Vanh;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import com.squareup.picasso.Picasso;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+import SQLite.sqlite;
 import model.Vanh.ItemGiohang;
 
 public class GiohangAdapter extends BaseAdapter {
@@ -100,6 +102,11 @@ public class GiohangAdapter extends BaseAdapter {
                 long total = (giahientai * soluongmoinhat) / soluonghientai;
                 gioHang.lstGiohang.get(i).setGiasp(total);
 
+                int maSP = gioHang.lstGiohang.get(i).getId_sanpham();
+                sqlite s = new sqlite(view.getContext(), R.string.databaseName+"",null,1);
+                s.QueryData("UPDATE gio_hang SET soluong = '"+ soluongmoinhat +"' WHERE id_sach = '"+ maSP +"'");
+
+
                 DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
                 finalViewHolder.txtGiasp.setText(decimalFormat.format(total) + " vnd ");
                 com.example.appsach.Profile.GioHang.Tongtien();
@@ -126,6 +133,10 @@ public class GiohangAdapter extends BaseAdapter {
 
                 long total = (giahientai * soluongmoinhat) / soluonghientai;
                 gioHang.lstGiohang.get(i).setGiasp(total);
+
+                int maSP = gioHang.lstGiohang.get(i).getId_sanpham();
+                sqlite s = new sqlite(view.getContext(), R.string.databaseName+"",null,1);
+                s.QueryData("UPDATE gio_hang SET soluong = '"+ soluongmoinhat +"' WHERE id_sach = '"+ maSP +"'");
 
                 DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
                 finalViewHolder.txtGiasp.setText(decimalFormat.format(total) + " vnd ");

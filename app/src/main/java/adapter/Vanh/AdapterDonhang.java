@@ -3,6 +3,8 @@ package adapter.Vanh;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +23,9 @@ import com.example.appsach.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import SQLite.sqlite;
 import model.Vanh.Donhang;
+import model.user;
 
 public class AdapterDonhang extends ArrayAdapter {
 
@@ -43,10 +47,20 @@ public class AdapterDonhang extends ArrayAdapter {
         LayoutInflater inflater = Quanlidon.getLayoutInflater();
         convertView = inflater.inflate(idLayout, null);
         TextView txtMadonhang = convertView.findViewById(R.id.txtMadonhang);
+        TextView txtState = convertView.findViewById(R.id.txtState);
         Button btnXemdon = convertView.findViewById(R.id.btnXemdon);
 
         txtMadonhang.setText(lstDonHang.get(position).getMa_donhang()+"");
         String ma = (String) txtMadonhang.getText();
+
+        int trangthai = lstDonHang.get(position).getTrangthai();
+
+        if(trangthai == 0){
+            txtState.setText("Đã xử lí");
+        }
+        else{
+            txtState.setText("Chờ xử lí");
+        }
 
         btnXemdon.setOnClickListener(new View.OnClickListener() {
             @Override

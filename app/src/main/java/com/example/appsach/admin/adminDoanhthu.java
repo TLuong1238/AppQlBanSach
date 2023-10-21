@@ -1,8 +1,11 @@
 package com.example.appsach.admin;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -24,6 +27,7 @@ public class adminDoanhthu extends Activity {
     private AdapterAdminDoanhthu donHangAdapter;
     private ArrayList<Donhang> arrDonhang;
     private TextView txtDoanhthu;
+    private ImageView btnRollback;
     private int doanhthu = 0;
 
     @Override
@@ -32,9 +36,9 @@ public class adminDoanhthu extends Activity {
         setContentView(R.layout.admin_doanhthu);
         lstDoanhthu = findViewById(R.id.lstDoanhthu);
         txtDoanhthu = findViewById(R.id.txtDoanhthu);
-
+        btnRollback = findViewById(R.id.btnRollback);
         arrDonhang = new ArrayList<>();
-        donHangAdapter = new AdapterAdminDoanhthu(adminDoanhthu.this, R.layout.admin_item_doanhthu, arrDonhang);
+
 
         sqlite s = new sqlite(adminDoanhthu.this,R.string.databaseName+"",null,1);
         Cursor cursor = s.getData("SELECT * FROM tbl_hoadon WHERE tinhtrang = 0");
@@ -47,11 +51,20 @@ public class adminDoanhthu extends Activity {
         while (getDoanhthu.moveToNext()){
             doanhthu += getDoanhthu.getInt(0);
         }
+        donHangAdapter = new AdapterAdminDoanhthu(adminDoanhthu.this, R.layout.admin_item_doanhthu, arrDonhang);
 
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
         txtDoanhthu.setText(decimalFormat.format(doanhthu)+ " vnd");
         lstDoanhthu.setAdapter(donHangAdapter);
         donHangAdapter.notifyDataSetChanged();
+
+        btnRollback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(adminDoanhthu.this, MainAdmin.class);
+                startActivity(intent);
+            }
+        });
     }
 
 }
