@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences sp;
     SharedPreferences.Editor editor;
 
-    Boolean check = true;
+    //Boolean check = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
