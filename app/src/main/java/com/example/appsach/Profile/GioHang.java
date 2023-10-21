@@ -9,9 +9,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,7 +43,6 @@ public class GioHang extends Activity {
     Button btnThanhtoan, btnTieptucmuahang, btnXoatatca;
     GiohangAdapter giohangAdapter;
     SharedPreferences sp;
-    SharedPreferences.Editor editor;
     public static ArrayList<ItemGiohang> lstGiohang;
 
     @Override
@@ -249,6 +245,5 @@ public class GioHang extends Activity {
         btnTieptucmuahang = findViewById(R.id.btnTieptucmuahang);
         btnXoatatca = findViewById(R.id.btnXoatatca);
         sp = getSharedPreferences("LoginData",MODE_PRIVATE);
-        editor = sp.edit();
     }
 }

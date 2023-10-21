@@ -3,8 +3,6 @@ package adapter.Vanh;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,11 +16,9 @@ import androidx.annotation.Nullable;
 
 import com.example.appsach.Profile.Chitiethoadon;
 import com.example.appsach.R;
-import com.example.appsach.admin.adminQuanlidon;
 
 
 import java.util.ArrayList;
-import java.util.List;
 
 import SQLite.sqlite;
 import model.Vanh.Donhang;

@@ -3,17 +3,11 @@ package com.example.appsach.Profile;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.annotation.Nullable;
 
 import com.example.appsach.R;
-import com.example.appsach.StartProject.LoginActivity;
 
 
 import java.util.ArrayList;
