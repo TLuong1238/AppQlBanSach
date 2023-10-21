@@ -78,10 +78,11 @@ public class LoginActivity extends AppCompatActivity {
                     sqlite s = new sqlite(LoginActivity.this,R.string.databaseName+"",null,1);
                     s.QueryData("CREATE TABLE IF NOT EXISTS admin(name TEXT,email EMAIL,password TEXT)");
                     s.QueryData("CREATE TABLE IF NOT EXISTS user( id INTEGER  PRIMARY KEY AUTOINCREMENT,name TEXT,email EMAIL,password TEXT,phone Text null)");
-                    String a1 = "admin";
-                    String a2 = "admin@gmail.com";
-                    String a3 = "1";
-                    s.QueryData("INSERT INTO admin VALUES ('"+a1+"','"+a2+"','"+a3+"')");
+
+//                    String a1 = "admin";
+//                    String a2 = "admin@gmail.com";
+//                    String a3 = "1";
+//                    s.QueryData("INSERT INTO admin VALUES ('"+a1+"','"+a2+"','"+a3+"')");
                     Cursor c = s.getData("SELECT * From user WHERE email ='"+edt_email_login.getText()+"' AND password ='"+edt_pass_login.getText()+"' ");
                     Cursor c2 = s.getData("SELECT * From admin WHERE email ='"+edt_email_login.getText()+"' AND password ='"+edt_pass_login.getText()+"' ");
                     while (c.moveToNext())
@@ -100,6 +101,7 @@ public class LoginActivity extends AppCompatActivity {
                      passAdmin = c2.getString(2);
                      emailAdmin= c2.getString(1);
                     }
+
 
                     if(count>0 )
                     {

@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         ActionNav();
         newUser = new user(sp.getInt("id", 0), sp.getString("name", ""), sp.getString("email", ""),
                 sp.getString("pass", ""), sp.getString("phone", ""));
-        insertSubData();
+//        insertSubData();
         sqlite db = new sqlite(MainActivity.this,R.string.databaseName+"",null,1);
 //        db.QueryData("DROP TABLE tbl_chitietdonhang");
 //        db.QueryData(("CREATE TABLE IF NOT EXISTS tbl_chitietdonhang(id_chitietdonhang INTEGER PRIMARY KEY AUTOINCREMENT, ma_donhang INTEGER, id_taikhoan INTEGER, id_sanpham INTEGER, tensanpham TEXT, soluong INTEGER, gia INTEGER)"));
@@ -371,16 +371,16 @@ public class MainActivity extends AppCompatActivity {
         db.insert("book", null, values);
 
 
-        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.sach7);
+        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.song_of_ice_and_fire);
         bytes = BitmapUtils.getByte(bitmap);
 
-        values.put("tieude", "Rừng nauy");
-        values.put("gia ", 290000);
+        values.put("tieude", "The song of Ice and Fire");
+        values.put("gia ", 490000);
         values.put("id_tacgia ",4);
-        values.put("id_danhmuc ", 1);
-        values.put("tomtat", "Câu chuyện bắt đầu từ một chuyến bay trong ngày mưa ảm đạm, một người đàn ông 37 tuổi chợt nghe thấy bài hát gắn liền với hình ảnh người yêu cũ, thế là quá khứ ùa về xâm chiếm thực tại. Mười tám năm trước, người đàn ông ấy là chàng Toru Wanatabe trẻ trung, mỗi chủ nhật lại cùng nàng Naoko lang thang vô định trên những con phố Tokyo. Họ sánh bước bên nhau để thấy mình còn sống, còn tồn tại, và gắng gượng tiếp tục sống, tiếp tục tồn tại sau cái chết của người bạn cũ Kizuki. Cho đến khi Toru nhận ra rằng mình thực sự yêu và cần có Naoko thì cũng là lúc nàng không thể chạy trốn những ám ảnh quá khứ, không thể hòa nhập với cuộc sống thực tại và trở về dưỡng bệnh trong một khu trị liệu khép kín. Toru, bên cạnh giảng đường vô nghĩa chán ngắt, bên cạnh những đêm chơi bời chuyển từ cảm giác thích thú đến uể oải, ghê tởẫn kiên nhẫn chờ đợi và hy vọng vào sự hồi phục của Naoko. Cuối cùng, những lá thư, những lần thăm hỏi, hồi ức về lần ân ái duy nhất của Toru không thể níu Naoko ở lại, nàng chọn cái chết như một lối đi thanh thản. Từ trong mất mát, Toru nhận ra rằng mình cần tiếp tục sống và bắt đầu tình yêu mới với Midori.");
+        values.put("id_danhmuc ",4);
+        values.put("tomtat", "Sách rất là hay");
         values.put("hinhanh", bytes);
-        values.put("number_of_pages", 634);
+        values.put("number_of_pages", 1563);
         values.put("id_nhaxb", 3);
         values.put("id_nhaph", 2);
         db.insert("book", null, values);
@@ -468,27 +468,7 @@ public class MainActivity extends AppCompatActivity {
         values.put("id_nhaph", 5);
         db.insert("book", null, values);
 
-        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.stn3);
-        bytes = BitmapUtils.getByte(bitmap);
-        values.put("tieude", "Sách cho bé tập 3");
-        values.put("gia ", 12200);
-        values.put("id_tacgia ",10);
-        values.put("id_danhmuc ", 3);
-        values.put("tomtat","TƯ DUY (3~4 tuổi)\n" +
-                "\n" +
-                "Tủ sách thiếu nhi Nhật Bản dành chobes từ 3 đến 4 tuổi \n" +
-                "\n" +
-                "Thích hợp cho trẻ bắt đầu muốn làm thử nhiều việc, kích thích trẻ phát triển tư duy\n" +
-                "\n" +
-                "☆ Khi bé bắt đầu khám phá thế giới, một kỹ năng rất quan trọng mà ba mẹ nên chú ý đó là rèn luyện kỹ năng tư duy cho con. Vì khả năng tư duy sẽ giúp trẻ hình thành nhiều khả năng thực sự như học hỏi, tư duy, sáng tạo và giải quyết vấn đề sẽ kích thích trẻ phát triển trí nhớ, khả năng phán đoán, suy luận và thậm chí cả nhận thức của trẻ.\n" +
-                "\n" +
-                "\n" +
-                "☆ Đối với trẻ 3~4 tuổi thì những việc mà trẻ có thể làm và muốn thử làm được tăng lên nhiều hơn so với trẻ 2~3 tuổi. Trẻ được bồi dưỡng năng lực suy luận khi tự mình suy nghĩ tìm câu trả lời với những dạng bài tìm hình hay trò chơi mê cung. Ngoài ra, việc vui chơi với những bài tập thủ công sử dụng keo dán và kéo có trong sách cũng khơi gợi húng thú học tập của trẻ, giúp trẻ vừa học vui vừa nâng cao trí tuệ mỗi ngày.");
-        values.put("hinhanh", bytes);
-        values.put("number_of_pages", 120);
-        values.put("id_nhaxb", 1);
-        values.put("id_nhaph", 5);
-        db.insert("book", null, values);
+
 
         bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.kns1);
         bytes = BitmapUtils.getByte(bitmap);
