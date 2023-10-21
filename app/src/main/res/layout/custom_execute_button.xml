@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="16dp"
     android:background="#5BA6E1"
-    >
+    android:orientation="vertical"
 
-    <TableLayout
+    >
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="Tiêu đề"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:gravity="center"
+        android:id="@+id/title_dialog"
+        />
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <TableRow
@@ -69,7 +79,7 @@
                 android:layout_weight="1"
                 android:background="@color/white"
                 android:text="Đóng form"
-                android:textSize="14sp" />
+                android:textSize="15sp" />
 
             <Button
                 android:id="@+id/btn_exeSubData"
@@ -79,9 +89,10 @@
                 android:layout_weight="1"
                 android:background="@color/white"
                 android:text="Lưu"
-                android:textSize="14sp" />
+                android:textSize="15sp" />
         </TableRow>
 
     </TableLayout>
+
 
 </LinearLayout>

@@ -30,7 +30,7 @@ import model.Son.SubDataItem;
 public class adminDanhMuc extends Activity {
     private Button btn_tacGia, btn_nhaXB, btn_nhaPH, btn_danhMuc, adding;
 
-    private TextView danhSach;
+    private TextView danhSach, title_dialog;
 
     private ImageView imgBack;
 
@@ -64,6 +64,7 @@ public class adminDanhMuc extends Activity {
             arrayList.add(new SubDataItem(cursor.getInt(cursor.getColumnIndex("id_tacgia")), cursor.getString(cursor.getColumnIndex("ten_tacgia"))));
         }
         adminArrayAdapter = new AdminArrayAdapter(this, R.layout.admin_array_custom, arrayList);
+        adminArrayAdapter.getInforTable(table, id, name);
         danhSach_subData.setAdapter(adminArrayAdapter);
         adminArrayAdapter.notifyDataSetChanged();
 
@@ -71,7 +72,7 @@ public class adminDanhMuc extends Activity {
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(adminDanhMuc.this,MainAdmin.class));
+                startActivity(new Intent(adminDanhMuc.this, MainAdmin.class));
                 finish();
             }
         });
@@ -84,6 +85,7 @@ public class adminDanhMuc extends Activity {
                 table = "tac_gia";
                 id = "id_tacgia";
                 name = "ten_tacgia";
+                adminArrayAdapter.getInforTable(table, id, name);
                 updateListUpToTable(table);
             }
         });
@@ -95,6 +97,7 @@ public class adminDanhMuc extends Activity {
                 table = "danh_muc";
                 id = "id_danhmuc";
                 name = "ten_danhmuc";
+                adminArrayAdapter.getInforTable(table, id, name);
                 updateListUpToTable(table);
             }
         });
@@ -107,6 +110,7 @@ public class adminDanhMuc extends Activity {
                 table = "nha_phat_hanh";
                 id = "id_nhaph";
                 name = "ten_nhaph";
+                adminArrayAdapter.getInforTable(table, id, name);
                 updateListUpToTable(table);
             }
         });
@@ -119,6 +123,7 @@ public class adminDanhMuc extends Activity {
                 table = "nha_xuatban";
                 id = "id_nhaxb";
                 name = "ten_nhaxb";
+                adminArrayAdapter.getInforTable(table, id, name);
                 updateListUpToTable(table);
             }
         });
@@ -127,15 +132,19 @@ public class adminDanhMuc extends Activity {
         adding.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 final AlertDialog builder = new AlertDialog.Builder(adminDanhMuc.this).create();
+
                 LayoutInflater inflater = getLayoutInflater();
                 View dialogView = inflater.inflate(R.layout.custom_execute_button, null);
                 builder.setView(dialogView);
+                TextView title_dialog = dialogView.findViewById(R.id.title_dialog);
                 EditText ed_id = dialogView.findViewById(R.id.ed_idSubData);
                 EditText ed_name = dialogView.findViewById(R.id.ed_nameSubData);
                 Button btn_cancel = dialogView.findViewById(R.id.btn_cancelSub);
                 Button btn_exeSub = dialogView.findViewById(R.id.btn_exeSubData);
 
+                title_dialog.setText("Thêm dữ liệu");
                 btn_cancel.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -175,11 +184,13 @@ public class adminDanhMuc extends Activity {
                 LayoutInflater inflater = getLayoutInflater();
                 View dialogView = inflater.inflate(R.layout.custom_execute_button, null);
                 builder.setView(dialogView);
+                TextView title_dialog = dialogView.findViewById(R.id.title_dialog);
                 EditText ed_id = dialogView.findViewById(R.id.ed_idSubData);
                 EditText ed_name = dialogView.findViewById(R.id.ed_nameSubData);
                 Button btn_cancel = dialogView.findViewById(R.id.btn_cancelSub);
                 Button btn_exeSub = dialogView.findViewById(R.id.btn_exeSubData);
 
+                title_dialog.setText("Sửa thông tin");
                 ed_id.setText(Integer.toString(arrayList.get(i).getId()));
                 ed_name.setText(arrayList.get(i).getName());
                 ed_id.setFocusable(false);
@@ -207,30 +218,6 @@ public class adminDanhMuc extends Activity {
             }
         });
 
-        danhSach_subData.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                final AlertDialog.Builder alertDialog = new AlertDialog.Builder(adminDanhMuc.this);
-                alertDialog.setTitle("Xóa trường dữ liệu");
-                alertDialog.setMessage("Bạn có chắc là muốn xóa " + arrayList.get(i).getName() + " ?");
-                alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.cancel();
-                    }
-                });
-                alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int a) {
-                        database.QueryData("DELETE FROM `" + table + "` WHERE `" + id + "` = '" + arrayList.get(i).getId() + "' ");
-                        updateListUpToTable(table);
-                    }
-                });
-                alertDialog.show();
-                return false;
-            }
-        });
-
     }
 
     @SuppressLint("Range")
@@ -245,6 +232,7 @@ public class adminDanhMuc extends Activity {
     }
 
     private void anhxa() {
+
         imgBack = findViewById(R.id.backDMAdmin);
         btn_tacGia = findViewById(R.id.tacGia);
         btn_danhMuc = findViewById(R.id.danhMuc);
