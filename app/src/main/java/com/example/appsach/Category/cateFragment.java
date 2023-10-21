@@ -375,6 +375,35 @@ public class cateFragment extends Fragment {
         values.put("id_nhaph", 4);
         db.insert("book", null, values);
 
+        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.sachconcuu);
+        bytes = BitmapUtils.getByte(bitmap);
+
+        values.put("tieude", "Không Phải Sói Nhưng Cũng Đừng Là Cừu");
+        values.put("gia ", 92000);
+        values.put("id_tacgia ", 9);
+        values.put("id_danhmuc ", 11);
+        values.put("tomtat", "SÓI VÀ CỪU - BẠN KHÔNG TỐT NHƯ BẠN NGHĨ ĐÂU!\n" + "\n" + "Làn ranh của việc ngây thơ hay xấu xa đôi khi mỏng manh hơn bạn nghĩ.\n" + "\n" + "Bạn làm một việc mà mình cho là đúng, kết quả lại bị mọi người khiển trách.\n" + "\n" + "Bạn ủng hộ một quan điểm của ai đó, và số đông khác lại ủng hộ một quan điểm trái chiều.\n" + "\n" + "Rốt cuộc thì bạn sai hay họ sai?\n" + "\n" + "Cuốn sách “Không phải sói nhưng cũng đừng là cừu” đến từ tác giả Lê Bảo Ngọc sẽ giúp bạn hiểu rõ hơn những khía cạnh sắc sảo phía sau những nhận định đúng, sai đơn thuần của mỗi người.");
+        values.put("hinhanh", bytes);
+        values.put("number_of_pages", 296);
+        values.put("id_nhaxb", 5);
+        values.put("id_nhaph", 5);
+        db.insert("book", null, values);
+
+        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bangayhanhphuc);
+        bytes = BitmapUtils.getByte(bitmap);
+
+        values.put("tieude", "Ba Ngày Hạnh Phúc");
+        values.put("gia ", 85000);
+        values.put("id_tacgia ", 9);
+        values.put("id_danhmuc ", 13);
+        values.put("tomtat", "Thật vô vọng khi thích một người không còn trên thế gian này.\n" + "\n" + "Xem ra từ nay về sau chẳng có một điều tốt lành nào đến với cuộc đời tôi. Chính vì thế mà mỗi năm sinh mệnh của tôi chỉ đáng giá 10.000 yên. Quá bi quan về tương lai, tôi đã bán đi gần hết sinh mệnh của mình. Dù có cố làm gì để được hạnh phúc trong quãng đời ngắn ngủi còn lại, thì tôi cũng chỉ nhận được kết quả trái ngược. Trong khi tôi đang tiếp tục sống vô định thì “người giám sát” Miyagi vẫn đăm đăm nhìn tôi với ánh mắt điềm tĩnh.\n" + "\n" + "Tôi đã mất thêm hai tháng cuộc đời để nhận ra rằng tôi hạnh phúc nhất khi sống vì cô ấy.\n" + "\n" + "Tập truyện nổi tiếng trên web này, cuối cùng cũng được xuất bản!\n" + "\n" + "(Tên ban đầu của nó là Tôi đã bán sinh mệnh của mình. Mỗi năm 10.000 yên.)\n" + "\n" + "Giá sản phẩm trên Tiki đã bao gồm thuế theo luật hiện hành. Bên cạnh đó, tuỳ vào loại sản phẩm, hình thức và địa chỉ giao hàng mà có thể phát sinh thêm chi phí khác như phí vận chuyển, phụ phí hàng cồng kềnh, thuế nhập khẩu (đối với đơn hàng giao từ nước ngoài có giá trị trên 1 triệu đồng).....");
+        values.put("hinhanh", bytes);
+        values.put("number_of_pages", 279);
+        values.put("id_nhaxb", 4);
+        values.put("id_nhaph", 6);
+        db.insert("book", null, values);
+
+
         bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.msfm);
         bytes = BitmapUtils.getByte(bitmap);
 
