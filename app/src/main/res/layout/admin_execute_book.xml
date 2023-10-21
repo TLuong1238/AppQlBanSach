@@ -373,7 +373,7 @@
                     android:paddingTop="10dp"
                     android:paddingEnd="5dp"
                     android:paddingBottom="10dp"
-                    android:text="Tóm tất"
+                    android:text="Tóm tắt"
                     android:textSize="17sp" />
 
                 <EditText

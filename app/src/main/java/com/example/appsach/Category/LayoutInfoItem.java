@@ -60,6 +60,7 @@ public class LayoutInfoItem extends Activity {
         bundle = intent.getBundleExtra("name_item");
         getData();
         cursor.moveToFirst();
+
         tacgia.setText(cursor.getString(cursor.getColumnIndex("ten_tacgia")));
         byte[] img = cursor.getBlob(cursor.getColumnIndex("hinhanh"));
         image.setImageBitmap(BitmapUtils.getImage(img));
