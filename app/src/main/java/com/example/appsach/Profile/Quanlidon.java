@@ -28,10 +28,8 @@ public class Quanlidon extends Activity {
         user user = new user(sp.getInt("id",0),sp.getString("name",""),sp.getString("email",""),
                 sp.getString("pass",""),sp.getString("phone",""));
         int id_tk = user.getId_user();
-
         arrDonhang = new ArrayList<>();
         donHangAdapter = new AdapterDonhang(Quanlidon.this, R.layout.item_quanlidon, arrDonhang);
-
         sqlite s = new sqlite(Quanlidon.this,R.string.databaseName+"",null,1);
         Cursor cursor = s.getData("SELECT * FROM tbl_hoadon WHERE id_taikhoan = '"+ id_tk +"' ");
         while (cursor.moveToNext()){

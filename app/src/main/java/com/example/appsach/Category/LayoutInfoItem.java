@@ -17,9 +17,7 @@ import androidx.annotation.Nullable;
 import com.example.appsach.Home.MainActivity;
 import com.example.appsach.Profile.GioHang;
 import com.example.appsach.R;
-
 import java.text.DecimalFormat;
-
 import SQLite.BitmapUtils;
 import SQLite.sqlite;
 import model.user;

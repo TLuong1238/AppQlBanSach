@@ -9,7 +9,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.appsach.Home.MainActivity;
 import com.example.appsach.R;
 import SQLite.sqlite;
@@ -26,7 +25,6 @@ public class ChangeInfo extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.doi_info);
-
         Bundle bundle = getIntent().getExtras();
         user = (model.user) bundle.get("object_user");
         //
@@ -69,6 +67,8 @@ public class ChangeInfo extends AppCompatActivity {
                     bundle1.putSerializable("object_user",send);
                     i.putExtras(bundle1);
                     startActivity(i);
+                    s.close();
+                    finish();
                     }
             }
         });

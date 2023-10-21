@@ -9,16 +9,11 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
 import com.example.appsach.Profile.Chitiethoadon;
 import com.example.appsach.R;
-
-
 import java.util.ArrayList;
-
 import model.Vanh.Donhang;
 
 public class AdapterDonhang extends ArrayAdapter {

@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.appsach.R;
@@ -28,8 +27,6 @@ public class ChangePass extends AppCompatActivity {
         mapping();
         Bundle b = getIntent().getExtras();
         user getUser = (user) b.get("objectUser");
-
-
         btnXacNhanChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,6 +51,8 @@ public class ChangePass extends AppCompatActivity {
                         Toast.makeText(ChangePass.this, "Đổi mật khẩu thành công", Toast.LENGTH_SHORT).show();
                         Intent i = new Intent(ChangePass.this, LoginActivity.class);
                         startActivity(i);
+                        s.close();
+                        finish();
                     }
                 }
             }

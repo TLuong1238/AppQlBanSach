@@ -3,21 +3,22 @@ package com.example.appsach.admin;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.CursorWindow;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-
 import com.example.appsach.R;
 import com.example.appsach.StartProject.LoginActivity;
+import java.lang.reflect.Field;
 
 public class MainAdmin extends AppCompatActivity {
+
     private Button btnLogout,btnChangePass;
     private String pass,name, email;
     private CardView QlUser,QlOrder,QlCate,QlTop,QlProduct,QlMoney;
@@ -26,6 +27,13 @@ public class MainAdmin extends AppCompatActivity {
     private SharedPreferences.Editor editor;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        try {
+            Field field = CursorWindow.class.getDeclaredField("sCursorWindowSize");
+            field.setAccessible(true);
+            field.set(null, 100 * 1024 * 1024); //the 100MB is the new size
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin_main);
         mapping();
@@ -65,8 +73,6 @@ public class MainAdmin extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainAdmin.this, adminDanhMuc.class));
-                finish();
-
             }
         });
 
@@ -74,7 +80,6 @@ public class MainAdmin extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainAdmin.this, adminBookList.class));
-                finish();
             }
         });
 
@@ -120,28 +125,24 @@ public class MainAdmin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainAdmin.this, adminQuanlidon.class));
-                finish();
             }
         });
         QlMoney.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainAdmin.this,adminDoanhthu.class));
-                finish();
             }
         });
         QlUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainAdmin.this, adminQlUser.class));
-                finish();
             }
         });
         QlTop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainAdmin.this,adminThongKe.class));
-                finish();
             }
         });
 

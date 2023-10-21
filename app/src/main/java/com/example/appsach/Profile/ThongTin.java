@@ -92,7 +92,7 @@ public class ThongTin extends AppCompatActivity {
                 dialog.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        sqlite s = new sqlite(ThongTin.this,"TestApp.db",null,1);
+                        sqlite s = new sqlite(ThongTin.this,R.string.databaseName+"",null,1);
                         s.QueryData("DELETE FROM user WHERE  email ='"+GetUser.getEmail_user()+"'OR name ='"+GetUser.getName_user()+"'");
 
                         Cursor c= s.getData("SELECT * From user WHERE email ='"+GetUser.getEmail_user()+"' AND name ='"+GetUser.getName_user()+"' ");
@@ -119,9 +119,6 @@ public class ThongTin extends AppCompatActivity {
                 dialog.show();
             }
         });
-
-
-
     }
 
     private void mapping()

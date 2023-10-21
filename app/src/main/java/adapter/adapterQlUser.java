@@ -3,7 +3,6 @@ package adapter;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
-
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,18 +14,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
-
 import com.example.appsach.R;
-
-import com.example.appsach.admin.adminQlUser;
-
 import java.util.ArrayList;
-
-
 import SQLite.sqlite;
 import model.user;
 

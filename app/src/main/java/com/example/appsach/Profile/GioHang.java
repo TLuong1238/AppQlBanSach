@@ -16,17 +16,12 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.Nullable;
-
-
 import com.example.appsach.Home.MainActivity;
 import com.example.appsach.R;
-
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Random;
-
 import SQLite.BitmapUtils;
 import SQLite.sqlite;
 import adapter.Vanh.GiohangAdapter;

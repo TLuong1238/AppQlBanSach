@@ -11,16 +11,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
 import com.example.appsach.Profile.Chitiethoadon;
 import com.example.appsach.R;
-
-
 import java.util.ArrayList;
-
 import SQLite.sqlite;
 import model.Vanh.Donhang;
 
@@ -78,6 +73,7 @@ public class AdapterAdminDonhang extends ArrayAdapter {
                         s.QueryData("UPDATE book SET luotmua = '" + sl + "' WHERE id_book = '"+ cursor.getInt(1)+ "' ");
                     }
                 }
+            s.close();
             }
         });
 

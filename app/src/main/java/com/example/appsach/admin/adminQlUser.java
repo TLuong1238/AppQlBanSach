@@ -1,4 +1,5 @@
 package com.example.appsach.admin;
+
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -58,6 +59,7 @@ public class adminQlUser extends AppCompatActivity {
                         s.QueryData("INSERT INTO user VALUES (null,'"+edtNameCus.getText()+"','"+edtEmailCus.getText()+"','"+edtPassCus.getText()+"','"+edtSdtCus.getText()+"')" );
                         Toast.makeText(adminQlUser.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
                         getData();
+                        s.close();
                     }
                 });
                 alert.setNegativeButton("Hủy bỏ", new DialogInterface.OnClickListener() {
@@ -73,6 +75,7 @@ public class adminQlUser extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(adminQlUser.this,MainAdmin.class));
+                finish();
             }
         });
     }

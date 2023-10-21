@@ -1,7 +1,6 @@
 package com.example.appsach.StartProject;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -12,9 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.appsach.R;
-
 import SQLite.sqlite;
 
 public class SignupActivity extends AppCompatActivity {
@@ -49,8 +46,6 @@ public class SignupActivity extends AppCompatActivity {
                             xoatr();
                         }
                     });
-
-
                 }else{
                     sqlite s = new sqlite(SignupActivity.this, R.string.databaseName+"", null, 1);
                     s.QueryData("CREATE TABLE IF NOT EXISTS user( id INTEGER  PRIMARY KEY AUTOINCREMENT,name TEXT,email EMAIL,password TEXT,phone Text null)");
@@ -79,11 +74,12 @@ public class SignupActivity extends AppCompatActivity {
                             edt_pass_signup.setText("");
                             edt_repass.setText("");
                         }else{
-
                             s.QueryData("INSERT INTO user VALUES (null,'"+edt_name_signup.getText()+"','"+edt_email_signup.getText()+"','"+edt_pass_signup.getText()+"',null)" );
                             Toast.makeText(SignupActivity.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
                             Intent i = new Intent(SignupActivity.this,LoginActivity.class);
                             startActivity(i);
+                            s.close();
+                            finish();
                         }
                     }
                     index=0;

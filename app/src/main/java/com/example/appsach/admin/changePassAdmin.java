@@ -49,6 +49,8 @@ public class changePassAdmin extends AppCompatActivity {
                         Toast.makeText(changePassAdmin.this, "Đổi mật khẩu thành công", Toast.LENGTH_SHORT).show();
                         Intent i = new Intent(changePassAdmin.this, LoginActivity.class);
                         startActivity(i);
+                        s.close();
+                        finish();
                     }
                 }
             }

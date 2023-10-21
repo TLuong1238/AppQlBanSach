@@ -5,25 +5,27 @@
     android:orientation="horizontal">
 
     <TextView
-        android:autoSizeTextType="uniform"
-        android:layout_alignParentStart="true"
         android:id="@+id/id_item"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_marginEnd="10dp"
+        android:autoSizeTextType="uniform"
         android:padding="10dp"
         android:text="id"
+        android:textColor="#0E0D0D"
         android:textSize="15sp" />
 
     <TextView
-        android:autoSizeMaxTextSize="200dp"
-        android:autoSizeTextType="uniform"
         android:id="@+id/name_item"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_toEndOf="@+id/id_item"
+        android:autoSizeMaxTextSize="200dp"
+        android:autoSizeTextType="uniform"
         android:padding="10dp"
         android:text="name"
+        android:textColor="#0E0D0D"
         android:textSize="15sp" />
 
     <ImageView

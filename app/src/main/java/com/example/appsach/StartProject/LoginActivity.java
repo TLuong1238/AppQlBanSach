@@ -77,6 +77,7 @@ public class LoginActivity extends AppCompatActivity {
                 }else{
                     sqlite s = new sqlite(LoginActivity.this,R.string.databaseName+"",null,1);
                     s.QueryData("CREATE TABLE IF NOT EXISTS admin(name TEXT,email EMAIL,password TEXT)");
+                    s.QueryData("CREATE TABLE IF NOT EXISTS user( id INTEGER  PRIMARY KEY AUTOINCREMENT,name TEXT,email EMAIL,password TEXT,phone Text null)");
                     String a1 = "admin";
                     String a2 = "admin@gmail.com";
                     String a3 = "1";

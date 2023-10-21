@@ -9,19 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.appsach.Category.LayoutInfoItem;
-
 import com.example.appsach.R;
-
 import java.util.List;
-import java.util.zip.Inflater;
-
-import model.Book;
 import model.Son.Item;
 
 public class bookAdapter extends RecyclerView.Adapter<bookAdapter.bookViewHolder> {

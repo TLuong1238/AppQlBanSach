@@ -346,12 +346,9 @@ public class adminXulyBook extends Activity {
     }
 
     private void imageChoser() {
-
         Intent i = new Intent();
         i.setType("image/*");
         i.setAction(Intent.ACTION_GET_CONTENT);
-
-
         startActivityForResult(Intent.createChooser(i, "Select Picture"), SELECT_PICTURE);
     }
 

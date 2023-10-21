@@ -5,10 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.appsach.R;
 
 public class Welcom extends AppCompatActivity {
@@ -24,24 +22,28 @@ public class Welcom extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Welcom.this, LoginActivity.class));
+                finish();
             }
         });
         txtLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Welcom.this, LoginActivity.class));
+                finish();
             }
         });
         imgSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Welcom.this, SignupActivity.class));
+                finish();
             }
         });
         txtSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Welcom.this, SignupActivity.class));
+                finish();
             }
         });
     }

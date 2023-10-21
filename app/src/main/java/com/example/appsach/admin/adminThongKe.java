@@ -56,7 +56,7 @@ public class adminThongKe extends AppCompatActivity {
 
         String tongVn = vn.format(tong);
         String tongAll = vn.format(tongall);
-        txtTong.setText(tongVn);
+        txtTong.setText(tongVn+"  Vnd");
         txtTiLe.setText(tongAll+"%");
 
         imgBack.setOnClickListener(new View.OnClickListener() {
@@ -97,6 +97,7 @@ public class adminThongKe extends AppCompatActivity {
             allItem = new Item(d,c2.getInt(c2.getColumnIndex("id_book")));
             arrAllItem.add(allItem);
         }
+        s.close();
     }
 
     private void mapping() {

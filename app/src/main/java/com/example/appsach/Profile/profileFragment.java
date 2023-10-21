@@ -1,18 +1,14 @@
 package com.example.appsach.Profile;
 
 import static android.content.Context.MODE_PRIVATE;
-
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,22 +17,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.appsach.Home.MainActivity;
 import com.example.appsach.R;
 import com.example.appsach.StartProject.LoginActivity;
-
 import SQLite.sqlite;
 import model.user;
 
 public class profileFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
 
     private TextView txtUserName,txtUserEmail;
     private ImageView imgCart,imgBoxed;
@@ -82,9 +69,6 @@ public class profileFragment extends Fragment {
         txtUserName.setText(newUser.getName_user());
         txtUserEmail.setText(newUser.getEmail_user());
         //
-        //
-        //
-
         imgCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -177,10 +161,6 @@ public class profileFragment extends Fragment {
             }
 
         });
-
-
-
-
         return view;
     }
 

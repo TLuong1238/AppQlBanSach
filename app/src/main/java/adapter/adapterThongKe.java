@@ -1,31 +1,19 @@
 package adapter;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.appsach.R;
-
 import java.util.ArrayList;
-import java.util.List;
-
-import SQLite.sqlite;
 import model.Son.Item;
-import model.user;
+
 
 public class adapterThongKe extends ArrayAdapter<Item> {
     private Context context;
@@ -64,10 +52,7 @@ public class adapterThongKe extends ArrayAdapter<Item> {
         String str = String.valueOf(item.getLuotmua());
         txtLuotMua.setText(str);
         imgTk.setImageBitmap(item.getImage());
-//        int a = item.getLuotmua();
-//        int b = Integer.parseInt(item.getGia());
-//        int c = a*b;
-//        txtThuNhap.setText(String.valueOf(c));
+
         return convertView;
     }
 }

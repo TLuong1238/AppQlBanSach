@@ -8,13 +8,10 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.example.appsach.Profile.GioHang;
 import com.example.appsach.R;
-
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-
 import SQLite.sqlite;
 import model.Vanh.ItemGiohang;
 

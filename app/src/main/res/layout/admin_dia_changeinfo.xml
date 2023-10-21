@@ -41,17 +41,16 @@
         android:layout_width="344dp"
         android:layout_height="52dp"
         android:layout_marginTop="12dp"
+        android:hint="Họ và tên"
         android:background="@drawable/edt_backgroumd"
         android:drawableStart="@drawable/blue_person"
         android:drawablePadding="10dp"
         android:elevation="20dp"
-
         android:inputType="text"
         android:padding="13dp"
         android:textColor="#131010"
         android:textColorHint="#0C0C0C"
         app:layout_constraintEnd_toEndOf="parent"
-
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView5"
         app:layout_constraintWidth_percent=" .8"
@@ -59,6 +58,7 @@
 
     <EditText
         android:id="@+id/edtCusMail"
+        android:hint="Email"
         android:layout_width="344dp"
         android:layout_height="52dp"
         android:layout_marginTop="28dp"
@@ -90,6 +90,7 @@
         android:padding="13dp"
         android:textColor="#131010"
         android:textColorHint="#0C0C0C"
+        android:hint="Số điện thoại"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtCusMail"
@@ -103,6 +104,7 @@
         android:layout_marginTop="28dp"
         android:background="@drawable/edt_backgroumd"
         android:drawableLeft="@drawable/pass"
+        android:hint="Mật khẩu"
         android:drawablePadding="10dp"
         android:elevation="20dp"
         android:inputType="textPhonetic"

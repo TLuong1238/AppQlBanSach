@@ -3,12 +3,14 @@ package com.example.appsach.admin;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.CursorWindow;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import androidx.annotation.Nullable;
 import com.example.appsach.R;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import SQLite.sqlite;
 import adapter.Vanh.AdapterAdminDonhang;
@@ -22,6 +24,13 @@ public class adminQuanlidon extends Activity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        try {
+            Field field = CursorWindow.class.getDeclaredField("sCursorWindowSize");
+            field.setAccessible(true);
+            field.set(null, 100 * 1024 * 1024); //the 100MB is the new size
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin_quanlidon);
         lstDonhang = findViewById(R.id.lstDonhang);
@@ -31,6 +40,7 @@ public class adminQuanlidon extends Activity {
         donHangAdapter = new AdapterAdminDonhang(adminQuanlidon.this, R.layout.admin_item_donhang, arrDonhang);
 
         sqlite s = new sqlite(adminQuanlidon.this,R.string.databaseName+"",null,1);
+        s.QueryData(("CREATE TABLE IF NOT EXISTS tbl_hoadon(id_hoadon INTEGER PRIMARY KEY AUTOINCREMENT, id_taikhoan INTEGER, ma_donhang INTEGER, tinhtrang INTEGER)"));
         Cursor cursor = s.getData("SELECT * FROM tbl_hoadon WHERE tinhtrang = 1");
 
         while (cursor.moveToNext()){
