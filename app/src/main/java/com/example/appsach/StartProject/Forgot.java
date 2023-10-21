@@ -9,13 +9,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.appsach.Profile.ChangePass;
 import com.example.appsach.R;
-
 import SQLite.sqlite;
 import model.user;
 

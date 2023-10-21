@@ -106,10 +106,10 @@ public class homeFragment extends Fragment {
          flipperHome.setOutAnimation(slide_out);
         //
         getAllItem();
-        getLisIttem();
+
         bookAdapter = new bookAdapter(listItem,getContext());
 
-        for (Item b: listItem) {
+        for (Item b: allItem) {
             ImageView i = new ImageView(getContext());
             i.setImageBitmap(b.getImage());
             i.setOnClickListener(new View.OnClickListener() {
@@ -139,12 +139,12 @@ public class homeFragment extends Fragment {
     }
 
     @SuppressLint("Range")
-    private List<Item> getLisIttem(){
+    private List<Item> getLisIttem(String s){
         listItem =new ArrayList<>();
-        sqlite s = new sqlite(getContext(),R.string.databaseName+"",null,1);
-        s.createTable();
-        s.updateDB();
-        Cursor c= s.getData("SELECT * FROM book LIMIT 10");
+        sqlite sql = new sqlite(getContext(),R.string.databaseName+"",null,1);
+        sql.createTable();
+        sql.updateDB();
+        Cursor c= sql.getData("SELECT * FROM book " + "JOIN danh_muc ON danh_muc.id_danhmuc = book.id_danhmuc " + "WHERE danh_muc.ten_danhmuc = '" + s + "' LIMIT 10");
         while (c.moveToNext())
         {
             byte[] bytes = c.getBlob(c.getColumnIndex("hinhanh"));
@@ -166,7 +166,7 @@ public class homeFragment extends Fragment {
             allItem.add(i);
         }
 //
-        return listItem;
+        return allItem;
     }
     @SuppressLint("Range")
     private List<category> getListCate() {
@@ -178,7 +178,7 @@ public class homeFragment extends Fragment {
         while (c.moveToNext())
         {
             String name = c.getString(c.getColumnIndex("ten_danhmuc"));
-            listCategories.add(new category(name,listItem));
+            listCategories.add(new category(name, (ArrayList<Item>) getLisIttem(name)));
         }
         return listCategories;
     }

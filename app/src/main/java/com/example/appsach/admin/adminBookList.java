@@ -2,9 +2,7 @@ package com.example.appsach.admin;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.ContentValues;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -109,7 +107,6 @@ public class adminBookList extends Activity {
                 c.close();
             }
         });
-
 
     }
 

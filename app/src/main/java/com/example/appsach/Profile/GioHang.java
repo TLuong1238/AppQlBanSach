@@ -1,7 +1,5 @@
 package com.example.appsach.Profile;
 
-import static java.lang.Math.random;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -24,7 +22,6 @@ import androidx.annotation.Nullable;
 
 import com.example.appsach.Home.MainActivity;
 import com.example.appsach.R;
-
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -51,12 +48,7 @@ public class GioHang extends Activity {
         setContentView(R.layout.layout_giohang);
         Anhxa();
         AddGiohang();
-        //
 
-//        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.user_male);
-//        lstGiohang.add(new ItemGiohang(1, 10, "iphone", 10000, bitmap, 1));
-//        lstGiohang.add(new ItemGiohang(1, 10,"samsung", 20000, bitmap, 1));
-//        lstGiohang.add(new ItemGiohang(1, 10,"oppo", 15000, bitmap, 1));
         giohangAdapter = new GiohangAdapter(GioHang.this, lstGiohang);
         lvGiohang.setAdapter(giohangAdapter);
         XoaItem();
@@ -68,6 +60,7 @@ public class GioHang extends Activity {
             public void onClick(View view) {
                 Intent intent = new Intent(GioHang.this, MainActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

@@ -26,6 +26,7 @@ import com.example.appsach.Home.MainActivity;
 import com.example.appsach.R;
 import com.example.appsach.StartProject.LoginActivity;
 
+import SQLite.sqlite;
 import model.user;
 
 public class profileFragment extends Fragment {
@@ -95,6 +96,8 @@ public class profileFragment extends Fragment {
         imgBoxed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                sqlite db = new sqlite(getContext(),R.string.databaseName+"",null,1);
+                db.QueryData(("CREATE TABLE IF NOT EXISTS tbl_hoadon(id_hoadon INTEGER PRIMARY KEY AUTOINCREMENT, id_taikhoan INTEGER, ma_donhang INTEGER, tinhtrang INTEGER)"));
                 Intent i = new Intent(getContext(), Quanlidon.class);
                 startActivity(i);
             }

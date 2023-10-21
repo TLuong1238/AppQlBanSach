@@ -6,12 +6,8 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.ListView;
 import androidx.annotation.Nullable;
-
 import com.example.appsach.R;
-
-
 import java.util.ArrayList;
-
 import SQLite.sqlite;
 import adapter.Vanh.AdapterDonhang;
 import model.Vanh.Donhang;

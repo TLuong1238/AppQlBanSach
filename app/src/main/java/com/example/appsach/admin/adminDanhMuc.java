@@ -3,7 +3,6 @@ package com.example.appsach.admin;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -30,7 +29,7 @@ import model.Son.SubDataItem;
 public class adminDanhMuc extends Activity {
     private Button btn_tacGia, btn_nhaXB, btn_nhaPH, btn_danhMuc, adding;
 
-    private TextView danhSach, title_dialog;
+    private TextView danhSach;
 
     private ImageView imgBack;
 
@@ -167,8 +166,6 @@ public class adminDanhMuc extends Activity {
                             ed_name.setText("");
                             Toast.makeText(adminDanhMuc.this, "Bạn đã thêm thành công", Toast.LENGTH_LONG).show();
                             updateListUpToTable(table);
-                        } else {
-                            Toast.makeText(adminDanhMuc.this, "Câu lệnh truy vấn đang sai", Toast.LENGTH_LONG).show();
                         }
                     }
                 });

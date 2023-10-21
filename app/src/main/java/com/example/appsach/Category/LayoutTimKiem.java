@@ -2,20 +2,19 @@ package com.example.appsach.Category;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
+import com.example.appsach.Home.MainActivity;
 import com.example.appsach.R;
 import java.util.ArrayList;
-
 import SQLite.BitmapUtils;
 import SQLite.sqlite;
 import adapter.Son.DisplayItemAdapter;
@@ -23,13 +22,16 @@ import adapter.Son.RecyclerItemClickListener;
 import model.Son.Item;
 
 public class LayoutTimKiem extends Activity {
-    private ImageView imgView_back, imgView_option;
+    private ImageView imgView_back;
 
     private EditText ed_search;
 
     private RecyclerView recyclerV_displayItem;
 
     private DisplayItemAdapter adapter;
+
+    private SharedPreferences sp;
+    SharedPreferences.Editor editor;
 
     private sqlite sqLiteHelper ;
     private Cursor cursor;
@@ -42,8 +44,9 @@ public class LayoutTimKiem extends Activity {
         sqLiteHelper = new sqlite(this,R.string.databaseName+"",null,1);
         sqLiteHelper.updateDB();
         anhxa();
-//        sqLiteHelper.createTable();
-   //     insertData();
+        sp = getSharedPreferences("LoginData", MODE_PRIVATE);
+        editor = sp.edit();
+
         cursor = sqLiteHelper.getData("select * from book");
         recyclerV_displayItem = findViewById(R.id.recyclerV_DisplayItem);
         adapter = new DisplayItemAdapter(this);
@@ -57,8 +60,11 @@ public class LayoutTimKiem extends Activity {
         imgView_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LayoutTimKiem.this, cateFragment.class);
-                startActivity(intent);
+                editor.putBoolean("back",true);
+                editor.apply();
+                Intent it = new Intent(LayoutTimKiem.this, MainActivity.class);
+                startActivity(it);
+                finish();
             }
         });
     }
@@ -100,10 +106,8 @@ public class LayoutTimKiem extends Activity {
         while (cursor.moveToNext()){
             byte[] temp = cursor.getBlob(6);
             arr.add(new Item(cursor.getString(1),cursor.getString(2),Integer.parseInt(cursor.getString(9)), BitmapUtils.getImage(temp)));
-//            Toast.makeText(this, arr.get(i).getImage().toString(),Toast.LENGTH_LONG).show();
             i++;
         }
-
         return arr;
     }
 

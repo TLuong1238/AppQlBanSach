@@ -1,36 +1,18 @@
 package com.example.appsach.admin;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.annotation.Nullable;
-
-import com.example.appsach.Profile.GioHang;
 import com.example.appsach.R;
-import com.example.appsach.StartProject.LoginActivity;
-
-
 import java.util.ArrayList;
-
 import SQLite.sqlite;
 import adapter.Vanh.AdapterAdminDonhang;
-import adapter.Vanh.AdapterDonhang;
 import model.Vanh.Donhang;
-import model.user;
 
 public class adminQuanlidon extends Activity {
     private ListView lstDonhang;

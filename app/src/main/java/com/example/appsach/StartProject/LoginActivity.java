@@ -1,7 +1,6 @@
 package com.example.appsach.StartProject;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,11 +13,9 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.appsach.Home.MainActivity;
 import com.example.appsach.R;
 import com.example.appsach.admin.MainAdmin;
-
 import SQLite.sqlite;
 
 public class LoginActivity extends AppCompatActivity {

@@ -5,7 +5,6 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -23,7 +22,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.appsach.R;
 
@@ -38,32 +36,18 @@ import adapter.Son.RecyclerItemClickListener;
 import model.Son.DanhMuc;
 import model.Son.Item;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link cateFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 
 public class cateFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
 
     private RecyclerView recyclerView_item;
     private ListView listView_DanhMuc;
     private ItemAdapter adapter_item;
     private ArrayList<DanhMuc> arrDanhMuc;
-    EditText ed_Search;
-    Cursor cursor;
-    ArrayList<Item> arr;
-    ImageView img_searching;
+    private EditText ed_Search;
+    private Cursor cursor;
+    private ArrayList<Item> arr;
+    private ImageView img_searching;
     private DanhMucAdapter danhMucAdapter;
 
     private sqlite database;
@@ -72,40 +56,15 @@ public class cateFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment cateFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static cateFragment newInstance(String param1, String param2) {
-        cateFragment fragment = new cateFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View view = inflater.inflate(R.layout.layout_danh_muc, container, false);
         database = new sqlite(getContext(), R.string.databaseName + "", null, 1);
-        //Tạo bảng
 
-        //
+        //Tạo bảng
         arrDanhMuc = new ArrayList<>();
         ed_Search = view.findViewById(R.id.ed_timKiem1);
         listView_DanhMuc = view.findViewById(R.id.lv_danh_muc);
@@ -120,7 +79,6 @@ public class cateFragment extends Fragment {
         //recycleView
         adapter_item = new ItemAdapter(getContext());
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
-
 
 //        insertSubData();
 

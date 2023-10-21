@@ -8,7 +8,6 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -20,14 +19,8 @@ import androidx.annotation.Nullable;
 import com.example.appsach.Home.MainActivity;
 import com.example.appsach.Profile.GioHang;
 import com.example.appsach.R;
-
-import java.io.Console;
-import java.util.ArrayList;
-import java.util.List;
-
 import SQLite.BitmapUtils;
 import SQLite.sqlite;
-import model.Son.Photo;
 import model.user;
 
 public class LayoutInfoItem extends Activity {
@@ -39,7 +32,7 @@ public class LayoutInfoItem extends Activity {
     private Bundle bundle;
 
     private SharedPreferences sp;
-
+    SharedPreferences.Editor editor;
 
     private Intent intent;
     private Button insertIntoCart;
@@ -54,11 +47,12 @@ public class LayoutInfoItem extends Activity {
         database = new sqlite(LayoutInfoItem.this, R.string.databaseName + "", null, 1);
         anhxa();
         sp = getSharedPreferences("LoginData", MODE_PRIVATE);
-
+        editor = sp.edit();
 
         intent = getIntent();
         bundle = intent.getBundleExtra("name_item");
         getData();
+
         cursor.moveToFirst();
 
         tacgia.setText(cursor.getString(cursor.getColumnIndex("ten_tacgia")));
@@ -94,16 +88,14 @@ public class LayoutInfoItem extends Activity {
                     bb.putString("key_word", key);
                     it.putExtra("key", bb);
                     startActivity(it);
+                    finish();
                 }
                 if (idLayout == R.layout.layout_danh_muc) {
-                    Boolean check = false;
-                    //Co bug
+                    editor.putBoolean("back",true);
+                    editor.apply();
                     Intent it = new Intent(LayoutInfoItem.this, MainActivity.class);
-//                    Bundle bundle1 = new Bundle();
-//                    bundle1.putBoolean("check", check);
-//                    it.putExtra("pack_check", bundle1);
                     startActivity(it);
-
+                    finish();
                 }
 
             }
@@ -139,8 +131,7 @@ public class LayoutInfoItem extends Activity {
                     db.insert("gio_hang", null, contentValues);
                     cs = database.getData("select * from gio_hang");
                     if (prv == cs.getCount() - 1) {
-                        Toast.makeText(LayoutInfoItem.this, "Thêm vào giỏ hàng thành công"
-                                + cs.getCount(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(LayoutInfoItem.this, "Thêm vào giỏ hàng thành công", Toast.LENGTH_LONG).show();
                     }
                     db.close();
                 }
@@ -173,8 +164,5 @@ public class LayoutInfoItem extends Activity {
         danhmuc = findViewById(R.id.tv_danhMucBook);
         Info_img_back = findViewById(R.id.Info_img_back);
         insertIntoCart = findViewById(R.id.btn_insertIntoCart);
-
     }
-
-
 }

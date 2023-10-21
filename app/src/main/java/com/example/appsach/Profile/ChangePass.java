@@ -9,11 +9,8 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.appsach.R;
-import com.example.appsach.StartProject.Forgot;
 import com.example.appsach.StartProject.LoginActivity;
-import com.example.appsach.admin.modelAdmin;
 
 import SQLite.sqlite;
 import model.user;

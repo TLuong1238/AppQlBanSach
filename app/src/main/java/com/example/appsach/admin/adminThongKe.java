@@ -1,7 +1,5 @@
 package com.example.appsach.admin;
 
-
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
@@ -10,17 +8,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.appsach.R;
-
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
-
 import SQLite.BitmapUtils;
 import SQLite.sqlite;
 import adapter.adapterThongKe;
@@ -81,8 +74,6 @@ public class adminThongKe extends AppCompatActivity {
 
         sqlite s = new sqlite(adminThongKe.this,R.string.databaseName+"",null,1);
         Cursor c = s.getData("SELECT * FROM book ORDER BY  luotmua DESC LIMIT 10");
-
-
 
         while (c.moveToNext())
             {
